@@ -5,10 +5,12 @@ import { Badge } from '@mui/material'
 
 const Container = styled.div`
     height: 80px;
+    background-color: #eeeeee;
     box-shadow: 0 0 20px 5px rgba(255,255,255,0.2);
 `
 
 const Wrapper = styled.div`
+    height: 100%;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -30,6 +32,7 @@ const SearchContainer = styled.div`
 `
 const Input = styled.input`
     border: none;
+    background-color: #eeeeee;
     &:focus {
         outline: none;
     }
@@ -38,11 +41,23 @@ const Center = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
+    height: 100%;
 `
-const Logo = styled.img`
-    height: 60px;
-    align-self: center;
+const Logo = styled.p`
+    align-self: space-between;
     cursor: pointer;
+    letter-spacing: 6px;
+    font-size: 2.2em;
+`
+const LogoMirror = styled.p`
+    position: absolute;
+    cursor: pointer;
+    letter-spacing: 6px;
+    transform: scale(1, -1) translateY(-67%);
+    font-size: 2.2em;
+    background: -webkit-linear-gradient(#fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 `
 const Right = styled.div`
     flex: 1;
@@ -67,7 +82,8 @@ const Navbar: React.FC = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo src="https://assets.themuse.com/uploaded/companies/15000103/small_logo.png?v=1647530405" />
+                    <Logo>NAJ</Logo>
+                    <LogoMirror>NAJ</LogoMirror>
                 </Center>
                 <Right>
                     <MenuItem>Register</MenuItem>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Announcement from './Announcement/Announcement'
+import Layout from './Layout/Layout'
 import Navbar from './Navbar/Navbar'
 import Slider from './Slider/Slider'
 
@@ -12,6 +13,7 @@ const Home: React.FC = () => {
             {/* <Announcement /> */}
             <Navbar />
             <Slider />
+            <Layout />
         </Container>
     );
 }
