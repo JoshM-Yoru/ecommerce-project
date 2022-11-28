@@ -1,6 +1,7 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { sliderProducts } from '../../sample'
 
@@ -91,6 +92,11 @@ const Slider: React.FC = () => {
         }
     }
 
+    const navigate = useNavigate();
+    const navigateToShop = () => {
+        navigate('/shop');
+    }
+
     return (
         <Container>
             <Arrow direction="left" onClick={() => handleClick("left")}>
@@ -105,7 +111,7 @@ const Slider: React.FC = () => {
                         <InfoContainer>
                             <Title>{item.title}</Title>
                             <Desc>{item.desc}</Desc>
-                            <Button>SHOP NOW</Button>
+                            <Button onClick={navigateToShop}>SHOP NOW</Button>
                         </InfoContainer>
                     </Slide>
                 ))}

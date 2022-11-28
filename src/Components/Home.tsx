@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import Announcement from './Announcement/Announcement'
 import Layout from './Layout/Layout'
@@ -12,8 +13,10 @@ const Home: React.FC = () => {
         <Container>
             {/* <Announcement /> */}
             <Navbar />
-            <Slider />
-            <Layout />
+            <Routes>
+                <Route path='/' element={<Slider />} />
+                <Route path='/shop' element={<Layout />} />
+            </Routes>
         </Container>
     );
 }

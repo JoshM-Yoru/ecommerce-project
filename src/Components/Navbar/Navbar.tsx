@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import { Badge } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
     height: 80px;
@@ -71,7 +72,27 @@ const MenuItem = styled.div`
     margin-left: 24px;
 `
 
+
 const Navbar: React.FC = () => {
+
+    const navigate = useNavigate();
+    const navigateToHome = () => {
+        navigate('/');
+    }
+
+
+    const navigateToRegister = () => {
+        navigate('/register');
+    }
+
+    const navigateToLogin = () => {
+        navigate('/login');
+    }
+
+    const navigateToCart = () => {
+        navigate('/cart');
+    }
+
     return (
         <Container>
             <Wrapper>
@@ -81,16 +102,16 @@ const Navbar: React.FC = () => {
                         <Search style={{ color: "gray", fontSize: 16, cursor: 'pointer' }} />
                     </SearchContainer>
                 </Left>
-                <Center>
+                <Center onClick={navigateToHome}>
                     <Logo>NAJ</Logo>
                     <LogoMirror>NAJ</LogoMirror>
                 </Center>
                 <Right>
-                    <MenuItem>Register</MenuItem>
-                    <MenuItem>Sign In</MenuItem>
+                    <MenuItem onClick={navigateToRegister}>Register</MenuItem>
+                    <MenuItem onClick={navigateToLogin}>Sign In</MenuItem>
                     <MenuItem>
                         <Badge badgeContent={0} color="primary">
-                            <ShoppingCartOutlined />
+                            <ShoppingCartOutlined onClick={navigateToCart} />
                         </Badge>
                     </MenuItem>
                 </Right>

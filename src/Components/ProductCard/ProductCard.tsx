@@ -7,10 +7,10 @@ const Container = styled.div`
     height: 400px;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 15px;
     padding: 10px;
     align-items: center;
-    box-shadow: 10px 0 20px 10px rgba(0,0,0,.1);
+    box-shadow: 10px 0 30px 10px rgba(0,0,0,.2);
     border-radius: 5px;
 `
 const ImageContainer = styled.div`
