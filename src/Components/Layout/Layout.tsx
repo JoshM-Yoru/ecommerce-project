@@ -9,7 +9,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
 `
-
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -17,6 +16,7 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     width: 80%;
 `
+
 const Layout: React.FC = () => {
 
     return (

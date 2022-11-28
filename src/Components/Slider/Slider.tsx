@@ -2,9 +2,13 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { sliderProducts } from '../../sample'
 
+const slideInAnimation = keyframes`
+    0% {transform: translateY(100%); opacity: 0%},
+    100% {transform: translateY(0px) opacity: 100%}
+`
 const Container = styled.div`
     width: 100%;
     height: 100vh;
@@ -12,6 +16,7 @@ const Container = styled.div`
     /* background-color: #dfcece; */
     position: relative;
     overflow: hidden;
+    animation: ${slideInAnimation} 1s;
 `
 const Arrow = styled.div<{ direction: string }>`
     width: 50px;
