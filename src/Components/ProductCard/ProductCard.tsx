@@ -55,6 +55,17 @@ const Cart = styled.button`
 `
 
 const ProductCard: React.FC<Product> = ({ productId, img, title, desc, price }) => {
+
+    const cart: number[] = [];
+
+    //cart array will need to be in a parent component but will use this idea
+    const addToCart = () => {
+        cart.push(productId);
+        sessionStorage.setItem("cartSize", JSON.stringify(cart.length));
+        console.log(cart);
+        console.log(sessionStorage);
+    };
+
     return (
         <Container>
             <ImageContainer>
@@ -65,7 +76,7 @@ const ProductCard: React.FC<Product> = ({ productId, img, title, desc, price }) 
                 <Description>{desc}</Description>
                 <PriceContainer>
                     <Price>${price}</Price>
-                    <Cart>Add to Cart</Cart>
+                    <Cart onClick={addToCart}>Add to Cart</Cart>
                 </PriceContainer>
             </DescriptionContainer>
         </Container>
