@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { products } from '../../data'
 import ProductCard from '../ProductCard/ProductCard'
-import { Product } from '../Products'
 
 const Container = styled.div`
     background-color: #eeeeee;
@@ -17,7 +16,7 @@ const Wrapper = styled.div`
     width: 80%;
 `
 
-const Layout: React.FC = () => {
+const ProductLayout: React.FC = () => {
 
     return (
         <Container>
@@ -25,7 +24,7 @@ const Layout: React.FC = () => {
                 {
                     products.map((product) => {
                         return (
-                            <ProductCard key={product.title} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} />
+                            <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} />
                         );
                     })
                 }
@@ -34,4 +33,4 @@ const Layout: React.FC = () => {
     )
 }
 
-export default Layout
+export default ProductLayout

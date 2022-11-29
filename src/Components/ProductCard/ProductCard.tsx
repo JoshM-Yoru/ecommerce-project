@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Product } from '../Products'
+import { Context } from '../../Context/ProductContext'
+import { Product, ProductContextState } from '../../Types/Product'
 
 const slideInAnimation = keyframes`
     0% {transform: translateX(100%)},
@@ -70,15 +71,11 @@ const Cart = styled.button`
 
 const ProductCard: React.FC<Product> = ({ productId, img, title, desc, price }) => {
 
-    const cart: number[] = [];
+    const { addProductToCart, products } = useContext(Context) as ProductContextState;
 
-    //cart array will need to be in a parent component but will use this idea
     const addToCart = () => {
-        cart.push(productId);
-        sessionStorage.setItem("cartSize", JSON.stringify(cart.length));
-        console.log(cart);
-        console.log(sessionStorage);
-    };
+        addProductToCart({ productId, img, title, desc, price });
+    }
 
     return (
         <Container>

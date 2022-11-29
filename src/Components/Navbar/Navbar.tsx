@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import { Badge } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { Context } from '../../Context/ProductContext'
+import { ProductContextState } from '../../Types/Product'
 
 const Container = styled.div`
     height: 80px;
@@ -93,6 +95,9 @@ const Navbar: React.FC = () => {
         navigate('/cart');
     }
 
+    const { products, itemsInCart } = useContext(Context) as ProductContextState;
+
+
     return (
         <Container>
             <Wrapper>
@@ -111,7 +116,7 @@ const Navbar: React.FC = () => {
                     <MenuItem onClick={navigateToLogin}>Sign In</MenuItem>
                     <MenuItem>
                         {/* will require a useEffect to update the badge */}
-                        <Badge badgeContent={sessionStorage.cartSize} color="primary">
+                        <Badge badgeContent={itemsInCart(products)} color="primary">
                             <ShoppingCartOutlined onClick={navigateToCart} />
                         </Badge>
                     </MenuItem>
