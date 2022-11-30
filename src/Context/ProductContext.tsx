@@ -18,6 +18,7 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
             title: product.title,
             desc: product.desc,
             price: product.price,
+            amount: product.amount,
         };
 
         setProducts([...products, addedProduct]);
@@ -32,8 +33,18 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
         return products.length;
     }
 
+    const cartTotal = (products: Product[]): number => {
+        let total: number = 0;
+
+        for (let i: number = 0; i < products.length; i++) {
+            total += products[i].price;
+        }
+        return total;
+    }
+
+
     return (
-        <Context.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart }}>
+        <Context.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal }}>
             {children}
         </Context.Provider>
     )

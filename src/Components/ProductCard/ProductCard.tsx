@@ -69,12 +69,12 @@ const Cart = styled.button`
     animation: ${textAppear} 1s;
 `
 
-const ProductCard: React.FC<Product> = ({ productId, img, title, desc, price }) => {
+const ProductCard: React.FC<Product> = ({ productId, img, title, desc, price, amount }) => {
 
     const { addProductToCart, products } = useContext(Context) as ProductContextState;
 
     const addToCart = () => {
-        addProductToCart({ productId, img, title, desc, price });
+        addProductToCart({ productId, img, title, desc, price, amount });
     }
 
     return (

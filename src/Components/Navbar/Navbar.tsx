@@ -116,8 +116,8 @@ const Navbar: React.FC = () => {
                     <MenuItem onClick={navigateToLogin}>Sign In</MenuItem>
                     <MenuItem>
                         {/* will require a useEffect to update the badge */}
-                        <Badge badgeContent={itemsInCart(products)} color="primary">
-                            <ShoppingCartOutlined onClick={navigateToCart} />
+                        <Badge badgeContent={itemsInCart(products)} color="primary" onClick={navigateToCart}>
+                            <ShoppingCartOutlined />
                         </Badge>
                     </MenuItem>
                 </Right>

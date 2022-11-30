@@ -24,7 +24,7 @@ const ProductLayout: React.FC = () => {
                 {
                     products.map((product) => {
                         return (
-                            <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} />
+                            <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={1} />
                         );
                     })
                 }
