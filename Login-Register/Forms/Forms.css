@@ -1,0 +1,13 @@
+.logged-in{
+display: flex;
+}
+
+.not-logged-in{
+    width: auto;
+    height: auto;
+    box-sizing: content-box;
+}
+
+.register{
+    font-size: small;
+}

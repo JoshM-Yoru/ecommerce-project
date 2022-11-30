@@ -1,0 +1,45 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    border-radius: 10px;
+}
+
+.tabs button {
+    background-color: lightgray;
+    border: none;
+    color:black;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);   
+    border-style: ridge; 
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.tabs button:hover {
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.tabs button:disabled {
+    background: white;
+    color:black;
+    border-bottom: none;
+}
+
+.title {
+    color: black;
+    font-size: medium;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.content {
+    padding: 50px 80px;
+    background-color: white;
+    border-style: ridge;
+    border-top: none;
+}
