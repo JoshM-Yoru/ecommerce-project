@@ -11,8 +11,10 @@ export type Product = {
 
 export interface ProductContextState {
     products: Product[];
+    cartNumber: number;
     addProductToCart: (product: Product) => void;
     removeProductFromCart: (productId: number) => void;
-    itemsInCart: (products: Product[]) => number;
+    itemsInCart: (n: number) => number;
     cartTotal: (products: Product[]) => number;
+    updateAmount: (productId: number, n: number) => void;
 }

@@ -7,26 +7,32 @@ import CartCard from '../CartCard/CartCard'
 
 const Container = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    background: #eeeeee;
 `
 const Wrapper = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 85vw;
+    flex:5; 
+`
+const BalanceWrapper = styled.div`
+    flex: 1;
 `
 
 const Cart: React.FC = () => {
 
-    const { products } = useContext(Context) as ProductContextState;
+    const { products, removeProductFromCart } = useContext(Context) as ProductContextState;
 
     let total: number = 0;
 
     for (let i: number = 0; i < products.length; i++) {
         total += products[i].price;
+        if (products[i].amount < 1) {
+            removeProductFromCart(products[i].productId);
+        }
     }
-    console.log(total);
+
 
     return (
         <Container>
@@ -39,7 +45,9 @@ const Cart: React.FC = () => {
                     })
                 }
             </Wrapper>
-            <CartBalanceCard />
+            <BalanceWrapper>
+                <CartBalanceCard />
+            </BalanceWrapper>
         </Container>
     )
 }

@@ -13,7 +13,7 @@ const Container = styled.div`
     width: 100%;
     height: 100vh;
     display: flex;
-    /* background-color: #dfcece; */
+    background-color: #eeeeee;
     position: relative;
     overflow: hidden;
     animation: ${slideInAnimation} 1s;

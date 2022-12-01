@@ -4,12 +4,11 @@ import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import { Badge } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../../Context/ProductContext'
-import { ProductContextState } from '../../Types/Product'
+import { Product, ProductContextState } from '../../Types/Product'
 
 const Container = styled.div`
     height: 80px;
     background-color: #eeeeee;
-    box-shadow: 0 0 20px 5px rgba(255,255,255,0.2);
 `
 
 const Wrapper = styled.div`
@@ -95,7 +94,19 @@ const Navbar: React.FC = () => {
         navigate('/cart');
     }
 
-    const { products, itemsInCart } = useContext(Context) as ProductContextState;
+    const navigateToShop = () => {
+        navigate('/shop');
+    }
+
+    const { products } = useContext(Context) as ProductContextState;
+
+    const updateCartAmount = (): number => {
+        let itemsInCart = 0;
+        for (let i: number = 0; i < products.length; i++) {
+            itemsInCart += products[i].amount;
+        }
+        return itemsInCart;
+    }
 
 
     return (
@@ -112,11 +123,12 @@ const Navbar: React.FC = () => {
                     <LogoMirror>NAJ</LogoMirror>
                 </Center>
                 <Right>
+                    <MenuItem onClick={navigateToShop}>Shop</MenuItem>
                     <MenuItem onClick={navigateToRegister}>Register</MenuItem>
                     <MenuItem onClick={navigateToLogin}>Sign In</MenuItem>
                     <MenuItem>
                         {/* will require a useEffect to update the badge */}
-                        <Badge badgeContent={itemsInCart(products)} color="primary" onClick={navigateToCart}>
+                        <Badge badgeContent={updateCartAmount()} color="primary" onClick={navigateToCart}>
                             <ShoppingCartOutlined />
                         </Badge>
                     </MenuItem>

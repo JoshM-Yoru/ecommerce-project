@@ -2,6 +2,8 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import ProductProvider from '../Context/ProductContext'
+import { UserProvider } from '../Context/UserContext'
+import { user } from '../sampleUser'
 import Announcement from './Announcement/Announcement'
 import Cart from './Cart/Cart'
 import Navbar from './Navbar/Navbar'
@@ -12,20 +14,23 @@ import { UserProfile } from './UserProfile/UserProfile'
 const Container = styled.div`
     background-color: #eeeeee;
 `
+// const { user }
 
 const Home: React.FC = () => {
     return (
         <Container>
-            <ProductProvider>
-                {/* <Announcement /> */}
-                <Navbar />
-                <Routes>
-                    <Route path='/' element={<Slider />} />
-                    <Route path='/shop' element={<ProductLayout />} />
-                    {/* <Route path='/profile' element={<UserProfile id=1 firstName="Joshua" lastName="Maciel" email="josh@mail.com" phoneNumber="888888888" address="123 address st" password="notpassword" />} /> */}
-                    <Route path='/cart' element={<Cart />} />
-                </Routes>
-            </ProductProvider>
+            <UserProvider>
+                <ProductProvider>
+                    <Announcement />
+                    <Navbar />
+                    <Routes>
+                        <Route path='/' element={<Slider />} />
+                        <Route path='/shop' element={<ProductLayout />} />
+                        <Route path='/profile' element={<UserProfile id={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />} />
+                        <Route path='/cart' element={<Cart />} />
+                    </Routes>
+                </ProductProvider>
+            </UserProvider>
         </Container>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { products } from '../../data'
 import ProductCard from '../ProductCard/ProductCard'
