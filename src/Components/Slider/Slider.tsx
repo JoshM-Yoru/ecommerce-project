@@ -102,6 +102,8 @@ const Slider: React.FC = () => {
         navigate('/shop');
     }
 
+    window.scrollTo(0, 0);
+
     return (
         <Container>
             <Arrow direction="left" onClick={() => handleClick("left")}>

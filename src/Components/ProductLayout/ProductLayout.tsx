@@ -33,7 +33,6 @@ const UpArrowWrapper = styled.div`
 
 const ProductLayout: React.FC = () => {
 
-    window.scrollTo();
 
     const handleScrollToTop = () => {
         window.scrollTo({
@@ -42,6 +41,7 @@ const ProductLayout: React.FC = () => {
             behavior: 'smooth'
         });
     }
+
     const [visible, setVisible] = useState(false)
 
     const toggleVisible = () => {
@@ -67,7 +67,7 @@ const ProductLayout: React.FC = () => {
                     })
                 }
                 <UpArrowWrapper onClick={handleScrollToTop}>
-                    <KeyboardArrowUpIcon style={{ zIndex: '2', fontSize: '2em', backgroundColor: '#ccc', borderRadius: '50%', color: 'gray', display: visible ? 'inline' : 'none' }} />
+                    <KeyboardArrowUpIcon style={{ zIndex: '2', fontSize: '2.5em', backgroundColor: '#ccc', borderRadius: '50%', color: 'gray', display: visible ? 'inline' : 'none' }} />
                 </UpArrowWrapper>
             </Wrapper>
         </Container>
