@@ -21,6 +21,7 @@ const Container = styled.div`
     align-items: center;
     box-shadow: 10px 0 30px 10px rgba(0,0,0,.2);
     border-radius: 5px;
+    background: white;
     animation: ${slideInAnimation} 1s;
 `
 const ImageContainer = styled.div`

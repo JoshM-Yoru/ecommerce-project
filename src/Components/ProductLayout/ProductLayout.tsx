@@ -12,7 +12,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    height: 100%;
+    min-height: 100vh;
     flex-wrap: wrap;
     width: 80%;
 `
