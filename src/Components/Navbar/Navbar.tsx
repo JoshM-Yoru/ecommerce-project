@@ -9,8 +9,12 @@ import { Product, ProductContextState } from '../../Types/Product'
 const Container = styled.div`
     height: 80px;
     background-color: #eeeeee;
+    position: sticky;
+    z-index: 2;
+    width: 100vw;
+    top: 0;
+    border-bottom: 2px solid #ccc;
 `
-
 const Wrapper = styled.div`
     height: 100%;
     padding: 10px 20px;
@@ -18,7 +22,6 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
 `
-
 const Left = styled.div`
     flex: 1;
     display: flex;
@@ -127,7 +130,6 @@ const Navbar: React.FC = () => {
                     <MenuItem onClick={navigateToRegister}>Register</MenuItem>
                     <MenuItem onClick={navigateToLogin}>Sign In</MenuItem>
                     <MenuItem>
-                        {/* will require a useEffect to update the badge */}
                         <Badge badgeContent={updateCartAmount()} color="primary" onClick={navigateToCart}>
                             <ShoppingCartOutlined />
                         </Badge>

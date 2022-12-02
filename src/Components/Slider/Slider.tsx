@@ -6,12 +6,12 @@ import styled, { keyframes } from 'styled-components'
 import { sliderProducts } from '../../sample'
 
 const slideInAnimation = keyframes`
-    0% {transform: translateY(100%); opacity: 0%},
+    0% {transform: translateY(-100%); opacity: 0%},
     100% {transform: translateY(0px) opacity: 100%}
 `
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     background-color: #eeeeee;
     position: relative;
@@ -54,7 +54,7 @@ const ImgContainer = styled.div`
     height: 100%;
 `
 const Image = styled.img`
-    height: 80%;
+    height: 100%;
     box-shadow: 10px 0 20px 10px rgba(0,0,0,.25);
 `
 const InfoContainer = styled.div`

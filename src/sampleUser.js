@@ -3,7 +3,7 @@ export const user = {
     firstName: "Joshua",
     lastName: "Maciel",
     email: "josh@mail.com",
-    phoneNumber: "8888888888",
+    phoneNumber: "888-888-8888",
     address: "123 some street",
     password: "password"
 }

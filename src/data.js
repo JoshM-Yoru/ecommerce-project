@@ -15,7 +15,7 @@ export const products = [
     },
     {
         productId: 3,
-        img: "https://i5.walmartimages.com/asr/e13e6c2f-23a6-4f6a-9cd5-3e18359e720c.eed56eb7dd6b06215b61cd7b55f310cf.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+        img: "https://cdni.llbean.net/is/image/wim/301128_1498_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2",
         title: "Jeans",
         desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
         price: Math.floor(Math.random() * 100)
@@ -57,7 +57,7 @@ export const products = [
     },
     {
         productId: 9,
-        img: "https://i5.walmartimages.com/asr/e13e6c2f-23a6-4f6a-9cd5-3e18359e720c.eed56eb7dd6b06215b61cd7b55f310cf.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+        img: "https://cdni.llbean.net/is/image/wim/301128_1498_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2",
         title: "Jeans",
         desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
         price: Math.floor(Math.random() * 100)
@@ -99,7 +99,7 @@ export const products = [
     },
     {
         productId: 15,
-        img: "https://i5.walmartimages.com/asr/e13e6c2f-23a6-4f6a-9cd5-3e18359e720c.eed56eb7dd6b06215b61cd7b55f310cf.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+        img: "https://cdni.llbean.net/is/image/wim/301128_1498_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2",
         title: "Jeans",
         desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
         price: Math.floor(Math.random() * 100)

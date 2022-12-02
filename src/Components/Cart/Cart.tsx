@@ -1,26 +1,35 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Context } from '../../Context/ProductContext'
+import { user } from '../../sampleUser'
 import { ProductContextState } from '../../Types/Product'
 import CartBalanceCard from '../CartBalanceCard/CartBalanceCard'
 import CartCard from '../CartCard/CartCard'
+import CheckoutForm from '../CheckoutForm/CheckoutForm'
+import EmptyCart from '../EmptyCart/EmptyCart'
 
 const Container = styled.div`
     display: flex;
     background: #eeeeee;
+    justify-content: center; 
+    padding-block: 50px;
+    width: 100vw;
+    height: 100vh;
 `
-const Wrapper = styled.div`
+const EmptyCartWrapper = styled.div`
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex:5; 
+    min-width: 30vw;
+    margin: 20px;
+`
+const FormWrapper = styled.div`
+    margin-right: 50px;
 `
 const BalanceWrapper = styled.div`
-    flex: 1;
 `
 
 const Cart: React.FC = () => {
+
+    window.scrollTo(0, 0);
 
     const { products, removeProductFromCart } = useContext(Context) as ProductContextState;
 
@@ -33,21 +42,27 @@ const Cart: React.FC = () => {
         }
     }
 
-
     return (
         <Container>
-            <Wrapper>
-                {
-                    products.map((product, index) => {
-                        return (
-                            <CartCard key={index} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={product.amount} itemOrder={index + 1} />
-                        );
-                    })
-                }
-            </Wrapper>
-            <BalanceWrapper>
-                <CartBalanceCard />
-            </BalanceWrapper>
+            {
+                products.length === 0 ?
+                    <EmptyCartWrapper>
+                        <EmptyCart />
+                    </EmptyCartWrapper>
+                    : null
+            }
+            {
+                products.length !== 0 ?
+                    <>
+                        <FormWrapper>
+                            <CheckoutForm id={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />
+                        </FormWrapper>
+                        <BalanceWrapper>
+                            <CartBalanceCard />
+                        </BalanceWrapper>
+                    </>
+                    : null
+            }
         </Container>
     )
 }
