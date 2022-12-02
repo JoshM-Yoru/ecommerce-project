@@ -1,14 +1,13 @@
-import React, { HtmlHTMLAttributes, ReactHTMLElement } from 'react'
+import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
-import { useState } from 'react'
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
     100% {opacity: 100%}
 `
 const Container = styled.div`
-    height: 650px;
+    height: 625px;
     width: 500px;
     box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
     background: white;
@@ -50,14 +49,15 @@ const Input = styled.input`
 `
 const PlaceOrder = styled.button`
     border: none;
-    background: #0eb05a;
+    background: #047d40;
     padding: 15px;
     font-size: 20px;
     color: #eeeeee;
     cursor: pointer;
+    &:hover {
+        box-shadow: inset 0 0 10px 10px rgba(0,0,0,0.3);
+    }
 `
-
-
 
 const CheckoutForm: React.FC<User> = ({
     id,
