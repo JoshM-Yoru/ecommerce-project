@@ -100,6 +100,7 @@ const Slider: React.FC = () => {
     const navigate = useNavigate();
     const navigateToShop = () => {
         navigate('/shop');
+        window.scrollTo(0, 0);
     }
 
     window.scrollTo(0, 0);

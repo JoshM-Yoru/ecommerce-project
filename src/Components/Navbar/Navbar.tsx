@@ -84,23 +84,22 @@ const Navbar: React.FC = () => {
     const navigate = useNavigate();
     const navigateToHome = () => {
         navigate('/');
-    }
-
-
-    const navigateToRegister = () => {
-        navigate('/register');
+        window.scrollTo(0, 0);
     }
 
     const navigateToLogin = () => {
         navigate('/login');
+        window.scrollTo(0, 0);
     }
 
     const navigateToCart = () => {
         navigate('/cart');
+        window.scrollTo(0, 0);
     }
 
     const navigateToShop = () => {
         navigate('/shop');
+        window.scrollTo(0, 0);
     }
 
     const { products } = useContext(Context) as ProductContextState;

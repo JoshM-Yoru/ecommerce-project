@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
 
@@ -68,28 +68,55 @@ const CheckoutForm: React.FC<User> = ({
     address,
     password,
 }) => {
+
+    const [inputEmail, setInputEmail] = useState<string>(email)
+    const [inputAddress, setInputAddress] = useState<string>(address)
+    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
+    const [inputFirstName, setInputFirstName] = useState<string>(firstName)
+    const [inputLastName, setInputLastName] = useState<string>(lastName)
+
+    const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setInputEmail(e.currentTarget.value);
+    }
+
+    const handleAddressChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setInputAddress(e.currentTarget.value);
+    }
+
+    const handlePhoneNumberChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setInputPhoneNumber(e.currentTarget.value);
+    }
+
+    const handleFirstNameChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setInputFirstName(e.currentTarget.value);
+    }
+
+    const handleLastNameChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setInputLastName(e.currentTarget.value);
+    }
+
     return (
         <Container>
             <Form>
                 <Label>EMAIL ADDRESS</Label>
                 <InputWrapper>
-                    <Input type="email" value={email}></Input>
+                    <Input onChange={handleEmailChange} type="email" value={inputEmail}></Input>
                 </InputWrapper>
                 <Label>DELIVERY ADDRESS</Label>
                 <InputWrapper>
-                    <Input value={address}></Input>
+                    <Input onChange={handleAddressChange} value={inputAddress}></Input>
                 </InputWrapper>
                 <Label>PHONE NUMBER</Label>
                 <InputWrapper>
-                    <Input type="tel" value={phoneNumber}></Input>
+                    <Input onChange={handlePhoneNumberChange} type="tel" value={inputPhoneNumber}></Input>
                 </InputWrapper>
                 <Label>FIRST NAME</Label>
                 <InputWrapper>
-                    <Input value={firstName}></Input>
+                    <Input onChange={handleFirstNameChange} value={inputFirstName}></Input>
                 </InputWrapper>
                 <Label>LAST NAME</Label>
                 <FinalWrapper>
-                    <Input value={lastName}></Input>
+                    <Input onChange={handleLastNameChange} value={inputLastName}></Input>
                 </FinalWrapper>
                 <PlaceOrder>SUBMIT ORDER</PlaceOrder>
             </Form>

@@ -53,9 +53,11 @@ const EmptyCart: React.FC = () => {
     const navigate = useNavigate();
     const navigateToLogin = () => {
         navigate('/login');
+        window.scrollTo(0, 0);
     }
     const navigateToShop = () => {
         navigate('/shop');
+        window.scrollTo(0, 0);
     }
 
     return (
