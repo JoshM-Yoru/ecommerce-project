@@ -11,7 +11,6 @@ const slideInAnimation = keyframes`
 `
 const Container = styled.div`
     width: 100%;
-    height: auto;
     display: flex;
     background-color: #eeeeee;
     position: relative;
@@ -44,7 +43,6 @@ const Wrapper = styled.div<{ slideIndex: number }>`
 `
 const Slide = styled.div < { bg: string }> `
     display: flex;
-    align-items: center;
     width: 100vw;
     height: 100vh;
     background-color: #${props => props.bg};
@@ -59,7 +57,11 @@ const Image = styled.img`
 `
 const InfoContainer = styled.div`
     flex: 1;
-    padding: 50px
+    padding: 100px;
+    margin-top: -200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `
 
 const Title = styled.h1`
@@ -73,12 +75,13 @@ const Desc = styled.p`
 `
 const Button = styled.button`
     padding: 10px;
+    width: 200px;
     font-size: 20px;
-    background-color: rgba(255,255,255,0.4);
-    border: 1px solid #d5d5d5;
+    border: none;
+    background: white;
     box-shadow: 0 0 20px 5px rgba(255,255,255,0.2);
     &:hover {
-        box-shadow:  0 0 10px 5px rgba(255,255,255,0.5);
+        box-shadow: inset 0 0 20px 5px #ddd;
         background-color: rgba(255,255,255,0.8);
         cursor: pointer;
     }

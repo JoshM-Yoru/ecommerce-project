@@ -7,8 +7,10 @@ const slideInAnimation = keyframes`
     100% {transform: translateX(0px) opacity: 100%}
 `
 const Container = styled.div`
-    height: 100%;
+    height: 50px;
     border-top: 2px solid #ccc;
+    z-index: 2;
+    background: #eeeeee;
     animation: ${slideInAnimation} 1s;
 `
 const Wrapper = styled.div`

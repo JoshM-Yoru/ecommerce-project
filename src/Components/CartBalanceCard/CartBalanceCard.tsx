@@ -15,6 +15,7 @@ const Container = styled.div`
     padding: 5px;
     box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
     background: #fff;
+    margin-bottom: 50px;
     animation: ${fadeIn} 1s;
 `
 const CartBalance = styled.h3`

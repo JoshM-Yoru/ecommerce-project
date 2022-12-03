@@ -17,6 +17,7 @@ const Container = styled.div`
     background-color: #eeeeee;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 `
 
 const Home: React.FC = () => {

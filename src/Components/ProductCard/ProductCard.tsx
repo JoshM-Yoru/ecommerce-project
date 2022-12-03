@@ -16,10 +16,10 @@ const Container = styled.div`
     height: 400px;
     display: flex;
     flex-direction: column;
-    margin: 15px;
+    margin: 20px;
     padding: 10px;
     align-items: center;
-    box-shadow: 10px 0 30px 10px rgba(0,0,0,.2);
+    box-shadow: 0 0 20px 10px rgba(0,0,0,.2);
     border-radius: 5px;
     background: white;
     animation: ${slideInAnimation} 1s;

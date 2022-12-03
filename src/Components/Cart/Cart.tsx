@@ -15,11 +15,7 @@ const Container = styled.div`
     padding-block: 50px;
     width: 100vw;
     height: 100vh;
-`
-const EmptyCartWrapper = styled.div`
-    min-height: 100vh;
-    min-width: 30vw;
-    margin: 20px;
+    overflow: scroll;
 `
 const FormWrapper = styled.div`
     margin-right: 50px;
@@ -28,8 +24,6 @@ const BalanceWrapper = styled.div`
 `
 
 const Cart: React.FC = () => {
-
-    window.scrollTo(0, 0);
 
     const { products, removeProductFromCart } = useContext(Context) as ProductContextState;
 
@@ -46,9 +40,7 @@ const Cart: React.FC = () => {
         <Container>
             {
                 products.length === 0 ?
-                    <EmptyCartWrapper>
-                        <EmptyCart />
-                    </EmptyCartWrapper>
+                    <EmptyCart />
                     : null
             }
             {

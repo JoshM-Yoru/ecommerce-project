@@ -9,7 +9,7 @@ import { Context } from '../../Context/ProductContext'
 import { Product, ProductContextState } from '../../Types/Product'
 
 const Container = styled.div`
-    height: 80px;
+    height: 100px;
     background-color: #eeeeee;
     position: sticky;
     z-index: 2;

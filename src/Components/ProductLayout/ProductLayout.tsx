@@ -8,6 +8,9 @@ const Container = styled.div`
     background-color: #eeeeee;
     display: flex;
     justify-content: center;
+    overflow: scroll;
+    height: 100vh;
+    padding-bottom: 100px;
 `
 const Wrapper = styled.div`
     display: flex;
