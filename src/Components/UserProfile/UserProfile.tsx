@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Context } from "../../Context/UserContext";
 import { receipts } from "../../testReceipt";
 import { UserContextState, User } from "../../Types/User";
+import ProfileNavigation from "../ProfileNavigation/ProfileNavigation";
 import ReceiptCard from "../ReceiptCard/ReceiptCard";
 
 const Container = styled.div`
@@ -73,31 +74,32 @@ export const UserProfile: React.FC<User> = ({
     return (
         <Container>
             <Wrapper>
-                <TitleContainer>
-                    <Title>Profile</Title>
-                </TitleContainer>
-                <NameContainer>
-                    <NameTitleContainer>
-                        <NameTitle>Name:</NameTitle>
-                    </NameTitleContainer>
-                    <UserNameContainer>
-                        <UserName>{firstName} {lastName}</UserName>
-                    </UserNameContainer>
-                </NameContainer>
-                <h3>{email}</h3>
-                <h3>{phoneNumber}</h3>
-                <h3>{address}</h3>
-                <ReceiptContainer>
-                    {
-                        receipts.map((receipt) => {
-                            if (id === receipt.userId) {
-                                return (
-                                    <ReceiptCard key={receipt.receiptId} items={receipt.items} userId={receipt.userId} receiptId={receipt.receiptId} date={receipt.date} />
-                                )
-                            }
-                        })
-                    }
-                </ReceiptContainer>
+                <ProfileNavigation id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
+                {/* <TitleContainer> */}
+                {/*     <Title>Profile</Title> */}
+                {/* </TitleContainer> */}
+                {/* <NameContainer> */}
+                {/*     <NameTitleContainer> */}
+                {/*         <NameTitle>Name:</NameTitle> */}
+                {/*     </NameTitleContainer> */}
+                {/*     <UserNameContainer> */}
+                {/*         <UserName>{firstName} {lastName}</UserName> */}
+                {/*     </UserNameContainer> */}
+                {/* </NameContainer> */}
+                {/* <h3>{email}</h3> */}
+                {/* <h3>{phoneNumber}</h3> */}
+                {/* <h3>{address}</h3> */}
+                {/* <ReceiptContainer> */}
+                {/*     { */}
+                {/*         receipts.map((receipt) => { */}
+                {/*             if (id === receipt.userId) { */}
+                {/*                 return ( */}
+                {/*                     <ReceiptCard key={receipt.receiptId} items={receipt.items} userId={receipt.userId} receiptId={receipt.receiptId} date={receipt.date} /> */}
+                {/*                 ) */}
+                {/*             } */}
+                {/*         }) */}
+                {/*     } */}
+                {/* </ReceiptContainer> */}
             </Wrapper>
         </Container>
     );

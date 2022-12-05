@@ -10,8 +10,10 @@ export interface User {
 
 export interface UserContextState {
     users: User[];
+    currentTab: string;
     addUser: (user: User) => void;
     updateUser: (id: number) => void;
     removeUser: (id: number) => void;
+    updateAccountTab: () => void;
 }
 

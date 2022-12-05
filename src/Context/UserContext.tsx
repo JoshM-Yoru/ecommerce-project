@@ -11,6 +11,8 @@ export const Context = React.createContext<UserContextState | null>(null);
 export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
     const [users, setUsers] = useState<User[]>([]);
 
+    const [currentTab, setCurrentTab] = useState<string>('1');
+
     const addUser = (user: User) => {
         const newUser: User = {
             id: Math.floor(Math.random() * 1000) + 1,
@@ -43,8 +45,14 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
         setUsers(users.filter((user: User) => user.id !== id));
     };
 
+    const updateAccountTab = () => {
+        if (currentTab === '1') {
+            setCurrentTab('2');
+        } else { setCurrentTab('1') }
+    }
+
     return (
-        <Context.Provider value={{ users, addUser, updateUser, removeUser }}>
+        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab }}>
             {children}
         </Context.Provider>
     );
