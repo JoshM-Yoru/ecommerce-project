@@ -11,7 +11,7 @@ const textAppear = keyframes`
     100% {opacity: 100%},
 `
 const Container = styled.div`
-    margin-top: 50px;
+    margin-right: 20px;
 `
 const Greeting = styled.div`
     display: flex;

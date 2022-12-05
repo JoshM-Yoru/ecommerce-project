@@ -2,42 +2,44 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
 
-const fadeIn = keyframes`
+const textAppear = keyframes`
     0% {opacity: 0%},
-    100% {opacity: 100%}
+    100% {opacity: 100%},
 `
 const Container = styled.div`
-    width: 500px;
-    padding-block: 10px;
-    box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
     background: white;
-    animation: ${fadeIn} 1s;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
+    width: 600px;
+    margin-top: 10px;
+    height: 100%;
+    animation: ${textAppear} 1s;
+`
+const Title = styled.div`
+    padding: 30px 25px 10px;
+    font-weight: bold;
+    font-size: 2em;
 `
 const Form = styled.form`
     display: flex;
     flex-direction: column;
     padding-inline: 20px;
-    padding-block: 10px;
+    padding-bottom: 10px;
 `
 const InputWrapper = styled.div`
-    width: 100%;
-    margin: 5px;
-    border-bottom: 2px solid #ccc;
-    text-align: center;
-`
-const FinalWrapper = styled.div`
     width: 100%;
     margin: 5px;
     text-align: center;
 `
 const Label = styled.label`
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     margin: 10px;
     text-align: left;
+    color: #444;
 `
 const Input = styled.input`
     width: 95%;
+    font-size: 18px;
     padding: 5px;
     padding-inline: 8px;
     margin-bottom: 15px;
@@ -45,10 +47,11 @@ const Input = styled.input`
     outline: 1px solid #ccc;
     border: none;
 `
-const PlaceOrder = styled.button`
+const SaveChanges = styled.button`
     border: none;
     background: #047d40;
     padding: 15px;
+    margin-bottom: -20px;
     font-size: 20px;
     color: #eeeeee;
     cursor: pointer;
@@ -57,7 +60,7 @@ const PlaceOrder = styled.button`
     }
 `
 
-const CheckoutForm: React.FC<User> = ({
+const AccountDetails: React.FC<User> = ({
     id,
     firstName,
     lastName,
@@ -95,12 +98,15 @@ const CheckoutForm: React.FC<User> = ({
 
     return (
         <Container>
+            <Title>
+                MY ACCOUNT DETAILS
+            </Title>
             <Form>
-                <Label>EMAIL ADDRESS</Label>
+                <Label>EMAIL ADDRESS*</Label>
                 <InputWrapper>
                     <Input onChange={handleEmailChange} type="email" value={inputEmail}></Input>
                 </InputWrapper>
-                <Label>DELIVERY ADDRESS</Label>
+                <Label>DELIVERY ADDRESS*</Label>
                 <InputWrapper>
                     <Input onChange={handleAddressChange} value={inputAddress}></Input>
                 </InputWrapper>
@@ -108,18 +114,18 @@ const CheckoutForm: React.FC<User> = ({
                 <InputWrapper>
                     <Input onChange={handlePhoneNumberChange} type="tel" value={inputPhoneNumber}></Input>
                 </InputWrapper>
-                <Label>FIRST NAME</Label>
+                <Label>FIRST NAME*</Label>
                 <InputWrapper>
                     <Input onChange={handleFirstNameChange} value={inputFirstName}></Input>
                 </InputWrapper>
-                <Label>LAST NAME</Label>
-                <FinalWrapper>
+                <Label>LAST NAME*</Label>
+                <InputWrapper>
                     <Input onChange={handleLastNameChange} value={inputLastName}></Input>
-                </FinalWrapper>
-                <PlaceOrder>SUBMIT ORDER</PlaceOrder>
+                </InputWrapper>
+                <SaveChanges>SAVE CHANGES</SaveChanges>
             </Form>
-        </Container >
+        </Container>
     )
 }
 
-export default CheckoutForm
+export default AccountDetails

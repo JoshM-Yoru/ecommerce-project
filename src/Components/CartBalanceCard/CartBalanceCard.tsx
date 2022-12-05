@@ -13,8 +13,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 5px;
-    box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
-    background: #fff;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
+    background: white;
     margin-bottom: 50px;
     animation: ${fadeIn} 1s;
 `

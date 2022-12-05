@@ -9,13 +9,16 @@ const slideInAnimation = keyframes`
     0% {transform: translateY(-100%); opacity: 0%},
     100% {transform: translateY(0px) opacity: 100%}
 `
+const slideLeftAnimation = keyframes`
+    0% {transform: translateX(100%); opacity: 0%},
+    100% {transform: translateX(0px); opacity: 100%}
+`
 const Container = styled.div`
     width: 100%;
     display: flex;
     background-color: #eeeeee;
     position: relative;
     overflow: hidden;
-    animation: ${slideInAnimation} 1s;
 `
 const Arrow = styled.div<{ direction: string }>`
     width: 50px;
@@ -50,10 +53,11 @@ const Slide = styled.div < { bg: string }> `
 const ImgContainer = styled.div`
     flex: 1;
     height: 100%;
+    animation: ${slideInAnimation} 1s;
 `
 const Image = styled.img`
     height: 100%;
-    box-shadow: 10px 0 20px 10px rgba(0,0,0,.25);
+    box-shadow: 10px 0 40px 10px rgba(0,0,0,.25);
 `
 const InfoContainer = styled.div`
     flex: 1;
@@ -62,6 +66,7 @@ const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: ${slideLeftAnimation} 1.8s;
 `
 
 const Title = styled.h1`

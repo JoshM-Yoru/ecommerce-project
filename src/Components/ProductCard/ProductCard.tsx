@@ -19,10 +19,13 @@ const Container = styled.div`
     margin: 20px;
     padding: 10px;
     align-items: center;
-    box-shadow: 0 0 20px 10px rgba(0,0,0,.2);
+    box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
     border-radius: 5px;
     background: white;
     animation: ${slideInAnimation} 1s;
+    /* &:hover { */
+    /*     box-shadow: inset 0 0 20px 5px rgba(50,0,0,.2); */
+    /* } */
 `
 const ImageContainer = styled.div`
     position: relative; 
