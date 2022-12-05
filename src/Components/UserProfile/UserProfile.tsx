@@ -7,7 +7,7 @@ import { UserContextState, User } from "../../Types/User";
 import ReceiptCard from "../ReceiptCard/ReceiptCard";
 
 const Container = styled.div`
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;

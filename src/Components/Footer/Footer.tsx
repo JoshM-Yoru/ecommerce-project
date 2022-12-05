@@ -2,8 +2,12 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
-const slideInAnimation = keyframes`
+const slideInFromRight = keyframes`
     0% {transform: translateX(100%); opacity: 0%},
+    100% {transform: translateX(0px) opacity: 100%}
+`
+const slideInFromLeft = keyframes`
+    0% {transform: translateX(-20%); opacity: 0%},
     100% {transform: translateX(0px) opacity: 100%}
 `
 const Container = styled.div`
@@ -11,7 +15,6 @@ const Container = styled.div`
     border-top: 2px solid #ccc;
     z-index: 2;
     background: #eeeeee;
-    animation: ${slideInAnimation} 1s;
 `
 const Wrapper = styled.div`
     height: 100%;
@@ -25,6 +28,7 @@ const Left = styled.div`
     display: flex;
     align-items: center;
     font-size: 12px;
+    animation: ${slideInFromLeft} 1s;
 `
 const Right = styled.div`
     flex: 1;
@@ -38,6 +42,7 @@ const MenuItem = styled.div`
     margin-left: 8px;
     display: flex;
     align-items: center;
+    animation: ${slideInFromRight} 1s;
 `
 
 

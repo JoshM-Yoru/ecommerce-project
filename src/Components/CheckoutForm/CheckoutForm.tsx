@@ -7,8 +7,8 @@ const fadeIn = keyframes`
     100% {opacity: 100%}
 `
 const Container = styled.div`
-    height: 625px;
     width: 500px;
+    padding-block: 10px;
     box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
     background: white;
     animation: ${fadeIn} 1s;
@@ -18,7 +18,6 @@ const Form = styled.form`
     flex-direction: column;
     padding-inline: 20px;
     padding-block: 10px;
-    justify-content: space-evenly;
 `
 const InputWrapper = styled.div`
     width: 100%;
@@ -38,7 +37,6 @@ const Label = styled.label`
     text-align: left;
 `
 const Input = styled.input`
-    font-size: 20px;
     width: 95%;
     padding: 5px;
     padding-inline: 8px;

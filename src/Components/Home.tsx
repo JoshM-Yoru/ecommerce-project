@@ -8,6 +8,7 @@ import Announcement from './Announcement/Announcement'
 import Cart from './Cart/Cart'
 import Footer from './Footer/Footer'
 import Login from './LoginRegister/Login'
+import NewTabs from './LoginRegister/Tabs/NewTabs'
 import Navbar from './Navbar/Navbar'
 import ProductLayout from './ProductLayout/ProductLayout'
 import Slider from './Slider/Slider'
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
                         <Route path='/cart' element={<Cart />} />
                         <Route path='/login' element={<Login />} />
                     </Routes>
+                    {/* <NewTabs /> */}
                     <Footer />
                 </ProductProvider>
             </UserProvider>

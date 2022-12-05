@@ -2,24 +2,28 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { LoginForm } from '../Forms/LoginForm';
 import { RegisterForm } from '../Forms/RegisterForm';
-// import './NewTabs.css';
 
 const Container = styled.div`
     display: flex;
     justify-content: center;
 `
 const Wrapper = styled.div`
+    height: 800px;
     width: 400px;
     margin-top: 50px;
     padding: 5px;
     border-radius: 5px;
     background: white;
     box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 `
 const Tabs = styled.div`
     display: flex;
     justify-content: center;
-    width: auto;
+    width: 100%;
     border-radius: 10px;
 `
 const TabButton = styled.button`
@@ -29,9 +33,14 @@ const TabButton = styled.button`
     width: 100%;
     text-decoration: none;
     background: white;
+    font-size: 1em;
     &:disabled {
         background: white;
-        border-bottom: 2px solid blue;
+        border-bottom: 5px solid #6bc5f2;
+        color: black;
+    };
+    &:first-of-type + button {
+        border-left: 1px solid #ccc;
     }
 `
 const Content = styled.div`
@@ -41,7 +50,8 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    padding-bottom: 10px;
 `
 
 const NewTabs: React.FC = () => {
@@ -78,7 +88,7 @@ const NewTabs: React.FC = () => {
                             <TabButton key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</TabButton>
                         )}
                     </Tabs>
-                    <Content style={{ height: '200px' }}>
+                    <Content>
                         <LoginForm></LoginForm>
                     </Content>
                 </Wrapper>
@@ -94,7 +104,7 @@ const NewTabs: React.FC = () => {
                             <TabButton key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</TabButton>
                         )}
                     </Tabs>
-                    <Content style={{ height: '300px' }}>
+                    <Content>
                         <RegisterForm />
                     </Content>
                 </Wrapper>

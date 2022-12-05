@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-// import "./Modal.css";
+import "./Modal.css";
 import NewTabs from '../Tabs/NewTabs';
 
 
@@ -15,7 +15,7 @@ export default function Modal(props: ModalType) {
         <>
             {props.isOpen && (<div className="modal-over">
                 <div className="modal-box">
-                    <NewTabs></NewTabs>
+                    <NewTabs />
                     {props.children}
                 </div>
             </div>)}

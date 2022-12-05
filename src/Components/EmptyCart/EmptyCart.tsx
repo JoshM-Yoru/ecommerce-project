@@ -23,23 +23,13 @@ const SignIn = styled.div`
     text-align: center;
     margin-right: 10px;
 `
-const SignInButton = styled.button`
-    width: 200px;
-    border: none;
-    background: #b57f7f;
-    font-size: 24px;
-    color: #eeeeee;
-    margin-block: 15px;
-    padding: 5px 20px 5px;
-    cursor: pointer;
-`
 const ButtonWrapper = styled.div`
     text-align: center;
 `
-const ShopButton = styled.button`
+const Button = styled.button`
     width: 200px;
     border: none;
-    background: #b57f7f;
+    background: #b56464;
     font-size: 24px;
     color: #eeeeee;
     margin-block: 15px;
@@ -66,8 +56,8 @@ const EmptyCart: React.FC = () => {
             <EmptyTitle>Your Cart Is Empty</EmptyTitle>
             <SignIn>Log in now to see your cart and get shopping!</SignIn>
             <ButtonWrapper>
-                <ShopButton onClick={navigateToShop}>Shop Now</ShopButton>
-                <SignInButton onClick={navigateToLogin}>Log In</SignInButton>
+                <Button onClick={navigateToShop}>Shop Now</Button>
+                <Button onClick={navigateToLogin}>Log In</Button>
             </ButtonWrapper>
         </Container>
     )

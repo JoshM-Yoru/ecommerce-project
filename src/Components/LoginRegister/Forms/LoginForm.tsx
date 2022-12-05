@@ -1,7 +1,55 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import './Forms.css'
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+    0% {opacity: 0%},
+    100% {opacity: 100%}
+`
+const Container = styled.div`
+    background: white;
+    animation: ${fadeIn} 1s;
+`
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+`
+const InputWrapper = styled.div`
+    width: 100%;
+    text-align: center;
+`
+const FinalWrapper = styled.div`
+    width: 100%;
+    margin: 5px;
+    text-align: center;
+`
+const Label = styled.label`
+    font-weight: bold;
+    margin: 10px;
+    text-align: left;
+`
+const Input = styled.input`
+    font-size: 20px;
+    width: 95%;
+    padding: 5px;
+    padding-inline: 8px;
+    margin-bottom: 15px;
+    color: #222;
+    outline: 1px solid #ccc;
+    border: none;
+`
+const LoginButton = styled.button`
+    border: none;
+    background: #047d40;
+    padding: 15px;
+    font-size: 20px;
+    color: #eeeeee;
+    cursor: pointer;
+    &:hover {
+        box-shadow: inset 0 0 10px 10px rgba(0,0,0,0.3);
+    }
+`
 
 
 export const LoginForm: React.FC = () => {
@@ -51,21 +99,27 @@ export const LoginForm: React.FC = () => {
 
     if (logged) {
         return (
-            <div className='logged-in'>
+            <Container>
                 <h3>Logged In as `${localStorage.getItem('id')}`</h3>
-                <button onClick={handleLogout}>Log out</button>
-            </div>
+                <LoginButton onClick={handleLogout}>Log out</LoginButton>
+            </Container>
         );
     } else {
         return (
-            <div className='not-logged-in'>
+            <Container>
                 {error ? <h4>Please try again.</h4> : <></>}
-                <h4>Email:</h4>
-                <input type='text' name='email' onChange={handleChange} />
-                <h4>Password:</h4>
-                <input type='password' name='password' onChange={handleChange} />
-                <button onClick={handleLogin}>Login</button>
-            </div>
+                <Form>
+                    <Label>EMAIL ADDRESS</Label>
+                    <InputWrapper>
+                        <Input onChange={handleChange} type="email" />
+                    </InputWrapper>
+                    <Label>PASSWORD</Label>
+                    <FinalWrapper>
+                        <Input onChange={handleChange} type='password' />
+                    </FinalWrapper>
+                    <LoginButton type='button' onClick={handleLogin}>LOGIN</LoginButton>
+                </Form>
+            </Container>
         );
     }
 
