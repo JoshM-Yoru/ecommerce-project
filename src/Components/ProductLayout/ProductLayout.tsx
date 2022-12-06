@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { products } from '../../data'
 import ProductCard from '../ProductCard/ProductCard'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Context } from '../../Context/ProductContext'
+import { ProductContextState } from '../../Types/Product';
 
 const Container = styled.div`
     background-color: #eeeeee;
@@ -57,23 +59,32 @@ const ProductLayout: React.FC = () => {
         }
     };
 
+    const { search } = useContext(Context) as ProductContextState;
+
     window.addEventListener('scroll', toggleVisible)
 
     return (
         <Container>
             <Wrapper>
                 {
-                    products.map((product) => {
-                        return (
-                            <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={1} />
-                        );
-                    })
+                    (search === '') ?
+                        products.map((product) => {
+                            return (
+                                <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={1} />
+                            );
+                        })
+                        :
+                        products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase())).map(product => {
+                            return (
+                                <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={1} />
+                            )
+                        })
                 }
                 <UpArrowWrapper onClick={handleScrollToTop}>
                     <KeyboardArrowUpIcon style={{ zIndex: '2', fontSize: '2.5em', backgroundColor: '#ccc', borderRadius: '50%', color: 'gray', display: visible ? 'inline' : 'none' }} />
                 </UpArrowWrapper>
             </Wrapper>
-        </Container>
+        </Container >
     )
 }
 

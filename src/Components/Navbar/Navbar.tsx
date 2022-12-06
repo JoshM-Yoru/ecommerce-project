@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -29,7 +29,7 @@ const Left = styled.div`
     display: flex;
     align-items: center;
 `
-const SearchContainer = styled.div`
+const SearchContainer = styled.form`
     border: 1px solid lightgray;
     display: flex;
     align-items: center;
@@ -42,6 +42,10 @@ const Input = styled.input`
     &:focus {
         outline: none;
     }
+`
+const Button = styled.button`
+    border: none;
+    background: transparent;
 `
 const Center = styled.div`
     flex: 1;
@@ -101,7 +105,7 @@ const Navbar: React.FC = () => {
         window.scrollTo(0, 0);
     }
 
-    const { products } = useContext(Context) as ProductContextState;
+    const { products, itemSearch } = useContext(Context) as ProductContextState;
 
     const updateCartAmount = (): number => {
         let itemsInCart = 0;
@@ -111,14 +115,37 @@ const Navbar: React.FC = () => {
         return itemsInCart;
     }
 
+    let searchedProduct: string;
+
+    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+        searchedProduct = e.currentTarget.value;
+    }
+
+    const ref = useRef<HTMLInputElement>(null);
+
+    const clearInput = (e: React.FormEvent<HTMLInputElement>) => {
+        e.currentTarget.value = '';
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        itemSearch(searchedProduct);
+        if (ref.current !== null) {
+            ref.current.value = '';
+        }
+        navigateToShop();
+    }
+
 
     return (
         <Container>
             <Wrapper>
                 <Left>
-                    <SearchContainer>
-                        <Input placeholder='Search' />
-                        <Search style={{ color: "gray", fontSize: 16, cursor: 'pointer' }} />
+                    <SearchContainer >
+                        <Input ref={ref} placeholder='Search' name='searchbar' onChange={handleChange} />
+                        <Button onClick={handleSubmit}>
+                            <Search type='submit' style={{ color: "gray", fontSize: 16, cursor: 'pointer' }} />
+                        </Button>
                     </SearchContainer>
                 </Left>
                 <Center onClick={navigateToHome}>

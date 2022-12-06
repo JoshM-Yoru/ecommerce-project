@@ -13,6 +13,8 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
 
     const [cartNumber, setCartNumber] = useState<number>(0)
 
+    const [search, setSearch] = useState<string>('');
+
     const addProductToCart = (product: Product) => {
         const addedProduct: Product = {
             productId: product.productId,
@@ -63,9 +65,14 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
         return total;
     }
 
+    const itemSearch = (e: string) => {
+        setSearch(e);
+        console.log(e)
+    }
+
 
     return (
-        <Context.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal, cartNumber, updateAmount }}>
+        <Context.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal, cartNumber, updateAmount, itemSearch, search }}>
             {children}
         </Context.Provider>
     )
