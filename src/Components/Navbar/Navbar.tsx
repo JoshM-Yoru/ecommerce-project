@@ -10,7 +10,7 @@ import { Product, ProductContextState } from '../../Types/Product'
 
 const Container = styled.div`
     height: 100px;
-    background-color: #eeeeee;
+    background-color: white;
     position: sticky;
     z-index: 2;
     width: 100vw;
@@ -39,7 +39,6 @@ const SearchContainer = styled.div`
 `
 const Input = styled.input`
     border: none;
-    background-color: #eeeeee;
     &:focus {
         outline: none;
     }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
+import { user } from '../../../sampleUser';
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -45,7 +46,7 @@ const LoginButton = styled.button`
     background: #047d40;
     padding: 15px;
     font-size: 20px;
-    color: #eeeeee;
+    color: white;
     cursor: pointer;
     &:hover {
         box-shadow: inset 0 0 10px 10px rgba(0,0,0,0.3);
@@ -69,10 +70,15 @@ export const LoginForm: React.FC = () => {
         }
     }
 
+    const navigate = useNavigate();
     const handleLogin = async () => {
         let login = {
             email,
             password
+        }
+        console.log(email, password, user.email, user.password)
+        if (email === user.email && password === user.password) {
+            navigate('/profile');
         }
 
         try {
@@ -101,8 +107,10 @@ export const LoginForm: React.FC = () => {
     if (logged) {
         return (
             <Container>
-                <h3>Logged In as `${localStorage.getItem('id')}`</h3>
-                <LoginButton onClick={handleLogout}>Log out</LoginButton>
+                <Form>
+                    <h3>Logged In as `${localStorage.getItem('id')}`</h3>
+                    <LoginButton onClick={handleLogout}>Log out</LoginButton>
+                </Form>
             </Container>
         );
     } else {
@@ -112,7 +120,7 @@ export const LoginForm: React.FC = () => {
                 <Form>
                     <Label>EMAIL ADDRESS</Label>
                     <InputWrapper>
-                        <Input onChange={handleChange} type="email" />
+                        <Input onChange={handleChange} name='email' type="email" />
                     </InputWrapper>
                     <Label>PASSWORD</Label>
                     <FinalWrapper>

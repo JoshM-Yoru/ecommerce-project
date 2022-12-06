@@ -14,7 +14,7 @@ const Container = styled.div`
     height: 50px;
     border-top: 2px solid #ccc;
     z-index: 2;
-    background: #eeeeee;
+    background: white;
 `
 const Wrapper = styled.div`
     height: 100%;
@@ -38,7 +38,7 @@ const Right = styled.div`
 `
 const MenuItem = styled.div`
     font-size: 14px;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin-left: 8px;
     display: flex;
     align-items: center;

@@ -84,10 +84,9 @@ const Button = styled.button`
     font-size: 20px;
     border: none;
     background: white;
-    box-shadow: 0 0 20px 5px rgba(255,255,255,0.2);
+    /* box-shadow: 0 0 10px 2px rgba(0,0,0,0.2); */
     &:hover {
-        box-shadow: inset 0 0 20px 5px #ddd;
-        background-color: rgba(255,255,255,0.8);
+        box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
         cursor: pointer;
     }
 `

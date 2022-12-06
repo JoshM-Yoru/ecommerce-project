@@ -58,7 +58,7 @@ const SaveChanges = styled.button`
     background: #047d40;
     padding: 15px;
     font-size: 20px;
-    color: #eeeeee;
+    color: white;
     cursor: pointer;
     &:hover {
         box-shadow: inset 0 0 10px 10px rgba(0,0,0,0.3);

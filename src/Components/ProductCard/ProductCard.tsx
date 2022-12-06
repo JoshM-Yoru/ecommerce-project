@@ -70,7 +70,12 @@ const Cart = styled.button`
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    background: transparent;
     animation: ${textAppear} 1s;
+    &:hover {
+            background: #047d40;
+            color: white;
+        }
 `
 
 const ProductCard: React.FC<Product> = ({ productId, img, title, desc, price, amount }) => {

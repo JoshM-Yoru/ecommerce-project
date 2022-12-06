@@ -22,19 +22,19 @@ const Form = styled.form`
 const InputWrapper = styled.div`
     width: 100%;
     margin: 5px;
-    border-bottom: 2px solid #ccc;
     text-align: center;
 `
-const FinalWrapper = styled.div`
+const CCWrapper = styled.div`
     width: 100%;
-    margin: 5px;
+    margin-inline: 5px;
     text-align: center;
+    display: flex;
+    justify-content: left;
 `
-const Label = styled.label`
+const Label = styled.div`
     font-weight: bold;
-    font-size: 20px;
     margin: 10px;
-    text-align: left;
+    width: fit-content;
 `
 const Input = styled.input`
     width: 95%;
@@ -50,7 +50,7 @@ const PlaceOrder = styled.button`
     background: #047d40;
     padding: 15px;
     font-size: 20px;
-    color: #eeeeee;
+    color: white;
     cursor: pointer;
     &:hover {
         box-shadow: inset 0 0 10px 10px rgba(0,0,0,0.3);
@@ -96,26 +96,40 @@ const CheckoutForm: React.FC<User> = ({
     return (
         <Container>
             <Form>
-                <Label>EMAIL ADDRESS</Label>
                 <InputWrapper>
-                    <Input onChange={handleEmailChange} type="email" value={inputEmail}></Input>
+                    <Label>EMAIL ADDRESS</Label>
+                    <Input onChange={handleEmailChange} required type="email" value={inputEmail}></Input>
                 </InputWrapper>
-                <Label>DELIVERY ADDRESS</Label>
                 <InputWrapper>
+                    <Label>DELIVERY ADDRESS</Label>
                     <Input onChange={handleAddressChange} value={inputAddress}></Input>
                 </InputWrapper>
-                <Label>PHONE NUMBER</Label>
                 <InputWrapper>
+                    <Label>PHONE NUMBER</Label>
                     <Input onChange={handlePhoneNumberChange} type="tel" value={inputPhoneNumber}></Input>
                 </InputWrapper>
-                <Label>FIRST NAME</Label>
                 <InputWrapper>
+                    <Label>FIRST NAME</Label>
                     <Input onChange={handleFirstNameChange} value={inputFirstName}></Input>
                 </InputWrapper>
-                <Label>LAST NAME</Label>
-                <FinalWrapper>
+                <InputWrapper>
+                    <Label>LAST NAME</Label>
                     <Input onChange={handleLastNameChange} value={inputLastName}></Input>
-                </FinalWrapper>
+                </InputWrapper>
+                <InputWrapper>
+                    <Label>CREDIT CARD NUMBER</Label>
+                    <Input maxLength={16} required placeholder='****************' />
+                </InputWrapper>
+                <CCWrapper>
+                    <InputWrapper>
+                        <Label>EXP DATE</Label>
+                        <Input type='text' required placeholder='mm/yyyy' />
+                    </InputWrapper>
+                    <InputWrapper>
+                        <Label>CVV</Label>
+                        <Input maxLength={3} required placeholder='***' />
+                    </InputWrapper>
+                </CCWrapper>
                 <PlaceOrder>SUBMIT ORDER</PlaceOrder>
             </Form>
         </Container >
