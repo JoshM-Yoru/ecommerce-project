@@ -8,7 +8,7 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    height: 800px;
+    height: fit-content;
     width: 400px;
     margin-top: 50px;
     padding: 5px;
@@ -82,7 +82,7 @@ const NewTabs: React.FC = () => {
 
         return (
             <Container>
-                <Wrapper style={{ height: '400px' }}>
+                <Wrapper>
                     <Tabs>
                         {tabs.map((tab, i) =>
                             <TabButton key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</TabButton>
@@ -98,7 +98,7 @@ const NewTabs: React.FC = () => {
     } else {
         return (
             <Container>
-                <Wrapper style={{ height: '500px' }} >
+                <Wrapper>
                     <Tabs>
                         {tabs.map((tab, i) =>
                             <TabButton key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</TabButton>

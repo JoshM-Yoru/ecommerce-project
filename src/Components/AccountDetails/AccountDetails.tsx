@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
+import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -11,7 +12,7 @@ const Container = styled.div`
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
     width: 600px;
     margin-top: 10px;
-    height: 100%;
+    height: fit-content;
     animation: ${textAppear} 1s;
 `
 const Title = styled.div`
@@ -19,10 +20,15 @@ const Title = styled.div`
     font-weight: bold;
     font-size: 2em;
 `
+const Information = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 5px 25px 10px;
+`
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    padding-inline: 20px;
+    padding-inline: 25px;
     padding-bottom: 10px;
 `
 const InputWrapper = styled.div`
@@ -33,7 +39,7 @@ const InputWrapper = styled.div`
 const Label = styled.label`
     font-weight: bold;
     font-size: 18px;
-    margin: 10px;
+    margin-block: 10px;
     text-align: left;
     color: #444;
 `
@@ -51,7 +57,6 @@ const SaveChanges = styled.button`
     border: none;
     background: #047d40;
     padding: 15px;
-    margin-bottom: -20px;
     font-size: 20px;
     color: #eeeeee;
     cursor: pointer;
@@ -99,8 +104,12 @@ const AccountDetails: React.FC<User> = ({
     return (
         <Container>
             <Title>
+                <Person2OutlinedIcon style={{ fontSize: '2rem' }} /> <br />
                 MY ACCOUNT DETAILS
             </Title>
+            <Information>
+                Feel free to edit any fields to keep your profile up to date. Asterisks (*) are used to denote a required field.
+            </Information>
             <Form>
                 <Label>EMAIL ADDRESS*</Label>
                 <InputWrapper>

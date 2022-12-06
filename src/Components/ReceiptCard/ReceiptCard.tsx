@@ -25,7 +25,7 @@ const ReceiptDate = styled.h4`
 const ReceiptBody = styled.div`
     display: flex;
     padding: 10px;
-    font-size: 12px;
+    font-size: 14px;
     background: white;
 `
 const ItemsList = styled.ul`

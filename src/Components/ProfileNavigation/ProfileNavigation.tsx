@@ -16,7 +16,7 @@ const Container = styled.div`
 const Greeting = styled.div`
     display: flex;
     background: white;
-    padding: 10px;
+    padding: 30px 10px 30px;
     margin:10px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
     animation: ${textAppear} 1s;

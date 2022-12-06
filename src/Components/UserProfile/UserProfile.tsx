@@ -21,6 +21,7 @@ const Wrapper = styled.div`
 const ReceiptWrapper = styled.div`
     margin-top: 10px;
     background-color: white;
+    height: fit-content;
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
 `
 // const TitleContainer = styled.div`

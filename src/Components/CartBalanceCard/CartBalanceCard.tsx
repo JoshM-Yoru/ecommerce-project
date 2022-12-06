@@ -62,16 +62,15 @@ const CartBalanceCard: React.FC = () => {
 
     let subtotal = cartTotal(products);
 
-    // let shipping: number = 2.00;
-
-    const [shipping, setShipping] = useState(2);
+    let shipping: number;
 
     if (subtotal > 952.38) {
-        setShipping(0)
-    }
+        shipping = 0;
+    } else shipping = 2;
 
     let total = ((cartTotal(products) * 1.59) + shipping).toFixed(2);
 
+    console.log(subtotal, shipping, total)
     return (
         <Container>
             <CartBalance>Cart Summary</CartBalance>

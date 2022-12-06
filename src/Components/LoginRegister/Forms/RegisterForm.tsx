@@ -9,6 +9,7 @@ const fadeIn = keyframes`
 `
 const Container = styled.div`
     background: white;
+    padding: 40px;
     animation: ${fadeIn} 1s;
 `
 const Form = styled.form`

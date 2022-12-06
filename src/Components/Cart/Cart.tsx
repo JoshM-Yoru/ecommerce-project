@@ -19,6 +19,7 @@ const Container = styled.div`
 `
 const FormWrapper = styled.div`
     margin-right: 50px;
+    height: fit-content;
 `
 const BalanceWrapper = styled.div`
 `
