@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
 
@@ -93,6 +94,11 @@ const CheckoutForm: React.FC<User> = ({
         setInputLastName(e.currentTarget.value);
     }
 
+    const navigate = useNavigate();
+    const navigateToSuccess = () => {
+        navigate('/success');
+    }
+
     return (
         <Container>
             <Form>
@@ -130,7 +136,7 @@ const CheckoutForm: React.FC<User> = ({
                         <Input maxLength={3} required placeholder='***' />
                     </InputWrapper>
                 </CCWrapper>
-                <PlaceOrder>SUBMIT ORDER</PlaceOrder>
+                <PlaceOrder onClick={navigateToSuccess}>SUBMIT ORDER</PlaceOrder>
             </Form>
         </Container >
     )

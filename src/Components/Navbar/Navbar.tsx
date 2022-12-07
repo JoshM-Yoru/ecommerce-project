@@ -123,10 +123,6 @@ const Navbar: React.FC = () => {
 
     const ref = useRef<HTMLInputElement>(null);
 
-    const clearInput = (e: React.FormEvent<HTMLInputElement>) => {
-        e.currentTarget.value = '';
-    }
-
     const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         itemSearch(searchedProduct);

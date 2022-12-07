@@ -66,8 +66,9 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
     }
 
     const itemSearch = (e: string) => {
-        setSearch(e);
-        console.log(e)
+        if (e) {
+            setSearch(e);
+        }
     }
 
 

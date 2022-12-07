@@ -6,6 +6,7 @@ import { UserProvider } from '../Context/UserContext'
 import { user } from '../sampleUser'
 import Announcement from './Announcement/Announcement'
 import Cart from './Cart/Cart'
+import CheckoutCompleted from './CheckoutCompleted/CheckoutCompleted'
 import Footer from './Footer/Footer'
 import Login from './LoginRegister/Login'
 import NewTabs from './LoginRegister/Tabs/NewTabs'
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
                         <Route path='/profile' element={<UserProfile id={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />} />
                         <Route path='/cart' element={<Cart />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/success' element={<CheckoutCompleted />} />
                     </Routes>
                     {/* <NewTabs /> */}
                     <Footer />
