@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
+import axios from 'axios'
+import { ProductContextState } from '../../Types/Product'
+import { Context } from '../../Context/ProductContext'
+
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -68,6 +72,7 @@ const CheckoutForm: React.FC<User> = ({
     password,
 }) => {
 
+    const {products} = useContext(Context) as ProductContextState;
     const [inputEmail, setInputEmail] = useState<string>(email)
     const [inputAddress, setInputAddress] = useState<string>(address)
     const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
@@ -96,7 +101,45 @@ const CheckoutForm: React.FC<User> = ({
 
     const navigate = useNavigate();
     const navigateToSuccess = () => {
+        createReceipt()
         navigate('/success');
+    }
+
+    type CreateReceiptResponse = {
+        userId: number;
+        items: number[];
+    }
+
+    async function createReceipt() {
+
+        let amountOfItems = 0;
+        for(let i = 0; i< products.length; i++) {
+            amountOfItems += products[i].amount
+        }
+
+        try {
+            
+            const {data} = await axios.post<CreateReceiptResponse>(
+                "http://localhost:8000/receipts/create",
+                {
+                    userId: id,
+                    items: products, 
+                    amountOfItems: amountOfItems
+                }
+            )
+            
+            console.log(data);
+            return data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.log('error message: ', error.message);
+                
+                return error.message;
+              } else {
+                console.log('unexpected error: ', error);
+                return 'An unexpected error occurred';
+              }
+        }
     }
 
     return (

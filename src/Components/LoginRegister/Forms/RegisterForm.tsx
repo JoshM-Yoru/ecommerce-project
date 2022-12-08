@@ -83,10 +83,13 @@ export const RegisterForm: React.FC = () => {
         try {
             let res = await axios.post('http://localhost:8000/user/register', register);
             setError(false);
+            console.log(res)
             let user = await res.data;
         } catch (e) {
             setError(true);
         }
+
+        
     }
 
     return (

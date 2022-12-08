@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { products } from '../../data'
+import { Product } from '../../Types/Product';
 import ProductCard from '../ProductCard/ProductCard'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Context } from '../../Context/ProductContext'
 import { ProductContextState } from '../../Types/Product';
+import axios from 'axios';
 
 const Container = styled.div`
     background-color: #eeeeee;
@@ -59,6 +60,35 @@ const ProductLayout: React.FC = () => {
         }
     };
 
+    const [productData, setProductData] = useState<Product[]>([]);
+
+    async function getProducts() {
+        try {
+            const {data} = await axios.get<Product[]>(
+                'http://localhost:8000/items/read/all',
+                {
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                }
+            )
+
+            return setProductData(data);
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+              console.log('error message: ', error.message);
+              return error.message;
+            } else {
+              console.log('unexpected error: ', error);
+              return 'An unexpected error occurred';
+            }
+          }
+    }
+
+    useEffect(()=> {
+        getProducts()
+    }, [])
+
     const { search } = useContext(Context) as ProductContextState;
 
     window.addEventListener('scroll', toggleVisible)
@@ -68,15 +98,15 @@ const ProductLayout: React.FC = () => {
             <Wrapper>
                 {
                     (search === '') ?
-                        products.map((product) => {
+                        productData.map((product) => {
                             return (
-                                <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={1} />
+                                <ProductCard key={product.itemId} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} amount={1} />
                             );
                         })
                         :
-                        products.filter((product) => product.title.toLowerCase().includes(search.toLowerCase())).map(product => {
+                        productData.filter((product) => product.name.toLowerCase().includes(search.toLowerCase())).map(product => {
                             return (
-                                <ProductCard key={product.productId} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={1} />
+                                <ProductCard key={product.itemId} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} amount={1} />
                             )
                         })
                 }

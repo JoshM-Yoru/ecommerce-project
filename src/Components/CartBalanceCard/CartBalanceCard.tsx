@@ -77,7 +77,7 @@ const CartBalanceCard: React.FC = () => {
             {
                 products.map((product, index) => {
                     return (
-                        <CartCard key={index} productId={product.productId} img={product.img} title={product.title} desc={product.desc} price={product.price} amount={product.amount} itemOrder={index + 1} />
+                        <CartCard key={index} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} amount={product.amount} itemOrder={index + 1} />
                     );
                 })
             }

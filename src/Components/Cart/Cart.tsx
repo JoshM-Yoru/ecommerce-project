@@ -33,7 +33,7 @@ const Cart: React.FC = () => {
     for (let i: number = 0; i < products.length; i++) {
         total += products[i].price;
         if (products[i].amount < 1) {
-            removeProductFromCart(products[i].productId);
+            removeProductFromCart(products[i].itemId);
         }
     }
 

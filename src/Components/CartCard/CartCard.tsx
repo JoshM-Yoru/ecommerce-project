@@ -70,7 +70,7 @@ const Plus = styled.button`
     cursor: pointer;
 `
 
-const CartCard: React.FC<Product> = ({ productId, img, title, desc, price, amount, itemOrder }) => {
+const CartCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount, itemOrder }) => {
 
     const { itemsInCart, updateAmount, removeProductFromCart } = useContext(Context) as ProductContextState;
 
