@@ -65,7 +65,7 @@ const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptNumber: receiptI
                         }
                     </ItemsList>
                     <TotalPrice>
-                        Total Price: ${totalPrice(items)}
+                        Total Price: ${total}
                     </TotalPrice>
                 </ReceiptBody>
             </Wrapper>
