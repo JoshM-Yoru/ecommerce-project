@@ -9,7 +9,8 @@ const fadeIn = keyframes`
     100% {opacity: 100%}
 `
 const Container = styled.div`
-    background: white;
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
     padding: 40px;
     animation: ${fadeIn} 1s;
 `
@@ -37,9 +38,10 @@ const Input = styled.input`
     padding: 5px;
     padding-inline: 8px;
     margin-bottom: 15px;
-    color: #222;
-    outline: 1px solid #ccc;
+    color: ${(props) => props.theme.text};
+    outline: 1px solid ${(props) => props.theme.border};
     border: none;
+    background: transparent;
 `
 const LoginButton = styled.button`
     border: none;

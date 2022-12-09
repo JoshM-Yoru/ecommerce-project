@@ -10,12 +10,13 @@ import { Product, ProductContextState } from '../../Types/Product'
 
 const Container = styled.div`
     height: 100px;
-    background-color: white;
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
     position: sticky;
     z-index: 2;
     width: 100vw;
     top: 0;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid ${(props) => props.theme.border};
 `
 const Wrapper = styled.div`
     height: 100%;
@@ -30,7 +31,7 @@ const Left = styled.div`
     align-items: center;
 `
 const SearchContainer = styled.form`
-    border: 1px solid lightgray;
+    border: 1px solid ${(props) => props.theme.border};
     display: flex;
     align-items: center;
     margin-left: 25px;
@@ -39,8 +40,11 @@ const SearchContainer = styled.form`
 `
 const Input = styled.input`
     border: none;
+    background: transparent;
+    color: ${(props) => props.theme.text};
     &:focus {
         outline: none;
+        background: transparent;
     }
 `
 const Button = styled.button`
@@ -58,6 +62,7 @@ const Logo = styled.p`
     cursor: pointer;
     letter-spacing: 6px;
     font-size: 2.2em;
+    color: ${(props) => props.theme.text};
 `
 const LogoMirror = styled.p`
     position: absolute;
@@ -65,7 +70,7 @@ const LogoMirror = styled.p`
     letter-spacing: 6px;
     transform: scale(1, -1) translateY(-67%);
     font-size: 2.2em;
-    background: -webkit-linear-gradient(#fff, #888);
+    background: linear-gradient(#fff, #888);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 `

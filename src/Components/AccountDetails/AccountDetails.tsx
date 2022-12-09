@@ -8,11 +8,12 @@ const textAppear = keyframes`
     100% {opacity: 100%},
 `
 const Container = styled.div`
-    background: white;
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
     width: 600px;
     margin-top: 10px;
-    height: fit-content;
+    height: fit-content
     animation: ${textAppear} 1s;
 `
 const Title = styled.div`
@@ -41,7 +42,6 @@ const Label = styled.label`
     font-size: 18px;
     margin-block: 10px;
     text-align: left;
-    color: #444;
 `
 const Input = styled.input`
     width: 95%;
@@ -49,8 +49,9 @@ const Input = styled.input`
     padding: 5px;
     padding-inline: 8px;
     margin-bottom: 15px;
-    color: #222;
-    outline: 1px solid #ccc;
+    color: ${(props) => props.theme.text};
+    outline: 1px solid ${(props) => props.theme.border};
+    background: transparent;
     border: none;
 `
 const SaveChanges = styled.button`

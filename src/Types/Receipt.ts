@@ -1,12 +1,13 @@
 export type Receipt = {
     items: Items[];
     userId: number;
-    receiptId: number;
-    date: String;
+    receiptNumber: number;
+    dateTime: String;
+    total: number;
 }
 
 export type Items = {
-    title: string;
+    name: string;
     amount: number;
     price: number;
 }

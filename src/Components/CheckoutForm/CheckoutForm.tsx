@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react'
+import axios from 'axios'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
-import { User } from '../../Types/User'
-import axios from 'axios'
-import { ProductContextState } from '../../Types/Product'
 import { Context } from '../../Context/ProductContext'
-
+import { ProductContextState } from '../../Types/Product'
+import { User } from '../../Types/User'
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -15,7 +14,7 @@ const Container = styled.div`
     width: 500px;
     padding-block: 10px;
     box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
-    background: white;
+    background-color: ${(props) => props.theme.body};
     animation: ${fadeIn} 1s;
 `
 const Form = styled.form`
@@ -46,9 +45,10 @@ const Input = styled.input`
     padding: 5px;
     padding-inline: 8px;
     margin-bottom: 15px;
-    color: #222;
-    outline: 1px solid #ccc;
+    color: ${(props) => props.theme.text};
+    outline: 1px solid ${(props) => props.theme.border};
     border: none;
+    background: transparent;
 `
 const PlaceOrder = styled.button`
     border: none;
@@ -72,7 +72,8 @@ const CheckoutForm: React.FC<User> = ({
     password,
 }) => {
 
-    const {products} = useContext(Context) as ProductContextState;
+    const { products } = useContext(Context) as ProductContextState;
+
     const [inputEmail, setInputEmail] = useState<string>(email)
     const [inputAddress, setInputAddress] = useState<string>(address)
     const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
@@ -101,7 +102,7 @@ const CheckoutForm: React.FC<User> = ({
 
     const navigate = useNavigate();
     const navigateToSuccess = () => {
-        createReceipt()
+        createReceipt();
         navigate('/success');
     }
 
@@ -113,32 +114,32 @@ const CheckoutForm: React.FC<User> = ({
     async function createReceipt() {
 
         let amountOfItems = 0;
-        for(let i = 0; i< products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             amountOfItems += products[i].amount
         }
 
         try {
-            
-            const {data} = await axios.post<CreateReceiptResponse>(
+
+            const { data } = await axios.post<CreateReceiptResponse>(
                 "http://localhost:8000/receipts/create",
                 {
                     userId: id,
-                    items: products, 
+                    items: products,
                     amountOfItems: amountOfItems
                 }
             )
-            
+
             console.log(data);
             return data;
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.log('error message: ', error.message);
-                
+
                 return error.message;
-              } else {
+            } else {
                 console.log('unexpected error: ', error);
                 return 'An unexpected error occurred';
-              }
+            }
         }
     }
 

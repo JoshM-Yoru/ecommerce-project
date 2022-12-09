@@ -8,6 +8,7 @@ const fadeIn = keyframes`
 `
 const Container = styled.div`
     height: 100vh;
+    background-color: ${(props) => props.theme.background};
     animation: ${fadeIn} 1s;
 `
 

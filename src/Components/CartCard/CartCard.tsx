@@ -8,7 +8,8 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const Container = styled.div`
     width: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${(props) => props.theme.border};
+    background-color: ${(props) => props.theme.body};
 `
 const Wrapper = styled.div`
     display: flex;
@@ -70,7 +71,7 @@ const Plus = styled.button`
     cursor: pointer;
 `
 
-const CartCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount, itemOrder }) => {
+const CartCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount }) => {
 
     const { itemsInCart, updateAmount, removeProductFromCart } = useContext(Context) as ProductContextState;
 

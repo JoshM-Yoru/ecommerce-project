@@ -15,14 +15,14 @@ const Container = styled.div`
 `
 const Greeting = styled.div`
     display: flex;
-    background: white;
+    background-color: ${(props) => props.theme.body};
     padding: 30px 10px 30px;
     margin:10px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
     animation: ${textAppear} 1s;
 `
 const GreetingIcon = styled.div`
-    background: #333;
+    background-color: ${(props) => props.theme.altColor};
     padding: 25px;
     border-radius: 50%;
 `
@@ -44,9 +44,10 @@ const Name = styled.p`
     letter-spacing: 3px;
 `
 const Tabs = styled.button`
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
     display: flex;
     width: 350px;
-    background: white;
     padding: 10px;
     margin:10px;
     border: none;
@@ -56,9 +57,7 @@ const Tabs = styled.button`
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
     animation: ${textAppear} 1s;
     &:disabled {
-        background: white;
         border-left: 5px solid #6bc5f2;
-        color: black;
     };
 `
 const TabText = styled.div`

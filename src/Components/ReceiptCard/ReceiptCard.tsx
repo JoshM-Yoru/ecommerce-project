@@ -7,7 +7,7 @@ const textAppear = keyframes`
     100% {opacity: 100%},
 `
 const Container = styled.div`
-    background: white;
+    background-color: ${(props) => props.theme.body};
     animation: ${textAppear} 1s;
 `
 const Wrapper = styled.div`
@@ -26,7 +26,7 @@ const ReceiptBody = styled.div`
     display: flex;
     padding: 10px;
     font-size: 14px;
-    background: white;
+    background-color: ${(props) => props.theme.body};
 `
 const ItemsList = styled.ul`
     list-style-type: none;
@@ -36,7 +36,7 @@ const TotalPrice = styled.div`
     
 `
 
-const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptId, date }) => {
+const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptNumber: receiptId, dateTime: date, total }) => {
 
     const totalPrice = (items: Items[]) => {
         let total = 0;
@@ -59,7 +59,7 @@ const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptId, date }) => {
                         {
                             items.map((item, index) => {
                                 return (
-                                    <li key={index} >{item.amount} x {item.title}</li>
+                                    <li key={index} >{item.amount} x {item.name}</li>
                                 )
                             })
                         }

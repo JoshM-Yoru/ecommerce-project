@@ -6,6 +6,7 @@ import { RegisterForm } from '../Forms/RegisterForm';
 const Container = styled.div`
     display: flex;
     justify-content: center;
+    color: ${(props) => props.theme.text};
 `
 const Wrapper = styled.div`
     height: fit-content;
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
     margin-top: 50px;
     padding: 5px;
     border-radius: 5px;
-    background: white;
+    background-color: ${(props) => props.theme.body};
     box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
@@ -25,6 +26,7 @@ const Tabs = styled.div`
     justify-content: center;
     width: 100%;
     border-radius: 10px;
+    color: ${(props) => props.theme.text};
 `
 const TabButton = styled.button`
     border: none;
@@ -32,20 +34,21 @@ const TabButton = styled.button`
     padding: 5px;
     width: 100%;
     text-decoration: none;
-    background: white;
     font-size: 1em;
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
     &:disabled {
-        background: white;
+        color: ${(props) => props.theme.text};
+        background-color: ${(props) => props.theme.body};
         border-bottom: 5px solid #6bc5f2;
-        color: black;
     };
     &:first-of-type + button {
-        border-left: 1px solid #ccc;
+        border-left: 1px solid ${(props) => props.theme.border};
     }
 `
 const Content = styled.div`
     height: 100%;
-    background-color: white;
+    background-color: ${(props) => props.theme.body};
     border-top: none;
     display: flex;
     flex-direction: column;

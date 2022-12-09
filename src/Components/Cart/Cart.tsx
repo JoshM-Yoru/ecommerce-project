@@ -10,7 +10,8 @@ import EmptyCart from '../EmptyCart/EmptyCart'
 
 const Container = styled.div`
     display: flex;
-    background: #eeeeee;
+    background-color: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.text};
     justify-content: center; 
     padding-block: 50px;
     width: 100vw;

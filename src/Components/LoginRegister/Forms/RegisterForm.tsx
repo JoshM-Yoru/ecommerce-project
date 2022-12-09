@@ -8,7 +8,7 @@ const fadeIn = keyframes`
     100% {opacity: 100%}
 `
 const Container = styled.div`
-    background: white;
+    background-color: ${(props) => props.theme.body};
     padding: 40px;
     animation: ${fadeIn} 1s;
 `
@@ -37,9 +37,10 @@ const Input = styled.input`
     padding: 5px;
     padding-inline: 8px;
     margin-bottom: 15px;
-    color: #222;
-    outline: 1px solid #ccc;
+    color: ${(props) => props.theme.text};
+    outline: 1px solid ${(props) => props.theme.border};
     border: none;
+    background: transparent;
 `
 const LoginButton = styled.button`
     border: none;
@@ -83,13 +84,10 @@ export const RegisterForm: React.FC = () => {
         try {
             let res = await axios.post('http://localhost:8000/user/register', register);
             setError(false);
-            console.log(res)
             let user = await res.data;
         } catch (e) {
             setError(true);
         }
-
-        
     }
 
     return (

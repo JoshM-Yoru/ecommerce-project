@@ -16,7 +16,6 @@ const slideLeftAnimation = keyframes`
 const Container = styled.div`
     width: 100%;
     display: flex;
-    background-color: #eeeeee;
     position: relative;
     overflow: hidden;
 `
@@ -83,7 +82,8 @@ const Button = styled.button`
     width: 200px;
     font-size: 20px;
     border: none;
-    background: white;
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
     /* box-shadow: 0 0 10px 2px rgba(0,0,0,0.2); */
     &:hover {
         box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);

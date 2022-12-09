@@ -6,6 +6,8 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     height: 100vh;
+    background-color: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.text};
 `
 const Wrapper = styled.div`
     height: fit-content;
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
     margin-top: 50px;
     padding: 40px;
     border-radius: 5px;
-    background: white;
+    background-color: ${(props) => props.theme.body};
     box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
@@ -21,7 +23,6 @@ const Wrapper = styled.div`
     justify-content: space-between;
 `
 const Content = styled.div`
-    background-color: white;
     border-top: none;
     display: flex;
     flex-direction: column;
@@ -33,7 +34,7 @@ const Content = styled.div`
 const Link = styled.p`
     &:hover {
         cursor: pointer;
-        color: blue;
+        color: #6bc5f2;
     }
 `
 

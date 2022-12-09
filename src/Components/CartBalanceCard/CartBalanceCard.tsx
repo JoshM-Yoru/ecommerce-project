@@ -16,11 +16,12 @@ const Container = styled.div`
     box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
     background: white;
     margin-bottom: 50px;
+    background-color: ${(props) => props.theme.body};
     animation: ${fadeIn} 1s;
 `
 const CartBalance = styled.h3`
     padding: 3px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${(props) => props.theme.border};
 `
 const Wrapper = styled.div`
     display: flex;
@@ -33,7 +34,7 @@ const BottomWrapper = styled.div`
     display: flex;
     justify-content: right;
     padding: 5px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${(props) => props.theme.border};
 `
 const FinalWrapper = styled.div`
     display: flex;

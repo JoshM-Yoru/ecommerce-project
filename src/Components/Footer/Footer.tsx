@@ -12,9 +12,10 @@ const slideInFromLeft = keyframes`
 `
 const Container = styled.div`
     height: 50px;
-    border-top: 2px solid #ccc;
+    border-top: 2px solid ${(props) => props.theme.border};
     z-index: 2;
-    background: white;
+    background-color: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
 `
 const Wrapper = styled.div`
     height: 100%;

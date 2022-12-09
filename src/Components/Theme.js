@@ -1,0 +1,16 @@
+export const lightTheme = {
+    body: 'white',
+    text: 'black',
+    background: '#eeeeee',
+    border: '#ccc',
+    altColor: '#333',
+}
+
+export const darkTheme = {
+    body: '#333',
+    text: 'white',
+    background: '#555555',
+    border: '#222',
+    altColor: '#888',
+    random: 'red'
+}
