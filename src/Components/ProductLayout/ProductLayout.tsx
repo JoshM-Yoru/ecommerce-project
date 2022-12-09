@@ -39,16 +39,8 @@ const UpArrowWrapper = styled.div`
 const ProductLayout: React.FC = () => {
 
 
-    const handleScrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
 
 
-    const [scrollPosition, setScrollPositon] = useState<number>(0);
     const [visible, setVisible] = useState<boolean>(false)
 
     const ref = useRef<HTMLDivElement>(null);
@@ -56,15 +48,27 @@ const ProductLayout: React.FC = () => {
     const toggleVisible = () => {
         // setScrollPositon(document.documentElement.scrollTop);
         // console.log(scrollPosition, 'text');
-        const scrolled: number = document.documentElement.scrollTop;
-        if (scrolled > 300) {
-            setVisible(true)
-            console.log('visible')
-        }
-        else if (scrolled <= 300) {
-            setVisible(false)
+        if (ref.current !== null) {
+            const scrolled: number = ref.current.scrollTop;
+            if (scrolled > 300) {
+                setVisible(true)
+                console.log('visible')
+            }
+            else if (scrolled <= 300) {
+                setVisible(false)
+            }
         }
     };
+
+    const handleScrollToTop = () => {
+        if (ref.current !== null) {
+            ref.current.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
+    }
 
     const { search } = useContext(Context) as ProductContextState;
 
