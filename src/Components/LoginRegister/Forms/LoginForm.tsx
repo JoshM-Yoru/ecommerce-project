@@ -87,7 +87,7 @@ export const LoginForm: React.FC = () => {
             const headers = {
                 'Access-Control-Allow-Origin': '*'
             };
-            let res = await axios.post('http://localhost:8000/users/logIn', login, { headers });
+            let res = await axios.post('http://localhost:8000/users/login', login, { headers });
             setError(false);
             let user = await res.data;
             console.log(user);
@@ -95,7 +95,7 @@ export const LoginForm: React.FC = () => {
             if (user) {
 
                 localStorage.setItem('curUserI', user.userId);
-                // setLogged(true);
+                setLogged(true);
                 console.log("check")
                 localStorage.setItem('curUserL', "true");
                 console.log("second")

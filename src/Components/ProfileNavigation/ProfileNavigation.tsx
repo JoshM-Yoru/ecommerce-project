@@ -5,6 +5,7 @@ import { Context } from "../../Context/UserContext";
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { useNavigate } from 'react-router-dom';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -84,6 +85,13 @@ const ProfileNavigation: React.FC<User> = ({
         updateAccountTab();
     }
 
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        localStorage.clear();
+        navigate('/');
+    }
+
     return (
         <Container>
             <Greeting>
@@ -112,7 +120,7 @@ const ProfileNavigation: React.FC<User> = ({
             </Tabs>
             <Tabs>
                 <LogoutOutlinedIcon style={{ fontSize: '2em' }} />
-                <TabText>
+                <TabText onClick={handleSignOut}>
                     Sign Out
                 </TabText>
             </Tabs>

@@ -96,7 +96,11 @@ const Navbar: React.FC = () => {
     }
 
     const navigateToLogin = () => {
-        navigate('/login');
+        if (localStorage.getItem("curUserL") === "true") {
+            navigate('/profile');
+        } else {
+            navigate('/login');
+        }
         window.scrollTo(0, 0);
     }
 

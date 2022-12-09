@@ -63,7 +63,7 @@ const PlaceOrder = styled.button`
 `
 
 const CheckoutForm: React.FC<User> = ({
-    userId: id,
+    userId,
     firstName,
     lastName,
     email,
@@ -100,13 +100,6 @@ const CheckoutForm: React.FC<User> = ({
         setInputLastName(e.currentTarget.value);
     }
 
-    const navigate = useNavigate();
-    const navigateToSuccess = () => {
-        createReceipt();
-        navigate('/success');
-        removeAllProductsFromCart();
-    }
-
     type CreateReceiptResponse = {
         userId: number;
         items: number[];
@@ -119,12 +112,14 @@ const CheckoutForm: React.FC<User> = ({
             amountOfItems += products[i].amount
         }
 
+
+        console.log(userId, products, amountOfItems);
         try {
 
             const { data } = await axios.post<CreateReceiptResponse>(
                 "http://localhost:8000/receipts/create",
                 {
-                    userId: id,
+                    userId: userId,
                     items: products,
                     amountOfItems: amountOfItems
                 }
@@ -142,6 +137,13 @@ const CheckoutForm: React.FC<User> = ({
                 return 'An unexpected error occurred';
             }
         }
+    }
+
+    const navigate = useNavigate();
+    const navigateToSuccess = () => {
+        createReceipt();
+        navigate('/success');
+        removeAllProductsFromCart();
     }
 
     return (

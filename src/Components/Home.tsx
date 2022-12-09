@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled, { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from './Theme'
@@ -54,12 +54,24 @@ const Home: React.FC = () => {
     const getTheUser = async () => {
 
         try {
-            let res = await axios.get('http://localhost:8000/users/' + id);
-            let tuser = await res.data;
+            let res = await axios.get<User>(
+                'http://localhost:8000/users/user',
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*' },
+                    params: { id: id }
+                }
+            );
+            let tuser = res.data;
             setUser(tuser);
             console.log(user);
-        } catch (e) { }
+        } catch (e) {
+            console.log('test')
+        }
     };
+
+    useEffect(() => {
+        getTheUser();
+    }, [])
 
     console.log(localStorage)
 
