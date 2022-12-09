@@ -16,6 +16,8 @@ import Slider from './Slider/Slider'
 import { UserProfile } from './UserProfile/UserProfile'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import { User } from '../Types/User'
+import axios from 'axios'
 
 const Container = styled.div`
     background-color: ${(props) => props.theme.body};
@@ -37,8 +39,29 @@ const Home: React.FC = () => {
     const [theme, setTheme] = useState('light');
 
     const themeToggler = () => {
-        theme === 'light' ? setTheme('dark') : setTheme('light');
+        if (!localStorage.getItem('theme')) {
+            localStorage.setItem('theme', theme)
+            localStorage.getItem('theme') === 'light' ? setTheme('dark') : setTheme('light');
+        } else {
+            theme === 'light' ? setTheme('dark') : setTheme('light');
+        }
     }
+
+    const id: number = Number(localStorage.getItem('curUserI'));
+    const [user, setUser] = useState<User>();
+    const log = localStorage.getItem("curUserL");
+
+    const getTheUser = async () => {
+
+        try {
+            let res = await axios.get('http://localhost:8000/users/' + id);
+            let tuser = await res.data;
+            setUser(tuser);
+            console.log(user);
+        } catch (e) { }
+    };
+
+    console.log(localStorage)
 
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -58,7 +81,12 @@ const Home: React.FC = () => {
                         <Routes>
                             <Route path='/' element={<Slider />} />
                             <Route path='/shop' element={<ProductLayout />} />
-                            <Route path='/profile' element={<UserProfile id={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />} />
+                            {
+                                log && user ?
+                                    <Route path='/profile' element={<UserProfile userId={user.userId} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />} />
+                                    : null
+                            }
+
                             <Route path='/cart' element={<Cart />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/success' element={<CheckoutCompleted />} />

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User } from '../../Types/User'
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
+import axios from 'axios';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -67,7 +68,7 @@ const SaveChanges = styled.button`
 `
 
 const AccountDetails: React.FC<User> = ({
-    id,
+    userId: id,
     firstName,
     lastName,
     email,
@@ -81,6 +82,7 @@ const AccountDetails: React.FC<User> = ({
     const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
     const [inputFirstName, setInputFirstName] = useState<string>(firstName)
     const [inputLastName, setInputLastName] = useState<string>(lastName)
+    const [infoSaved, setInfoSaved] = useState<boolean>(false);
 
     const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputEmail(e.currentTarget.value);
@@ -100,6 +102,30 @@ const AccountDetails: React.FC<User> = ({
 
     const handleLastNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputLastName(e.currentTarget.value);
+    }
+
+    const handleSave = async () => {
+        try {
+            let saved = {
+                id,
+                firstName,
+                lastName,
+                email,
+                phoneNumber,
+                address,
+                password
+            }
+            const headers = {
+                'Access-Control-Allow-Origin': '*'
+            };
+
+            let res = await axios.put('http://localhost:8000/users/', saved, { headers });
+            let sUser = await res.data;
+            if (sUser.length !== 0) {
+                setInfoSaved(true);
+            }
+
+        } catch (e) { }
     }
 
     return (

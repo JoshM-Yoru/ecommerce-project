@@ -73,22 +73,29 @@ export const RegisterForm: React.FC = () => {
         }
     }
 
+    const navigate = useNavigate();
+
     const handleRegister = async () => {
         let register = {
             firstName,
             lastName,
             email,
             password
-        }
+        };
+        console.log(register);
 
         try {
-            let res = await axios.post('http://localhost:8000/user/register', register);
+
+            const res = await axios.post('http://localhost:8000/users/register', register);
             setError(false);
-            let user = await res.data;
+            const user = await res.data;
+            window.localStorage.setItem('curUser', user.id.toString());
         } catch (e) {
             setError(true);
         }
-    }
+
+        navigate("/");
+    };
 
     return (
         <Container>

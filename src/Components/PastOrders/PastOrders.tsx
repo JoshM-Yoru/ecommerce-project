@@ -11,7 +11,7 @@ const Container = styled.div`
 `
 
 const PastOrders: React.FC<User> = ({
-    id,
+    userId,
     firstName,
     lastName,
     email,
@@ -29,7 +29,7 @@ const PastOrders: React.FC<User> = ({
                 'http://localhost:8000/receipts/readuser',
                 {
                     headers: { 'Access-Control-Allow-Origin': '*' },
-                    params: { id: id }
+                    params: { id: userId }
                 }
             )
 

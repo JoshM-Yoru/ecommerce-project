@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Context } from "../../Context/UserContext";
 import { receipts } from "../../testReceipt";
@@ -30,7 +32,7 @@ const ReceiptWrapper = styled.div`
 `
 
 export const UserProfile: React.FC<User> = ({
-    id,
+    userId: id,
     firstName,
     lastName,
     email,
@@ -39,6 +41,20 @@ export const UserProfile: React.FC<User> = ({
     password,
 }) => {
     const { updateUser, removeUser, currentTab } = useContext(Context) as UserContextState;
+
+    const [user, setUser] = useState<User>();
+    const [error, setError] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    const getTheUser = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/users/user/' + id);
+            setUser(await res.data);
+            setError(false);
+        } catch (e) {
+            setError(true);
+        }
+    };
 
     const editProfile = () => {
         updateUser(id);
@@ -51,13 +67,13 @@ export const UserProfile: React.FC<User> = ({
     return (
         <Container>
             <Wrapper>
-                <ProfileNavigation id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
+                <ProfileNavigation userId={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
                 {
                     (currentTab === '1') ?
-                        <AccountDetails id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
+                        <AccountDetails userId={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
                         :
                         <ReceiptWrapper>
-                            <PastOrders id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
+                            <PastOrders userId={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
                         </ReceiptWrapper>
                 }
             </Wrapper>

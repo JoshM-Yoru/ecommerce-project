@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import { user } from '../../../sampleUser';
+import { User } from '../../../Types/User';
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -59,6 +60,7 @@ const LoginButton = styled.button`
 export const LoginForm: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [user, setUser] = useState<User>();
     const [error, setError] = useState<boolean>(false);
     const [logged, setLogged] = useState<boolean>(false);
 
@@ -73,24 +75,31 @@ export const LoginForm: React.FC = () => {
     }
 
     const navigate = useNavigate();
+
     const handleLogin = async () => {
         let login = {
             email,
             password
         }
-        console.log(email, password, user.email, user.password)
-        if (email === user.email && password === user.password) {
-            navigate('/profile');
-        }
+        console.log(email, password)
 
         try {
-            let res = await axios.post('http://localhost:8000/user/login', login);
+            const headers = {
+                'Access-Control-Allow-Origin': '*'
+            };
+            let res = await axios.post('http://localhost:8000/users/logIn', login, { headers });
             setError(false);
             let user = await res.data;
+            console.log(user);
 
-            if (user.length !== 0) {
-                localStorage.setItem('user', JSON.stringify(user.userId));
-                setLogged(true);
+            if (user) {
+
+                localStorage.setItem('curUserI', user.userId);
+                // setLogged(true);
+                console.log("check")
+                localStorage.setItem('curUserL', "true");
+                console.log("second")
+                navigate("/");
             } else {
                 setError(true);
             }
@@ -99,40 +108,22 @@ export const LoginForm: React.FC = () => {
         }
     }
 
-    const handleLogout = () => {
-        localStorage.clear();
-        setLogged(false);
-    }
 
-
-
-    if (logged) {
-        return (
-            <Container>
-                <Form>
-                    <h3>Logged In as `${localStorage.getItem('id')}`</h3>
-                    <LoginButton onClick={handleLogout}>Log out</LoginButton>
-                </Form>
-            </Container>
-        );
-    } else {
-        return (
-            <Container>
-                {error ? <h4>Please try again.</h4> : <></>}
-                <Form>
-                    <Label>EMAIL ADDRESS</Label>
-                    <InputWrapper>
-                        <Input onChange={handleChange} name='email' type="email" />
-                    </InputWrapper>
-                    <Label>PASSWORD</Label>
-                    <FinalWrapper>
-                        <Input onChange={handleChange} type='password' />
-                    </FinalWrapper>
-                    <LoginButton type='button' onClick={handleLogin}>LOGIN</LoginButton>
-                </Form>
-            </Container>
-        );
-    }
-
+    return (
+        <Container>
+            {error ? <h4>Please try again.</h4> : <></>}
+            <Form>
+                <Label>EMAIL ADDRESS</Label>
+                <InputWrapper>
+                    <Input onChange={handleChange} name='email' type="email" />
+                </InputWrapper>
+                <Label>PASSWORD</Label>
+                <FinalWrapper>
+                    <Input onChange={handleChange} type='password' />
+                </FinalWrapper>
+                <LoginButton type='button' onClick={handleLogin}>LOGIN</LoginButton>
+            </Form>
+        </Container>
+    );
 };
 
