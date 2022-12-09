@@ -63,7 +63,7 @@ const PastOrders: React.FC<User> = ({
         <Container>
             {
                 receiptData.map((receipt) => {
-                    if (id === receipt.userId) {
+                    if (userId === receipt.userId) {
                         return (
                             <ReceiptCard key={receipt.receiptNumber} items={receipt.items} userId={receipt.userId} receiptNumber={receipt.receiptNumber} dateTime={receipt.dateTime} total={Math.round(receipt.total * 100) / 100} />
                         )

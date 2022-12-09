@@ -15,7 +15,7 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
 
     const addUser = (user: User) => {
         const newUser: User = {
-            id: Math.floor(Math.random() * 1000) + 1,
+            userId: Math.floor(Math.random() * 1000) + 1,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
@@ -35,14 +35,14 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
 
     const updateUser = (id: number) => {
         users.filter((user: User) => {
-            if (user.id === id) {
+            if (user.userId === id) {
                 setUsers([...users]);
             }
         });
     };
 
     const removeUser = (id: number) => {
-        setUsers(users.filter((user: User) => user.id !== id));
+        setUsers(users.filter((user: User) => user.userId !== id));
     };
 
     const updateAccountTab = () => {

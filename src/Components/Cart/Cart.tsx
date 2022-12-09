@@ -49,7 +49,7 @@ const Cart: React.FC = () => {
                 products.length !== 0 ?
                     <>
                         <FormWrapper>
-                            <CheckoutForm id={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />
+                            <CheckoutForm userId={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />
                         </FormWrapper>
                         <BalanceWrapper>
                             <CartBalanceCard />

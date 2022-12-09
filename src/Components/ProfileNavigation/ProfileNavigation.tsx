@@ -68,7 +68,7 @@ const TabText = styled.div`
 `
 
 const ProfileNavigation: React.FC<User> = ({
-    id,
+    userId: id,
     firstName,
     lastName,
     email,

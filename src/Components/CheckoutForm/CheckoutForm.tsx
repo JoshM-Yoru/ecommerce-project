@@ -63,7 +63,7 @@ const PlaceOrder = styled.button`
 `
 
 const CheckoutForm: React.FC<User> = ({
-    id,
+    userId: id,
     firstName,
     lastName,
     email,
