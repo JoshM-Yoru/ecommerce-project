@@ -72,7 +72,7 @@ const CheckoutForm: React.FC<User> = ({
     password,
 }) => {
 
-    const { products } = useContext(Context) as ProductContextState;
+    const { products, removeAllProductsFromCart } = useContext(Context) as ProductContextState;
 
     const [inputEmail, setInputEmail] = useState<string>(email)
     const [inputAddress, setInputAddress] = useState<string>(address)
@@ -104,6 +104,7 @@ const CheckoutForm: React.FC<User> = ({
     const navigateToSuccess = () => {
         createReceipt();
         navigate('/success');
+        removeAllProductsFromCart();
     }
 
     type CreateReceiptResponse = {
