@@ -4,6 +4,7 @@ export const lightTheme = {
     background: '#eeeeee',
     border: '#ccc',
     altColor: '#333',
+    gradient: 'background: linear-gradient(#fff, #888)'
 }
 
 export const darkTheme = {
@@ -12,5 +13,6 @@ export const darkTheme = {
     background: '#555555',
     border: '#222',
     altColor: '#888',
-    random: 'red'
+    random: 'red',
+    gradient: 'background: linear-gradient(#333, #fff)'
 }

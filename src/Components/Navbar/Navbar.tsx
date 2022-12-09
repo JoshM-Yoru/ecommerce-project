@@ -70,7 +70,7 @@ const LogoMirror = styled.p`
     letter-spacing: 6px;
     transform: scale(1, -1) translateY(-67%);
     font-size: 2.2em;
-    background: linear-gradient(#fff, #888);
+    ${(props) => props.theme.gradient};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 `
