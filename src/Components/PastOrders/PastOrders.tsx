@@ -54,16 +54,13 @@ const PastOrders: React.FC<User> = ({
     useEffect(() => {
         getReceipts();
     }, [])
+    let user = localStorage.getItem('curUserI');
 
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    })
     return (
         <Container>
             {
                 receiptData.map((receipt) => {
-                    if (userId === receipt.userId) {
+                    if (userId.toString() === user) {
                         return (
                             <ReceiptCard key={receipt.receiptNumber} items={receipt.items} userId={receipt.userId} receiptNumber={receipt.receiptNumber} dateTime={receipt.dateTime} total={Math.round(receipt.total * 100) / 100} />
                         )

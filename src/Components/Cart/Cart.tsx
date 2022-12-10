@@ -38,6 +38,8 @@ const Cart: React.FC = () => {
         }
     }
 
+    const id = localStorage.getItem('curUserI');
+
     return (
         <Container>
             {
@@ -46,10 +48,10 @@ const Cart: React.FC = () => {
                     : null
             }
             {
-                products.length !== 0 ?
+                products.length !== 0 && id ?
                     <>
                         <FormWrapper>
-                            <CheckoutForm userId={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />
+                            <CheckoutForm userId={parseInt(id)} firstName={user.firstName} lastName={user.lastName} email={user.email} phoneNumber={user.phoneNumber} address={user.address} password={user.password} />
                         </FormWrapper>
                         <BalanceWrapper>
                             <CartBalanceCard />

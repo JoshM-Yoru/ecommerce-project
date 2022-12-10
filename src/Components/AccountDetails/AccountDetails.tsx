@@ -14,8 +14,8 @@ const Container = styled.div`
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
     width: 600px;
     margin-top: 10px;
-    height: fit-content
-    animation: ${textAppear} 1s;
+    height: fit-content,
+    animation: ${textAppear} 0.5s;
 `
 const Title = styled.div`
     padding: 30px 25px 10px;

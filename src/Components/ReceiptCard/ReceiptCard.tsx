@@ -8,7 +8,7 @@ const textAppear = keyframes`
 `
 const Container = styled.div`
     background-color: ${(props) => props.theme.body};
-    animation: ${textAppear} 1s;
+    animation: ${textAppear} 0.5s;
 `
 const Wrapper = styled.div`
     padding: 10px;

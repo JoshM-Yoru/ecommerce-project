@@ -91,13 +91,10 @@ export const RegisterForm: React.FC = () => {
         console.log(register);
 
         try {
-            const headers = {
-                'Access-Control-Allow-Origin': '*'
-            };
             const res = await axios.post('http://localhost:8000/users/register', register);
             setError(false);
             const user = await res.data;
-            window.localStorage.setItem('curUser', user.id.toString());
+            localStorage.setItem('curUser', user.id.toString());
         } catch (e) {
             setError(true);
         }
