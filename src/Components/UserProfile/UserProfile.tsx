@@ -34,6 +34,33 @@ const ReceiptWrapper = styled.div`
 export const UserProfile: React.FC = () => {
     const { currentTab, updateCurrentUser, currentUser } = useContext(Context) as UserContextState;
 
+    const id: number = Number(localStorage.getItem('curUserI'));
+    const log = localStorage.getItem("curUserL");
+
+    const getTheUser = async () => {
+
+        try {
+            let res = await axios.get<User>(
+                'http://localhost:8000/users/user',
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*' },
+                    params: { id: id }
+                }
+            );
+            let tuser = res.data;
+            if (tuser) {
+                updateCurrentUser(tuser);
+                console.log(tuser)
+            }
+        } catch (e) {
+        }
+    };
+
+    if (currentUser.userId === 0) {
+        getTheUser();
+    }
+
+
     useEffect(() => {
         updateCurrentUser(currentUser)
     }, [])

@@ -81,33 +81,42 @@ const AccountDetails: React.FC = () => {
 
     const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputEmail(e.currentTarget.value);
-        updateCurrentUser({ ...currentUser, email: e.currentTarget.value })
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, email: e.currentTarget.value })
+        }
     }
 
     const handleAddressChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputAddress(e.currentTarget.value);
-        updateCurrentUser({ ...currentUser, address: e.currentTarget.value })
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, address: e.currentTarget.value })
+        }
     }
 
     const handlePhoneNumberChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputPhoneNumber(e.currentTarget.value);
-        updateCurrentUser({ ...currentUser, phoneNumber: e.currentTarget.value })
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, phoneNumber: e.currentTarget.value })
+        }
     }
 
     const handleFirstNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputFirstName(e.currentTarget.value);
-        updateCurrentUser({ ...currentUser, firstName: e.currentTarget.value })
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, firstName: e.currentTarget.value })
+        }
     }
 
     const handleLastNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputLastName(e.currentTarget.value);
-        updateCurrentUser({ ...currentUser, lastName: e.currentTarget.value })
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, lastName: e.currentTarget.value })
+        }
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
     }
-
 
     const handleSave = async () => {
 

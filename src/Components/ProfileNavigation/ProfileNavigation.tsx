@@ -8,6 +8,7 @@ import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBullet
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { useNavigate } from 'react-router-dom';
 import { ProductContextState } from '../../Types/Product';
+import axios from 'axios';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -72,7 +73,7 @@ const TabText = styled.div`
 
 const ProfileNavigation: React.FC = () => {
 
-    const { updateUser, removeUser, currentTab, updateAccountTab, logoutUser, currentUser } = useContext(UserContext) as UserContextState;
+    const { currentTab, updateAccountTab, logoutUser, currentUser, updateCurrentUser } = useContext(UserContext) as UserContextState;
     const { removeAllProductsFromCart } = useContext(ProductContext) as ProductContextState;
 
 
@@ -88,6 +89,34 @@ const ProfileNavigation: React.FC = () => {
         logoutUser();
         navigate('/');
     }
+    // console.log(currentUser, "in profile navigation")
+
+    const id: number = Number(localStorage.getItem('curUserI'));
+    const log = localStorage.getItem("curUserL");
+
+    const getTheUser = async () => {
+
+        try {
+            let res = await axios.get<User>(
+                'http://localhost:8000/users/user',
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*' },
+                    params: { id: id }
+                }
+            );
+            let tuser = res.data;
+            if (tuser) {
+                updateCurrentUser(tuser);
+                console.log(tuser)
+            }
+        } catch (e) {
+        }
+    };
+
+    if (currentUser.userId === 0) {
+        getTheUser();
+    }
+
 
     return (
         <Container>

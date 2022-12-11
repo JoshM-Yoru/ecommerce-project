@@ -68,7 +68,6 @@ const Home: React.FC = () => {
             let tuser = res.data;
             if (tuser) {
                 updateCurrentUser(tuser);
-                console.log(tuser)
             }
         } catch (e) {
         }
@@ -80,6 +79,7 @@ const Home: React.FC = () => {
     }, [])
 
 
+    // console.log(currentUser)
     return (
         <ThemeProvider theme={localStorage.getItem('theme') === 'light' ? lightTheme : darkTheme}>
             <ThemeButton onClick={themeToggler}>
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
                     <Route path='/' element={<Slider />} />
                     <Route path='/shop' element={<ProductLayout />} />
                     {
-                        logged || log && currentUser ?
+                        (logged || log) && localStorage.getItem('curUserL') === 'true' ?
                             < Route path='/profile' element={<UserProfile />} />
                             : null
                     }

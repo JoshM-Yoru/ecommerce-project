@@ -95,6 +95,7 @@ export const LoginForm: React.FC = () => {
 
             if (user) {
                 localStorage.setItem('curUserI', user.userId);
+                // localStorage.setItem('currrentUser', JSON.stringify(user))
                 loginUser(user);
                 localStorage.setItem('curUserL', "true");
                 navigate("/shop");
