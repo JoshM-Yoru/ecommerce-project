@@ -6,6 +6,7 @@ import { Receipt } from '../../Types/Receipt'
 import { User, UserContextState } from '../../Types/User'
 import ReceiptCard from '../ReceiptCard/ReceiptCard'
 import { Context } from '../../Context/UserContext';
+import NoPastOrder from '../NoPastOrder/NoPastOrder'
 
 const Container = styled.div`
     width: 600px;
@@ -29,18 +30,14 @@ const PastOrders: React.FC = () => {
             )
 
             setReceiptData(data)
-            console.log("---------------THIS IS THE RECEIPT DATA-----------------")
-            console.log(receiptData)
 
             return;
 
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                console.log('error message: ', error.message);
 
                 return error.message;
             } else {
-                console.log('unexpected error: ', error);
                 return 'An unexpected error occurred';
             }
         }
@@ -50,17 +47,21 @@ const PastOrders: React.FC = () => {
         getReceipts();
     }, [])
     let user = localStorage.getItem('curUserI');
+    console.log(receiptData)
 
     return (
         <Container>
             {
-                receiptData.map((receipt) => {
-                    if (currentUser.userId.toString() === user) {
-                        return (
-                            <ReceiptCard key={receipt.receiptNumber} items={receipt.items} userId={receipt.userId} receiptNumber={receipt.receiptNumber} dateTime={receipt.dateTime} total={Math.round(receipt.total * 100) / 100} />
-                        )
-                    }
-                })
+                receiptData.length !== 0 ?
+                    receiptData.map((receipt) => {
+                        if (currentUser.userId.toString() === user) {
+                            return (
+                                <ReceiptCard key={receipt.receiptNumber} items={receipt.items} userId={receipt.userId} receiptNumber={receipt.receiptNumber} dateTime={receipt.dateTime} total={Math.round(receipt.total * 100) / 100} />
+                            )
+                        }
+                    })
+                    :
+                    <NoPastOrder />
             }
         </Container>
     )
