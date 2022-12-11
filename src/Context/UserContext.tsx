@@ -10,8 +10,19 @@ export const Context = React.createContext<UserContextState | null>(null);
 
 export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
     const [users, setUsers] = useState<User[]>([]);
-
+    const [logged, setLogged] = useState<boolean>(false);
     const [currentTab, setCurrentTab] = useState<string>('1');
+    const [currentUser, setCurrentUser] = useState<User>(
+        {
+            userId: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            address: '',
+            password: '',
+        }
+    );
 
     const addUser = (user: User) => {
         const newUser: User = {
@@ -51,8 +62,31 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
         } else { setCurrentTab('1') }
     }
 
+    const loginUser = (user: User) => {
+        setLogged(true);
+        setCurrentUser(user);
+        console.log(logged)
+    }
+
+    const updateCurrentUser = (user: User) => {
+        setCurrentUser(user);
+    }
+
+    const logoutUser = () => {
+        setLogged(false);
+        setCurrentUser({
+            userId: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            address: '',
+            password: '',
+        })
+    }
+
     return (
-        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab }}>
+        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab, logged, loginUser, logoutUser, currentUser, updateCurrentUser }}>
             {children}
         </Context.Provider>
     );

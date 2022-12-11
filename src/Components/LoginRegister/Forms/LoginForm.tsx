@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
-import { user } from '../../../sampleUser';
-import { User } from '../../../Types/User';
+import { User, UserContextState } from '../../../Types/User';
+import { Context } from "../../../Context/UserContext";
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -62,9 +62,10 @@ export const LoginForm: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [user, setUser] = useState<User>();
     const [error, setError] = useState<boolean>(false);
-    const [logged, setLogged] = useState<boolean>(false);
 
     //let navigate = useNavigate();
+
+    const { logged, loginUser } = useContext(Context) as UserContextState;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.name === "email") {
@@ -93,13 +94,10 @@ export const LoginForm: React.FC = () => {
             console.log(user);
 
             if (user) {
-
                 localStorage.setItem('curUserI', user.userId);
-                setLogged(true);
-                console.log("check")
+                loginUser(user);
                 localStorage.setItem('curUserL', "true");
-                console.log("second")
-                navigate("/");
+                navigate("/shop");
             } else {
                 setError(true);
             }

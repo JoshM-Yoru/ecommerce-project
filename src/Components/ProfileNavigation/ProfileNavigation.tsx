@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User, UserContextState } from '../../Types/User'
-import { Context } from "../../Context/UserContext";
+import { Context as UserContext } from "../../Context/UserContext";
+import { Context as ProductContext } from "../../Context/ProductContext";
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { useNavigate } from 'react-router-dom';
+import { ProductContextState } from '../../Types/Product';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -68,17 +70,10 @@ const TabText = styled.div`
     padding-left: 30px;
 `
 
-const ProfileNavigation: React.FC<User> = ({
-    userId: id,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    password,
-}) => {
+const ProfileNavigation: React.FC = () => {
 
-    const { updateUser, removeUser, currentTab, updateAccountTab } = useContext(Context) as UserContextState;
+    const { updateUser, removeUser, currentTab, updateAccountTab, logoutUser, currentUser } = useContext(UserContext) as UserContextState;
+    const { removeAllProductsFromCart } = useContext(ProductContext) as ProductContextState;
 
 
     const handleTabClick = (e: React.MouseEvent) => {
@@ -89,6 +84,8 @@ const ProfileNavigation: React.FC<User> = ({
 
     const handleSignOut = () => {
         localStorage.clear();
+        removeAllProductsFromCart();
+        logoutUser();
         navigate('/');
     }
 
@@ -96,13 +93,13 @@ const ProfileNavigation: React.FC<User> = ({
         <Container>
             <Greeting>
                 <GreetingIcon>
-                    <GreetingInitials>{firstName[0].toUpperCase()}{lastName[0].toUpperCase()}</GreetingInitials>
+                    <GreetingInitials>{currentUser.firstName[0].toUpperCase()}{currentUser.lastName[0].toUpperCase()}</GreetingInitials>
                 </GreetingIcon>
                 <GreetingName>
                     <Hi>Hi,</Hi>
                     <br />
                     <Name>
-                        {firstName[0].toUpperCase() + firstName.slice(1)} {lastName[0].toUpperCase() + lastName.slice(1)}
+                        {currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1)} {currentUser.lastName[0].toUpperCase() + currentUser.lastName.slice(1)}
                     </Name>
                 </GreetingName>
             </Greeting>

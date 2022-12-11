@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
+import { User, UserContextState } from '../../../Types/User';
+import { Context } from "../../../Context/UserContext";
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -62,10 +64,7 @@ export const RegisterForm: React.FC = () => {
     const [error, setError] = useState<boolean>(false);
 
 
-
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-    }
+    const { logged, loginUser } = useContext(Context) as UserContextState;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.name === "email") {
@@ -94,13 +93,21 @@ export const RegisterForm: React.FC = () => {
             const res = await axios.post('http://localhost:8000/users/register', register);
             setError(false);
             const user = await res.data;
-            localStorage.setItem('curUser', user.id.toString());
+            if (user) {
+                loginUser(user);
+                localStorage.setItem('curUserI', user.userId);
+                localStorage.setItem('curUserL', "true");
+            }
         } catch (e) {
             setError(true);
         }
 
-        navigate("/");
     };
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        navigate("/profile")
+    }
 
     return (
         <Container>

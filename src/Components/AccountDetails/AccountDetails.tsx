@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { User } from '../../Types/User'
+import { User, UserContextState } from '../../Types/User'
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import axios from 'axios';
+import { Context } from '../../Context/UserContext';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -67,66 +68,84 @@ const SaveChanges = styled.button`
     }
 `
 
-const AccountDetails: React.FC<User> = ({
-    userId: id,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    password,
-}) => {
+const AccountDetails: React.FC = () => {
 
-    const [inputEmail, setInputEmail] = useState<string>(email)
-    const [inputAddress, setInputAddress] = useState<string>(address)
-    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
-    const [inputFirstName, setInputFirstName] = useState<string>(firstName)
-    const [inputLastName, setInputLastName] = useState<string>(lastName)
-    const [infoSaved, setInfoSaved] = useState<boolean>(false);
+    const { currentUser, updateCurrentUser } = useContext(Context) as UserContextState;
+
+    const [inputEmail, setInputEmail] = useState<string>(currentUser.email)
+    const [inputAddress, setInputAddress] = useState<string>(currentUser.address)
+    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(currentUser.phoneNumber)
+    const [inputFirstName, setInputFirstName] = useState<string>(currentUser.firstName)
+    const [inputLastName, setInputLastName] = useState<string>(currentUser.lastName)
+
 
     const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputEmail(e.currentTarget.value);
+        updateCurrentUser({ ...currentUser, email: e.currentTarget.value })
     }
 
     const handleAddressChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputAddress(e.currentTarget.value);
+        updateCurrentUser({ ...currentUser, address: e.currentTarget.value })
     }
 
     const handlePhoneNumberChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputPhoneNumber(e.currentTarget.value);
+        updateCurrentUser({ ...currentUser, phoneNumber: e.currentTarget.value })
     }
 
     const handleFirstNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputFirstName(e.currentTarget.value);
+        updateCurrentUser({ ...currentUser, firstName: e.currentTarget.value })
     }
 
     const handleLastNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputLastName(e.currentTarget.value);
+        updateCurrentUser({ ...currentUser, lastName: e.currentTarget.value })
     }
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+    }
+
 
     const handleSave = async () => {
+
+
         try {
-            let saved = {
-                id,
-                firstName,
-                lastName,
-                email,
-                phoneNumber,
-                address,
-                password
-            }
-            const headers = {
-                'Access-Control-Allow-Origin': '*'
-            };
+            const { data } = await axios.put<User>(
+                "http://localhost:8000/users/update",
+                {
+                    userId: currentUser.userId,
+                    firstName: inputFirstName,
+                    lastName: inputLastName,
+                    email: inputEmail,
+                    address: inputAddress,
+                    phoneNumber: inputPhoneNumber
+                }
+            )
+            console.log(data, "this is the data");
+            setInputEmail(data.email);
+            setInputAddress(data.address);
+            setInputPhoneNumber(data.phoneNumber);
+            setInputFirstName(data.firstName);
+            setInputLastName(data.lastName)
+            return data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.log('error message: ', error.message);
 
-            let res = await axios.put('http://localhost:8000/users/', saved, { headers });
-            let sUser = await res.data;
-            if (sUser.length !== 0) {
-                setInfoSaved(true);
+                return error.message;
+            } else {
+                console.log('unexpected error: ', error);
+                return 'An unexpected error occurred';
             }
-
-        } catch (e) { }
+        }
     }
+
+    useEffect(() => {
+        handleSave();
+    }, [])
 
     return (
         <Container>
@@ -137,7 +156,7 @@ const AccountDetails: React.FC<User> = ({
             <Information>
                 Feel free to edit any fields to keep your profile up to date. Asterisks (*) are used to denote a required field.
             </Information>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Label>EMAIL ADDRESS*</Label>
                 <InputWrapper>
                     <Input onChange={handleEmailChange} type="email" value={inputEmail}></Input>
@@ -158,7 +177,7 @@ const AccountDetails: React.FC<User> = ({
                 <InputWrapper>
                     <Input onChange={handleLastNameChange} value={inputLastName}></Input>
                 </InputWrapper>
-                <SaveChanges>SAVE CHANGES</SaveChanges>
+                <SaveChanges onClick={handleSave} type='button' >SAVE CHANGES</SaveChanges>
             </Form>
         </Container>
     )
