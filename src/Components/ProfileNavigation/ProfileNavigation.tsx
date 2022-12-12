@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User, UserContextState } from '../../Types/User'
 import { Context as UserContext } from "../../Context/UserContext";
@@ -23,7 +23,6 @@ const Greeting = styled.div`
     padding: 30px 10px 30px;
     margin:10px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
-    animation: ${textAppear} 1s;
 `
 const GreetingIcon = styled.div`
     background-color: ${(props) => props.theme.altColor};
@@ -59,7 +58,7 @@ const Tabs = styled.button`
     cursor: pointer;
     font-size: 16px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
-    animation: ${textAppear} 1s;
+    /* animation: ${textAppear} 1s; */
     &:disabled {
         border-left: 5px solid #6bc5f2;
     };
@@ -90,32 +89,6 @@ const ProfileNavigation: React.FC = () => {
         navigate('/');
     }
     // console.log(currentUser, "in profile navigation")
-
-    const id: number = Number(localStorage.getItem('curUserI'));
-    const log = localStorage.getItem("curUserL");
-
-    const getTheUser = async () => {
-
-        try {
-            let res = await axios.get<User>(
-                'http://localhost:8000/users/user',
-                {
-                    headers: { 'Access-Control-Allow-Origin': '*' },
-                    params: { id: id }
-                }
-            );
-            let tuser = res.data;
-            if (tuser) {
-                updateCurrentUser(tuser);
-                console.log(tuser)
-            }
-        } catch (e) {
-        }
-    };
-
-    if (currentUser.userId === 0) {
-        getTheUser();
-    }
 
 
     return (
