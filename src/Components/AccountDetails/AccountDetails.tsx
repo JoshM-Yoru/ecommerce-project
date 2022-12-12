@@ -56,8 +56,14 @@ const Input = styled.input`
     background: transparent;
     border: none;
 `
+const ButtonWrapper = styled.div`
+    width: 100%;
+    text-align: center;
+    background: #047d40;
+`
 const SaveChanges = styled.button`
     border: none;
+    width: 100%;
     background: #047d40;
     padding: 15px;
     font-size: 20px;
@@ -70,7 +76,7 @@ const SaveChanges = styled.button`
 
 const AccountDetails: React.FC = () => {
 
-    const { currentUser, updateCurrentUser } = useContext(Context) as UserContextState;
+    const { currentUser, updateCurrentUser, displayModal } = useContext(Context) as UserContextState;
 
     const [inputEmail, setInputEmail] = useState<string>(currentUser.email)
     const [inputAddress, setInputAddress] = useState<string>(currentUser.address)
@@ -119,8 +125,6 @@ const AccountDetails: React.FC = () => {
     }
 
     const handleSave = async () => {
-
-
         try {
             const { data } = await axios.put<User>(
                 "http://localhost:8000/users/update",
@@ -133,7 +137,6 @@ const AccountDetails: React.FC = () => {
                     phoneNumber: inputPhoneNumber
                 }
             )
-            console.log(data, "this is the data");
             setInputEmail(data.email);
             setInputAddress(data.address);
             setInputPhoneNumber(data.phoneNumber);
@@ -152,6 +155,10 @@ const AccountDetails: React.FC = () => {
         }
     }
 
+    const handleModal = () => {
+        displayModal(true);
+    }
+
     useEffect(() => {
         handleSave();
     }, [])
@@ -165,7 +172,7 @@ const AccountDetails: React.FC = () => {
             <Information>
                 Feel free to edit any fields to keep your profile up to date. Asterisks (*) are used to denote a required field.
             </Information>
-            <Form onSubmit={handleSubmit}>
+            <Form onClick={handleSubmit}>
                 <Label>EMAIL ADDRESS*</Label>
                 <InputWrapper>
                     <Input onChange={handleEmailChange} type="email" value={inputEmail}></Input>
@@ -186,7 +193,9 @@ const AccountDetails: React.FC = () => {
                 <InputWrapper>
                     <Input onChange={handleLastNameChange} value={inputLastName}></Input>
                 </InputWrapper>
-                <SaveChanges onClick={handleSave} type='button' >SAVE CHANGES</SaveChanges>
+                <ButtonWrapper onClick={handleModal}>
+                    <SaveChanges onClick={handleSave} type='button' >SAVE CHANGES</SaveChanges>
+                </ButtonWrapper>
             </Form>
         </Container>
     )

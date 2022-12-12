@@ -9,9 +9,11 @@ interface ProviderProps {
 export const Context = React.createContext<UserContextState | null>(null);
 
 export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
+
     const [users, setUsers] = useState<User[]>([]);
     const [logged, setLogged] = useState<boolean>(false);
     const [currentTab, setCurrentTab] = useState<string>('1');
+    const [modal, setModal] = useState<boolean>(false);
     const [currentUser, setCurrentUser] = useState<User>(
         {
             userId: 0,
@@ -85,8 +87,12 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
         })
     }
 
+    const displayModal = (b: boolean) => {
+        setModal(b);
+    }
+
     return (
-        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab, logged, loginUser, logoutUser, currentUser, updateCurrentUser }}>
+        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab, logged, loginUser, logoutUser, currentUser, updateCurrentUser, displayModal, modal }}>
             {children}
         </Context.Provider>
     );

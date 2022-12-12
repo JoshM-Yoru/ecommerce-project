@@ -12,6 +12,7 @@ export interface UserContextState {
     users: User[];
     logged: boolean;
     currentUser: User;
+    modal: boolean;
     updateCurrentUser: (user: User) => void;
     loginUser: (user: User) => void;
     logoutUser: () => void;
@@ -20,5 +21,6 @@ export interface UserContextState {
     updateUser: (id: number) => void;
     removeUser: (id: number) => void;
     updateAccountTab: () => void;
+    displayModal: (b: boolean) => void;
 }
 

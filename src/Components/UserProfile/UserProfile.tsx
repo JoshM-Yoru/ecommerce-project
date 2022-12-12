@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { Context } from "../../Context/UserContext";
-import { receipts } from "../../testReceipt";
 import { UserContextState, User } from "../../Types/User";
 import AccountDetails from "../AccountDetails/AccountDetails";
 import PastOrders from "../PastOrders/PastOrders";
 import ProfileNavigation from "../ProfileNavigation/ProfileNavigation";
-import ReceiptCard from "../ReceiptCard/ReceiptCard";
+import UpdateModal from "../UpdateModal/UpdateModal";
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -37,7 +35,7 @@ const ReceiptWrapper = styled.div`
 `
 
 export const UserProfile: React.FC = () => {
-    const { currentTab, updateCurrentUser, currentUser } = useContext(Context) as UserContextState;
+    const { currentTab, updateCurrentUser, currentUser, modal } = useContext(Context) as UserContextState;
 
     useEffect(() => {
         updateCurrentUser(currentUser)
@@ -69,33 +67,31 @@ export const UserProfile: React.FC = () => {
         } catch (e) {
         }
     }, [])
-    // };
 
-    // if (currentUser.userId === 0) {
-    //     getTheUser();
-    //     navigate('/shop')
+    // if (modal) {
+    //     return <UpdateModal />
     // }
 
     if (loading) {
-        return (
-            <Container>
-            </Container>
-        )
+        return <Container />
     }
 
     return (
-        <Container>
-            <Wrapper>
-                <ProfileNavigation />
-                {
-                    (currentTab === '1') ?
-                        <AccountDetails />
-                        :
-                        <ReceiptWrapper>
-                            <PastOrders />
-                        </ReceiptWrapper>
-                }
-            </Wrapper>
-        </Container>
+        <>
+            {modal ? <UpdateModal /> : null}
+            <Container>
+                <Wrapper>
+                    <ProfileNavigation />
+                    {
+                        (currentTab === '1') ?
+                            <AccountDetails />
+                            :
+                            <ReceiptWrapper>
+                                <PastOrders />
+                            </ReceiptWrapper>
+                    }
+                </Wrapper>
+            </Container>
+        </>
     );
 };
