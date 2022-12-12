@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { User } from '../../Types/User'
+import { User, UserContextState } from '../../Types/User'
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
+import axios from 'axios';
+import { Context } from '../../Context/UserContext';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -13,8 +15,8 @@ const Container = styled.div`
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
     width: 600px;
     margin-top: 10px;
-    height: fit-content
-    animation: ${textAppear} 1s;
+    height: fit-content,
+    animation: ${textAppear} 0.5s;
 `
 const Title = styled.div`
     padding: 30px 25px 10px;
@@ -54,8 +56,14 @@ const Input = styled.input`
     background: transparent;
     border: none;
 `
+const ButtonWrapper = styled.div`
+    width: 100%;
+    text-align: center;
+    background: #047d40;
+`
 const SaveChanges = styled.button`
     border: none;
+    width: 100%;
     background: #047d40;
     padding: 15px;
     font-size: 20px;
@@ -66,41 +74,94 @@ const SaveChanges = styled.button`
     }
 `
 
-const AccountDetails: React.FC<User> = ({
-    id,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    password,
-}) => {
+const AccountDetails: React.FC = () => {
 
-    const [inputEmail, setInputEmail] = useState<string>(email)
-    const [inputAddress, setInputAddress] = useState<string>(address)
-    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
-    const [inputFirstName, setInputFirstName] = useState<string>(firstName)
-    const [inputLastName, setInputLastName] = useState<string>(lastName)
+    const { currentUser, updateCurrentUser, displayModal } = useContext(Context) as UserContextState;
+
+    const [inputEmail, setInputEmail] = useState<string>(currentUser.email)
+    const [inputAddress, setInputAddress] = useState<string>(currentUser.address)
+    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(currentUser.phoneNumber)
+    const [inputFirstName, setInputFirstName] = useState<string>(currentUser.firstName)
+    const [inputLastName, setInputLastName] = useState<string>(currentUser.lastName)
+
 
     const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputEmail(e.currentTarget.value);
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, email: e.currentTarget.value })
+        }
     }
 
     const handleAddressChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputAddress(e.currentTarget.value);
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, address: e.currentTarget.value })
+        }
     }
 
     const handlePhoneNumberChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputPhoneNumber(e.currentTarget.value);
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, phoneNumber: e.currentTarget.value })
+        }
     }
 
     const handleFirstNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputFirstName(e.currentTarget.value);
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, firstName: e.currentTarget.value })
+        }
     }
 
     const handleLastNameChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputLastName(e.currentTarget.value);
+        if (e.currentTarget.value.length > 0) {
+            updateCurrentUser({ ...currentUser, lastName: e.currentTarget.value })
+        }
     }
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+    }
+
+    const handleSave = async () => {
+        try {
+            const { data } = await axios.put<User>(
+                "http://localhost:8000/users/update",
+                {
+                    userId: currentUser.userId,
+                    firstName: inputFirstName,
+                    lastName: inputLastName,
+                    email: inputEmail,
+                    address: inputAddress,
+                    phoneNumber: inputPhoneNumber
+                }
+            )
+            setInputEmail(data.email);
+            setInputAddress(data.address);
+            setInputPhoneNumber(data.phoneNumber);
+            setInputFirstName(data.firstName);
+            setInputLastName(data.lastName)
+            return data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.log('error message: ', error.message);
+
+                return error.message;
+            } else {
+                console.log('unexpected error: ', error);
+                return 'An unexpected error occurred';
+            }
+        }
+    }
+
+    const handleModal = () => {
+        displayModal(true);
+    }
+
+    useEffect(() => {
+        handleSave();
+    }, [])
 
     return (
         <Container>
@@ -111,7 +172,7 @@ const AccountDetails: React.FC<User> = ({
             <Information>
                 Feel free to edit any fields to keep your profile up to date. Asterisks (*) are used to denote a required field.
             </Information>
-            <Form>
+            <Form onClick={handleSubmit}>
                 <Label>EMAIL ADDRESS*</Label>
                 <InputWrapper>
                     <Input onChange={handleEmailChange} type="email" value={inputEmail}></Input>
@@ -132,7 +193,9 @@ const AccountDetails: React.FC<User> = ({
                 <InputWrapper>
                     <Input onChange={handleLastNameChange} value={inputLastName}></Input>
                 </InputWrapper>
-                <SaveChanges>SAVE CHANGES</SaveChanges>
+                <ButtonWrapper onClick={handleModal}>
+                    <SaveChanges onClick={handleSave} type='button' >SAVE CHANGES</SaveChanges>
+                </ButtonWrapper>
             </Form>
         </Container>
     )

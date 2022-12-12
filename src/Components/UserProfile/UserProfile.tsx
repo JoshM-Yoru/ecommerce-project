@@ -1,14 +1,18 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useContext, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Context } from "../../Context/UserContext";
-import { receipts } from "../../testReceipt";
 import { UserContextState, User } from "../../Types/User";
 import AccountDetails from "../AccountDetails/AccountDetails";
 import PastOrders from "../PastOrders/PastOrders";
 import ProfileNavigation from "../ProfileNavigation/ProfileNavigation";
-import ReceiptCard from "../ReceiptCard/ReceiptCard";
+import UpdateModal from "../UpdateModal/UpdateModal";
 
+const textAppear = keyframes`
+    0% {opacity: 0%},
+    100% {opacity: 100%},
+`
 const Container = styled.div`
     height: 100vh;
     display: flex;
@@ -16,6 +20,7 @@ const Container = styled.div`
     background-color: ${(props) => props.theme.background};
     color: ${(props) => props.theme.text};
     overflow: scroll;
+    animation: ${textAppear} 1s;
 `
 const Wrapper = styled.div`
     display: flex;
@@ -29,38 +34,64 @@ const ReceiptWrapper = styled.div`
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
 `
 
-export const UserProfile: React.FC<User> = ({
-    id,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    password,
-}) => {
-    const { updateUser, removeUser, currentTab } = useContext(Context) as UserContextState;
+export const UserProfile: React.FC = () => {
+    const { currentTab, updateCurrentUser, currentUser, modal } = useContext(Context) as UserContextState;
 
-    const editProfile = () => {
-        updateUser(id);
-    };
+    useEffect(() => {
+        updateCurrentUser(currentUser)
+    }, [])
 
-    const deleteProfile = () => {
-        removeUser(id);
-    };
+    const id: number = Number(localStorage.getItem('curUserI'));
+    const log = localStorage.getItem("curUserL");
+
+    // const getTheUser = async () => {
+
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        try {
+            axios.get<User>(
+                'http://localhost:8000/users/user',
+                {
+                    headers: { 'Access-Control-Allow-Origin': '*' },
+                    params: { id: id }
+                }
+            ).then(res => {
+                let tuser = res.data;
+                if (tuser) {
+                    updateCurrentUser(tuser);
+                    setLoading(false);
+                    console.log(tuser)
+                }
+            })
+        } catch (e) {
+        }
+    }, [])
+
+    // if (modal) {
+    //     return <UpdateModal />
+    // }
+
+    if (loading) {
+        return <Container />
+    }
 
     return (
-        <Container>
-            <Wrapper>
-                <ProfileNavigation id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
-                {
-                    (currentTab === '1') ?
-                        <AccountDetails id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
-                        :
-                        <ReceiptWrapper>
-                            <PastOrders id={id} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} address={address} password={password} />
-                        </ReceiptWrapper>
-                }
-            </Wrapper>
-        </Container>
+        <>
+            {modal ? <UpdateModal /> : null}
+            <Container>
+                <Wrapper>
+                    <ProfileNavigation />
+                    {
+                        (currentTab === '1') ?
+                            <AccountDetails />
+                            :
+                            <ReceiptWrapper>
+                                <PastOrders />
+                            </ReceiptWrapper>
+                    }
+                </Wrapper>
+            </Container>
+        </>
     );
 };

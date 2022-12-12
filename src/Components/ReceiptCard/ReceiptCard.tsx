@@ -8,7 +8,7 @@ const textAppear = keyframes`
 `
 const Container = styled.div`
     background-color: ${(props) => props.theme.body};
-    animation: ${textAppear} 1s;
+    animation: ${textAppear} 0.5s;
 `
 const Wrapper = styled.div`
     padding: 10px;
@@ -36,30 +36,21 @@ const TotalPrice = styled.div`
     
 `
 
-const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptNumber: receiptId, dateTime: date, total }) => {
-
-    const totalPrice = (items: Items[]) => {
-        let total = 0;
-        for (let i: number = 0; i < items.length; i++) {
-            total += items[i].amount * items[i].price;
-            console.log(total)
-        }
-        return total;
-    }
+const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptNumer, dateTime, total }) => {
 
     return (
         <Container>
             <Wrapper>
                 <Header>
-                    <Title>Receipt ID: {receiptId}</Title>
-                    <ReceiptDate>{date}</ReceiptDate>
+                    <Title>Receipt ID: {receiptNumer}</Title>
+                    <ReceiptDate>{dateTime}</ReceiptDate>
                 </Header>
                 <ReceiptBody>
                     <ItemsList>
                         {
-                            items.map((item, index) => {
+                            items.map((item) => {
                                 return (
-                                    <li key={index} >{item.amount} x {item.name}</li>
+                                    <li key={item.name} >{item.amount} x {item.name}</li>
                                 )
                             })
                         }

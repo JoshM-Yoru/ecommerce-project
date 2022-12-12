@@ -1,7 +1,7 @@
 export type Receipt = {
     items: Items[];
     userId: number;
-    receiptNumber: number;
+    receiptNumer: number;
     dateTime: String;
     total: number;
 }

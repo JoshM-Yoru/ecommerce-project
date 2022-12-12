@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
+import { User, UserContextState } from '../../../Types/User';
+import { Context } from "../../../Context/UserContext";
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -61,6 +63,9 @@ export const RegisterForm: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
 
+
+    const { logged, loginUser } = useContext(Context) as UserContextState;
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.name === "email") {
             setEmail(e.target.value);
@@ -73,41 +78,55 @@ export const RegisterForm: React.FC = () => {
         }
     }
 
+    const navigate = useNavigate();
+
     const handleRegister = async () => {
         let register = {
             firstName,
             lastName,
             email,
             password
-        }
+        };
+        console.log(register);
 
         try {
-            let res = await axios.post('http://localhost:8000/user/register', register);
+            const res = await axios.post('http://localhost:8000/users/register', register);
             setError(false);
-            let user = await res.data;
+            const user = await res.data;
+            if (user) {
+                loginUser(user);
+                localStorage.setItem('curUserI', user.userId);
+                localStorage.setItem('curUserL', "true");
+            }
         } catch (e) {
             setError(true);
         }
+
+    };
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        navigate("/profile")
     }
 
     return (
         <Container>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Label>FIRST NAME</Label>
                 <InputWrapper>
-                    <Input onChange={handleChange} type="text" />
+                    <Input onChange={handleChange} name='firstName' type="text" />
                 </InputWrapper>
                 <Label>LAST NAME</Label>
                 <InputWrapper>
-                    <Input onChange={handleChange} type="text" />
+                    <Input onChange={handleChange} name='lastName' type="text" />
                 </InputWrapper>
                 <Label>EMAIL ADDRESS</Label>
                 <InputWrapper>
-                    <Input onChange={handleChange} type="email" />
+                    <Input onChange={handleChange} name='email' type="email" />
                 </InputWrapper>
                 <Label>PASSWORD</Label>
                 <FinalWrapper>
-                    <Input onChange={handleChange} type="password" />
+                    <Input onChange={handleChange} name='password' type="password" />
                 </FinalWrapper>
                 <LoginButton onClick={handleRegister}>REGISTER</LoginButton>
             </Form>

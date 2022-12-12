@@ -2,9 +2,10 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
-import { Context } from '../../Context/ProductContext'
+import { Context as ProductContext } from '../../Context/ProductContext'
 import { ProductContextState } from '../../Types/Product'
-import { User } from '../../Types/User'
+import { Context as UserContext } from "../../Context/UserContext";
+import { User, UserContextState } from '../../Types/User'
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -63,7 +64,7 @@ const PlaceOrder = styled.button`
 `
 
 const CheckoutForm: React.FC<User> = ({
-    id,
+    userId,
     firstName,
     lastName,
     email,
@@ -72,13 +73,14 @@ const CheckoutForm: React.FC<User> = ({
     password,
 }) => {
 
-    const { products, removeAllProductsFromCart } = useContext(Context) as ProductContextState;
+    const { products, removeAllProductsFromCart } = useContext(ProductContext) as ProductContextState;
+    const { currentUser } = useContext(UserContext) as UserContextState;
 
-    const [inputEmail, setInputEmail] = useState<string>(email)
-    const [inputAddress, setInputAddress] = useState<string>(address)
-    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(phoneNumber)
-    const [inputFirstName, setInputFirstName] = useState<string>(firstName)
-    const [inputLastName, setInputLastName] = useState<string>(lastName)
+    const [inputEmail, setInputEmail] = useState<string>(currentUser.email)
+    const [inputAddress, setInputAddress] = useState<string>(currentUser.address)
+    const [inputPhoneNumber, setInputPhoneNumber] = useState<string>(currentUser.phoneNumber)
+    const [inputFirstName, setInputFirstName] = useState<string>(currentUser.firstName)
+    const [inputLastName, setInputLastName] = useState<string>(currentUser.lastName)
 
     const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
         setInputEmail(e.currentTarget.value);
@@ -100,13 +102,6 @@ const CheckoutForm: React.FC<User> = ({
         setInputLastName(e.currentTarget.value);
     }
 
-    const navigate = useNavigate();
-    const navigateToSuccess = () => {
-        createReceipt();
-        navigate('/success');
-        removeAllProductsFromCart();
-    }
-
     type CreateReceiptResponse = {
         userId: number;
         items: number[];
@@ -119,12 +114,14 @@ const CheckoutForm: React.FC<User> = ({
             amountOfItems += products[i].amount
         }
 
+
+        console.log(userId, products, amountOfItems);
         try {
 
             const { data } = await axios.post<CreateReceiptResponse>(
                 "http://localhost:8000/receipts/create",
                 {
-                    userId: id,
+                    userId: userId,
                     items: products,
                     amountOfItems: amountOfItems
                 }
@@ -142,6 +139,13 @@ const CheckoutForm: React.FC<User> = ({
                 return 'An unexpected error occurred';
             }
         }
+    }
+
+    const navigate = useNavigate();
+    const navigateToSuccess = () => {
+        createReceipt();
+        navigate('/success');
+        removeAllProductsFromCart();
     }
 
     return (

@@ -9,13 +9,26 @@ interface ProviderProps {
 export const Context = React.createContext<UserContextState | null>(null);
 
 export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
-    const [users, setUsers] = useState<User[]>([]);
 
+    const [users, setUsers] = useState<User[]>([]);
+    const [logged, setLogged] = useState<boolean>(false);
     const [currentTab, setCurrentTab] = useState<string>('1');
+    const [modal, setModal] = useState<boolean>(false);
+    const [currentUser, setCurrentUser] = useState<User>(
+        {
+            userId: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            address: '',
+            password: '',
+        }
+    );
 
     const addUser = (user: User) => {
         const newUser: User = {
-            id: Math.floor(Math.random() * 1000) + 1,
+            userId: Math.floor(Math.random() * 1000) + 1,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
@@ -35,14 +48,14 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
 
     const updateUser = (id: number) => {
         users.filter((user: User) => {
-            if (user.id === id) {
+            if (user.userId === id) {
                 setUsers([...users]);
             }
         });
     };
 
     const removeUser = (id: number) => {
-        setUsers(users.filter((user: User) => user.id !== id));
+        setUsers(users.filter((user: User) => user.userId !== id));
     };
 
     const updateAccountTab = () => {
@@ -51,8 +64,35 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
         } else { setCurrentTab('1') }
     }
 
+    const loginUser = (user: User) => {
+        setLogged(true);
+        setCurrentUser(user);
+        console.log(logged)
+    }
+
+    const updateCurrentUser = (user: User) => {
+        setCurrentUser(user);
+    }
+
+    const logoutUser = () => {
+        setLogged(false);
+        setCurrentUser({
+            userId: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            address: '',
+            password: '',
+        })
+    }
+
+    const displayModal = (b: boolean) => {
+        setModal(b);
+    }
+
     return (
-        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab }}>
+        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab, logged, loginUser, logoutUser, currentUser, updateCurrentUser, displayModal, modal }}>
             {children}
         </Context.Provider>
     );

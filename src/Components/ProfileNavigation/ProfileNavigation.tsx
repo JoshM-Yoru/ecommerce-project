@@ -1,10 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { User, UserContextState } from '../../Types/User'
-import { Context } from "../../Context/UserContext";
+import { Context as UserContext } from "../../Context/UserContext";
+import { Context as ProductContext } from "../../Context/ProductContext";
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { useNavigate } from 'react-router-dom';
+import { ProductContextState } from '../../Types/Product';
+import axios from 'axios';
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -19,7 +23,6 @@ const Greeting = styled.div`
     padding: 30px 10px 30px;
     margin:10px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
-    animation: ${textAppear} 1s;
 `
 const GreetingIcon = styled.div`
     background-color: ${(props) => props.theme.altColor};
@@ -55,7 +58,7 @@ const Tabs = styled.button`
     cursor: pointer;
     font-size: 16px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
-    animation: ${textAppear} 1s;
+    /* animation: ${textAppear} 1s; */
     &:disabled {
         border-left: 5px solid #6bc5f2;
     };
@@ -67,34 +70,38 @@ const TabText = styled.div`
     padding-left: 30px;
 `
 
-const ProfileNavigation: React.FC<User> = ({
-    id,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    password,
-}) => {
+const ProfileNavigation: React.FC = () => {
 
-    const { updateUser, removeUser, currentTab, updateAccountTab } = useContext(Context) as UserContextState;
+    const { currentTab, updateAccountTab, logoutUser, currentUser, updateCurrentUser } = useContext(UserContext) as UserContextState;
+    const { removeAllProductsFromCart } = useContext(ProductContext) as ProductContextState;
 
 
     const handleTabClick = (e: React.MouseEvent) => {
         updateAccountTab();
     }
 
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        localStorage.clear();
+        removeAllProductsFromCart();
+        logoutUser();
+        navigate('/');
+    }
+    // console.log(currentUser, "in profile navigation")
+
+
     return (
         <Container>
             <Greeting>
                 <GreetingIcon>
-                    <GreetingInitials>{firstName[0].toUpperCase()}{lastName[0].toUpperCase()}</GreetingInitials>
+                    <GreetingInitials>{currentUser.firstName[0].toUpperCase()}{currentUser.lastName[0].toUpperCase()}</GreetingInitials>
                 </GreetingIcon>
                 <GreetingName>
                     <Hi>Hi,</Hi>
                     <br />
                     <Name>
-                        {firstName[0].toUpperCase() + firstName.slice(1)} {lastName[0].toUpperCase() + lastName.slice(1)}
+                        {currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1)} {currentUser.lastName[0].toUpperCase() + currentUser.lastName.slice(1)}
                     </Name>
                 </GreetingName>
             </Greeting>
@@ -112,7 +119,7 @@ const ProfileNavigation: React.FC<User> = ({
             </Tabs>
             <Tabs>
                 <LogoutOutlinedIcon style={{ fontSize: '2em' }} />
-                <TabText>
+                <TabText onClick={handleSignOut}>
                     Sign Out
                 </TabText>
             </Tabs>
