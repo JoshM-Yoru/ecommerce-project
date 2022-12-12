@@ -1,6 +1,6 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
 import { sliderProducts } from '../../sample'
@@ -96,14 +96,36 @@ const Button = styled.button`
 const Slider: React.FC = () => {
 
     const [slideIndex, setSlideIndex] = useState(0)
+    // const [timerState, setTimerState] = useState(3500)
+
+    // const scrollSlider = () => {
+    //     setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
+    // }
+
+    // const scrollTimer = (b: boolean) => {
+    //     if (b) {
+    //         return setInterval(scrollSlider, timerState);
+    //     }
+    // }
+
+    // // let timer = scrollTimer();
+    // // useEffect(() => {
+    // //     scrollTimer(true);
+    // // }, [])
+
+    // scrollTimer(true);
+    // const resetScrollTimer = () => {
+    //     setTimerState(3500)
+    // }
 
     const handleClick = (direction: string) => {
 
         if (direction === "left") {
-            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3)
+            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
         } else {
             setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
         }
+        // resetScrollTimer();
     }
 
     const navigate = useNavigate();
@@ -113,12 +135,6 @@ const Slider: React.FC = () => {
     }
 
     window.scrollTo(0, 0);
-
-    const scrollSlider = () => {
-        setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
-    }
-
-    setInterval(scrollSlider, 3500)
 
     return (
         <Container>
