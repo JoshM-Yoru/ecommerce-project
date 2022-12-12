@@ -20,15 +20,16 @@ const Container = styled.div`
     overflow: hidden;
 `
 const Arrow = styled.div<{ direction: string }>`
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 0;
     bottom: 0;
+    border-radius: 50%;
     left: ${props => props.direction === "left" && "10px"};
     right: ${props => props.direction === "right" && "10px"};
     margin: auto;
@@ -50,16 +51,17 @@ const Slide = styled.div < { bg: string }> `
     background-color: #${props => props.bg};
 `
 const ImgContainer = styled.div`
-    flex: 1;
+    flex: 2;
     height: 100%;
     animation: ${slideInAnimation} 1s;
 `
 const Image = styled.img`
     height: 100%;
+    padding-bottom: 100px;
     box-shadow: 10px 0 40px 10px rgba(0,0,0,.25);
 `
 const InfoContainer = styled.div`
-    flex: 1;
+    flex: 3;
     padding: 100px;
     margin-top: -200px;
     display: flex;
@@ -112,10 +114,16 @@ const Slider: React.FC = () => {
 
     window.scrollTo(0, 0);
 
+    const scrollSlider = () => {
+        setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
+    }
+
+    setInterval(scrollSlider, 3500)
+
     return (
         <Container>
             <Arrow direction="left" onClick={() => handleClick("left")}>
-                <ArrowBackIosIcon />
+                <ArrowBackIosIcon style={{ paddingLeft: '5px', fontSize: '30px' }} />
             </Arrow>
             <Wrapper slideIndex={slideIndex}>
                 {sliderProducts.map((item) => (
@@ -132,7 +140,7 @@ const Slider: React.FC = () => {
                 ))}
             </Wrapper>
             <Arrow direction="right" onClick={() => handleClick("right")}>
-                <ArrowForwardIosIcon />
+                <ArrowForwardIosIcon style={{ paddingLeft: '5px', fontSize: '30px' }} />
             </Arrow>
         </Container >
     )
