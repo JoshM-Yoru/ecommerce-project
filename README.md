@@ -1,4 +1,4 @@
-# Group1-NAJ-Clothing
+# NAJ Clothing E-Commerce Site
 
 ## About The Site
   NAJ Clothing is an e-commerce site built with ReactJS for the front end and Java Spring Boot for the back.
