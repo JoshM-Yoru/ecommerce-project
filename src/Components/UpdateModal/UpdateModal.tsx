@@ -27,7 +27,8 @@ const Content = styled.div`
     margin-top: 20%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 30px;
+    text-align: center;
 `
 const CloseButton = styled.button`
     border: none;

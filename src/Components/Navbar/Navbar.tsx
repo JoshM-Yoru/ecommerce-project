@@ -89,6 +89,8 @@ const MenuItem = styled.div`
 
 const Navbar: React.FC = () => {
 
+    const { products, itemSearch } = useContext(Context) as ProductContextState;
+
     const navigate = useNavigate();
     const navigateToHome = () => {
         navigate('/');
@@ -114,7 +116,6 @@ const Navbar: React.FC = () => {
         window.scrollTo(0, 0);
     }
 
-    const { products, itemSearch } = useContext(Context) as ProductContextState;
 
     const updateCartAmount = (): number => {
         let itemsInCart = 0;

@@ -24,10 +24,8 @@ export default function Modal(props: ModalType) {
 
 export function useModal() {
     const [isOpen, setIsOpen] = useState(false);
-    console.log(isOpen);
     const toggle = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen);
     };
 
     return {

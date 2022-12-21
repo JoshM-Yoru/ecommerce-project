@@ -115,7 +115,6 @@ const CheckoutForm: React.FC<User> = ({
         }
 
 
-        console.log(userId, products, amountOfItems);
         try {
 
             const { data } = await axios.post<CreateReceiptResponse>(
@@ -126,8 +125,6 @@ const CheckoutForm: React.FC<User> = ({
                     amountOfItems: amountOfItems
                 }
             )
-
-            console.log(data);
             return data;
         } catch (error) {
             if (axios.isAxiosError(error)) {

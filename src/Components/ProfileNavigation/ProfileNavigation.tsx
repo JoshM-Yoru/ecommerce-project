@@ -88,7 +88,6 @@ const ProfileNavigation: React.FC = () => {
         logoutUser();
         navigate('/');
     }
-    // console.log(currentUser, "in profile navigation")
 
 
     return (

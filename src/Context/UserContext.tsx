@@ -38,12 +38,6 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
         };
 
         setUsers([...users, newUser]);
-        console.log(
-            "Created New User: " +
-            newUser.address +
-            newUser.firstName +
-            newUser.phoneNumber
-        );
     };
 
     const updateUser = (id: number) => {
@@ -67,7 +61,6 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
     const loginUser = (user: User) => {
         setLogged(true);
         setCurrentUser(user);
-        console.log(logged)
     }
 
     const updateCurrentUser = (user: User) => {

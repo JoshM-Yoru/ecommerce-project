@@ -47,7 +47,6 @@ const PastOrders: React.FC = () => {
         getReceipts();
     }, [])
     let user = localStorage.getItem('curUserI');
-    console.log(receiptData)
 
     return (
         <Container>

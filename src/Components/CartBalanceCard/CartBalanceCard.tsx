@@ -73,7 +73,6 @@ const CartBalanceCard: React.FC = () => {
 
     let total = (taxed + shipping).toFixed(2);
 
-    console.log(subtotal, shipping, total)
     return (
         <Container>
             <CartBalance>Cart Summary</CartBalance>

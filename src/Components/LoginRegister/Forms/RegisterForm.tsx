@@ -87,7 +87,6 @@ export const RegisterForm: React.FC = () => {
             email,
             password
         };
-        console.log(register);
 
         try {
             const res = await axios.post('http://localhost:8000/users/register', register);

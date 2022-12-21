@@ -43,6 +43,7 @@ const CheckoutCompleted: React.FC = () => {
     const navigate = useNavigate();
     const navigateToProfile = () => {
         navigate('/profile');
+        window.location.reload();
     }
 
     return (

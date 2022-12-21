@@ -82,7 +82,6 @@ export const LoginForm: React.FC = () => {
             email,
             password
         }
-        console.log(email, password)
 
         try {
             const headers = {
@@ -91,7 +90,6 @@ export const LoginForm: React.FC = () => {
             let res = await axios.post('http://localhost:8000/users/login', login, { headers });
             setError(false);
             let user = await res.data;
-            console.log(user);
 
             if (user) {
                 localStorage.setItem('curUserI', user.userId);

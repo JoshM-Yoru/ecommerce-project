@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { Context } from '../../Context/ProductContext'
+import { Context as ProductContext } from '../../Context/ProductContext'
 import { user } from '../../sampleUser'
 import { ProductContextState } from '../../Types/Product'
 import CartBalanceCard from '../CartBalanceCard/CartBalanceCard'
-import CartCard from '../CartCard/CartCard'
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
 import EmptyCart from '../EmptyCart/EmptyCart'
+import { Context as UserContext } from '../../Context/UserContext';
+import { UserContextState } from '../../Types/User'
+import NewTabs from '../LoginRegister/Tabs/NewTabs'
+import { textAlign } from '@mui/system'
 
 const Container = styled.div`
     display: flex;
@@ -27,7 +30,8 @@ const BalanceWrapper = styled.div`
 
 const Cart: React.FC = () => {
 
-    const { products, removeProductFromCart } = useContext(Context) as ProductContextState;
+    const { products, removeProductFromCart } = useContext(ProductContext) as ProductContextState;
+    const { currentUser } = useContext(UserContext) as UserContextState;
 
     let total: number = 0;
 
@@ -39,6 +43,17 @@ const Cart: React.FC = () => {
     }
 
     const id = localStorage.getItem('curUserI');
+
+    if (currentUser.userId === 0 && products.length > 0) {
+        return (
+            <Container>
+                <BalanceWrapper style={{ textAlign: 'center' }}>
+                    Please Sign in to View Cart
+                    <NewTabs />
+                </BalanceWrapper>
+            </Container>
+        )
+    }
 
     return (
         <Container>
@@ -59,7 +74,7 @@ const Cart: React.FC = () => {
                     </>
                     : null
             }
-        </Container>
+        </Container >
     )
 }
 

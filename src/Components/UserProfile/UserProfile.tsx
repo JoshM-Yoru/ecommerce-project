@@ -61,7 +61,6 @@ export const UserProfile: React.FC = () => {
                 if (tuser) {
                     updateCurrentUser(tuser);
                     setLoading(false);
-                    console.log(tuser)
                 }
             })
         } catch (e) {

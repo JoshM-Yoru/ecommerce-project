@@ -79,7 +79,6 @@ const Home: React.FC = () => {
     }, [])
 
 
-    // console.log(currentUser)
     return (
         <ThemeProvider theme={localStorage.getItem('theme') === 'light' ? lightTheme : darkTheme}>
             <ThemeButton onClick={themeToggler}>
@@ -91,8 +90,6 @@ const Home: React.FC = () => {
                 }
             </ThemeButton>
             <Container>
-                {/* <UserProvider> */}
-                {/* <ProductProvider> */}
                 <Announcement />
                 <Navbar />
                 <Routes>
@@ -109,8 +106,6 @@ const Home: React.FC = () => {
                     <Route path='/success' element={<CheckoutCompleted />} />
                 </Routes>
                 <Footer />
-                {/* </ProductProvider> */}
-                {/* </UserProvider> */}
             </Container>
         </ThemeProvider>
     );

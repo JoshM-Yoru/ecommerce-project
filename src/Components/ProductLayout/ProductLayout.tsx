@@ -46,13 +46,10 @@ const ProductLayout: React.FC = () => {
     const ref = useRef<HTMLDivElement>(null);
 
     const toggleVisible = () => {
-        // setScrollPositon(document.documentElement.scrollTop);
-        // console.log(scrollPosition, 'text');
         if (ref.current !== null) {
             const scrolled: number = ref.current.scrollTop;
             if (scrolled > 300) {
                 setVisible(true)
-                console.log('visible')
             }
             else if (scrolled <= 300) {
                 setVisible(false)
@@ -87,8 +84,6 @@ const ProductLayout: React.FC = () => {
                 }
             )
 
-            console.log(data)
-
             setProductData(data)
 
 
@@ -112,8 +107,6 @@ const ProductLayout: React.FC = () => {
         const div = ref.current;
         if (div !== null) {
             div.addEventListener("scroll", toggleVisible);
-            // console.log('testing');
-
         }
     }, [toggleVisible, productData]
     )
