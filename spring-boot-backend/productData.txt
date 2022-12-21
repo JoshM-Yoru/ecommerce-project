@@ -1,0 +1,162 @@
+[
+    {
+        "itemId": 3,
+        "name": "Jeans",
+        "price": 24.99,
+        "amount": 2,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://cdni.llbean.net/is/image/wim/301128_1498_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2"
+    },
+    {
+        "itemId": 5,
+        "name": "Socks",
+        "price": 8.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://www.rlmedia.io/is/image/PoloGSI/s7-1173581_lifestyle?$rl_df_pdp_5_7_lif$"
+    },
+    {
+        "itemId": 502,
+        "name": "Green Shoes",
+        "price": 39.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+    },
+    {
+        "itemId": 503,
+        "name": "One Piece Grey Skirt",
+        "price": 31.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=780&q=80"
+    },
+    {
+        "itemId": 504,
+        "name": "705 Black T Shirt",
+        "price": 19.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80"
+    },
+    {
+        "itemId": 505,
+        "name": "Ivory Shawl",
+        "price": 25.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=705&q=80"
+    },
+    {
+        "itemId": 506,
+        "name": "Bronze Light Jacket",
+        "price": 21.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+    },
+    {
+        "itemId": 507,
+        "name": "Gold Dress",
+        "price": 79.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1623609163859-ca93c959b98a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+    },
+    {
+        "itemId": 508,
+        "name": "Black High Heels",
+        "price": 39.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1596702874230-b5706dfb5bc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+        "itemId": 509,
+        "name": "Purse",
+        "price": 49.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=738&q=80"
+    },
+    {
+        "itemId": 510,
+        "name": "Rolex Watch",
+        "price": 89.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "itemId": 511,
+        "name": "Tie",
+        "price": 14.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1589756823695-278bc923f962?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "itemId": 512,
+        "name": "Winter Hat",
+        "price": 8.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80"
+    },
+    {
+        "itemId": 513,
+        "name": "Pastel Shoes",
+        "price": 48.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "itemId": 514,
+        "name": "Jean Jacket",
+        "price": 52.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=669&q=80"
+    },
+    {
+        "itemId": 515,
+        "name": "Green Dress",
+        "price": 64.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/flagged/photo-1585052201332-b8c0ce30972f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+        "itemId": 6,
+        "name": "Blouse",
+        "price": 28.99,
+        "amount": 2,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1584030373081-f37b7bb4fa8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80"
+    },
+    {
+        "itemId": 1,
+        "name": "Button Up Shirt",
+        "price": 18.99,
+        "amount": 2,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80"
+    },
+    {
+        "itemId": 2,
+        "name": "T Shirt",
+        "price": 12.99,
+        "amount": 3,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+    },
+    {
+        "itemId": 4,
+        "name": "Dress",
+        "price": 34.99,
+        "amount": 1,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://www.ortery.com/wp-content/uploads/2019/01/dress-on-blue-bkg.png"
+    }
+]
