@@ -1,18 +1,16 @@
 package com.example.models;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,13 +43,13 @@ public class User {
   @JsonIgnore
   private List<Receipt> userReceipts;
 
-  @OneToOne
-  @PrimaryKeyJoinColumn
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "shipping_address_id", referencedColumnName = "address_id")
   @JsonIgnore
   private UserAddress shippingAddress;
 
-  @OneToOne
-  @PrimaryKeyJoinColumn
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "billing_address_id", referencedColumnName = "address_id")
   @JsonIgnore
   private UserAddress billingAddress;
 

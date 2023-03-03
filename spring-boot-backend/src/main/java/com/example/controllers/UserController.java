@@ -30,8 +30,8 @@ public class UserController {
     String lastName = body.get("lastName");
     String email = body.get("email");
     String password = body.get("password");
-    UserAddress shippingAddress = null;
-    UserAddress billingAddress = null;
+    UserAddress shippingAddress = new UserAddress();
+    UserAddress billingAddress = new UserAddress();
     String phoneNumber = "";
 
     return uServ.registerUser(firstName, lastName, email, password, shippingAddress, billingAddress,

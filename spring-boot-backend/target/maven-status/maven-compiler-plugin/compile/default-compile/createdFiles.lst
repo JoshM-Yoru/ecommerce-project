@@ -1,12 +1,13 @@
 com/example/models/User.class
 com/example/exceptions/InvalidCredentialsException.class
+com/example/repositories/UserAddressRepository.class
 com/example/services/ItemService.class
 com/example/controllers/ReceiptController.class
 com/example/EcommerceSpringBootApplication.class
 com/example/repositories/UserRepository.class
 com/example/models/Receipt.class
-com/example/controllers/ItemController.class
 com/example/repositories/ReceiptRepository.class
+com/example/controllers/ItemController.class
 com/example/controllers/ReceiptRegisterObject.class
 com/example/models/UserAddress.class
 com/example/controllers/UserController.class

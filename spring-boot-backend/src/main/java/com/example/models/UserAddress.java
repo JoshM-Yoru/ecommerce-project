@@ -26,8 +26,8 @@ public class UserAddress {
   private Integer addressId;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "user_id")
-  private User userId;
+  @JoinColumn(name = "user_location_id", referencedColumnName = "user_id")
+  private User user;
 
   @Column(name = "street_address")
   private String streetAddress;
