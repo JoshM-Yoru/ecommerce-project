@@ -18,19 +18,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Item {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "item_id")
-    private Integer itemId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  @Column(name = "item_id")
+  private Integer itemId;
 
-    @Column(name = "item_name")
-    private String name;
+  @Column(name = "item_name")
+  private String name;
 
-    private Double price;
+  private Double price;
 
-    private Integer amount;
+  private Integer amount;
 
-    private String description;
+  private String description;
 
-    private String imageUrl;
+  private String imageUrl;
 }

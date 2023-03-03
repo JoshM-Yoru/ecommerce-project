@@ -17,41 +17,42 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="user_id")
-	private Integer userId;
-	
-	@Column(name="first_name")
-	private String firstName;
-	
-	@Column(name="last_name")
-	private String lastName;
-	
-	@Column(unique = true)
-	private String email;
-	
-	private String password;
-	
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-	@JsonIgnore
-	private List<Receipt> userReceipts;
-	
-	private String address;
-	
-	private String phoneNumber;
-	
-	//Basic Register constructor
-	public User(String firstName, String lastName, String email, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-	}
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "user_id")
+  private Integer userId;
+
+  @Column(name = "first_name")
+  private String firstName;
+
+  @Column(name = "last_name")
+  private String lastName;
+
+  @Column(unique = true)
+  private String email;
+
+  private String password;
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Receipt> userReceipts;
+
+  private String address;
+
+  private String phoneNumber;
+
+  // Basic Register constructor
+  public User(String firstName, String lastName, String email, String password) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  }
 }
+

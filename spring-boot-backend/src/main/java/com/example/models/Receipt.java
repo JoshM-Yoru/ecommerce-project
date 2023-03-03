@@ -21,42 +21,41 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name="receipts")
+@Table(name = "receipts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Receipt {
-	
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	@Column(name="receipt_number")
-	private Integer receiptNumer;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="created_By")
-	private User user;
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(
-			name="Items_On_Receipt",
-			joinColumns = {@JoinColumn(name="receiptNumer")},
-			inverseJoinColumns = {@JoinColumn(name="ItemId")}
-	)
-	private List<Item> items;
-	
-	private Double total;
-	
-	@Column(name="created_Date/Time")
-	private String dateTime;
-	
-	private Integer amountOfItems;
-	
-	public Receipt(User user, List<Item> items, Double total, String dateTime, Integer amountOfItems) {
-		this.user = user;
-		this.items = items;
-		this.total = total;
-		this.dateTime = dateTime;
-		this.amountOfItems = amountOfItems;
-	}
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  @Column(name = "receipt_number")
+  private Integer receiptNumer;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "created_By")
+  private User user;
+
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name = "Items_On_Receipt", joinColumns = {@JoinColumn(name = "receiptNumer")},
+      inverseJoinColumns = {@JoinColumn(name = "ItemId")})
+  private List<Item> items;
+
+  private Double total;
+
+  @Column(name = "created_Date/Time")
+  private String dateTime;
+
+  private Integer amountOfItems;
+
+  public Receipt(User user, List<Item> items, Double total, String dateTime,
+      Integer amountOfItems) {
+    this.user = user;
+    this.items = items;
+    this.total = total;
+    this.dateTime = dateTime;
+    this.amountOfItems = amountOfItems;
+  }
 }
+
