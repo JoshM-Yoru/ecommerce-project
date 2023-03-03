@@ -9,6 +9,7 @@ import com.example.exceptions.InvalidCredentialsException;
 import com.example.exceptions.UserAlreadyRegisteredException;
 import com.example.models.Receipt;
 import com.example.models.User;
+import com.example.models.UserAddress;
 import com.example.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 
@@ -20,9 +21,10 @@ public class UserService {
   private UserRepository userRepo;
 
   public User registerUser(String firstName, String lastName, String email, String password,
-      String address, String phoneNumber) {
+      UserAddress shippingAddress, UserAddress billingAddress, String phoneNumber) {
     List<Receipt> receipts = new ArrayList<>();
-    User u = new User(0, firstName, lastName, email, password, receipts, address, phoneNumber);
+    User u = new User(0, firstName, lastName, email, password, receipts, shippingAddress,
+        billingAddress, phoneNumber);
 
     try {
       User newU = userRepo.save(u);
@@ -50,7 +52,8 @@ public class UserService {
     prevUser.setFirstName(updateUser.getFirstName());
     prevUser.setLastName(updateUser.getLastName());
     prevUser.setEmail(updateUser.getEmail());
-    prevUser.setAddress(updateUser.getAddress());
+    prevUser.setShippingAddress(updateUser.getShippingAddress());
+    prevUser.setBillingAddress(updateUser.getBillingAddress());
     prevUser.setPhoneNumber(updateUser.getPhoneNumber());
     updateUser.setPassword(prevUser.getPassword());
 

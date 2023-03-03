@@ -70,7 +70,7 @@ public class ReceiptService {
   }
 
   public Receipt updateReceipt(Receipt r) {
-    Receipt updateReceipt = rRepo.findById(r.getReceiptNumer()).get();
+    Receipt updateReceipt = rRepo.findById(r.getReceiptNumber()).get();
 
     updateReceipt.setAmountOfItems(r.getAmountOfItems());
     updateReceipt.setDateTime(r.getDateTime());

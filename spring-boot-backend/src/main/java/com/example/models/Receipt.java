@@ -4,7 +4,6 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,14 +30,14 @@ public class Receipt {
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
   @Column(name = "receipt_number")
-  private Integer receiptNumer;
+  private Integer receiptNumber;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "created_By")
   private User user;
 
   @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name = "Items_On_Receipt", joinColumns = {@JoinColumn(name = "receiptNumer")},
+  @JoinTable(name = "Items_On_Receipt", joinColumns = {@JoinColumn(name = "receiptNumber")},
       inverseJoinColumns = {@JoinColumn(name = "ItemId")})
   private List<Item> items;
 

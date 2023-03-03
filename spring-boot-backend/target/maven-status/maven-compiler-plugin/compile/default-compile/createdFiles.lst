@@ -8,6 +8,7 @@ com/example/models/Receipt.class
 com/example/controllers/ItemController.class
 com/example/repositories/ReceiptRepository.class
 com/example/controllers/ReceiptRegisterObject.class
+com/example/models/UserAddress.class
 com/example/controllers/UserController.class
 com/example/services/UserService.class
 com/example/models/Item.class

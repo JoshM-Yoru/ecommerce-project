@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.models.User;
+import com.example.models.UserAddress;
 import com.example.services.UserService;
 import lombok.AllArgsConstructor;
 
@@ -29,10 +30,12 @@ public class UserController {
     String lastName = body.get("lastName");
     String email = body.get("email");
     String password = body.get("password");
-    String address = "";
+    UserAddress shippingAddress = null;
+    UserAddress billingAddress = null;
     String phoneNumber = "";
 
-    return uServ.registerUser(firstName, lastName, email, password, address, phoneNumber);
+    return uServ.registerUser(firstName, lastName, email, password, shippingAddress, billingAddress,
+        phoneNumber);
   }
 
   @GetMapping("/user")

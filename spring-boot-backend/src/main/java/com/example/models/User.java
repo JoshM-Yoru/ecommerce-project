@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,7 +45,15 @@ public class User {
   @JsonIgnore
   private List<Receipt> userReceipts;
 
-  private String address;
+  @OneToOne
+  @PrimaryKeyJoinColumn
+  @JsonIgnore
+  private UserAddress shippingAddress;
+
+  @OneToOne
+  @PrimaryKeyJoinColumn
+  @JsonIgnore
+  private UserAddress billingAddress;
 
   private String phoneNumber;
 
