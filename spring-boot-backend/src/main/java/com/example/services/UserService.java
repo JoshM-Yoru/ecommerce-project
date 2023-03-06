@@ -21,8 +21,9 @@ public class UserService {
   private UserRepository userRepo;
 
   public User registerUser(String firstName, String lastName, String email, String password,
-      UserAddress shippingAddress, UserAddress billingAddress, String phoneNumber) {
+      UserAddress shippingAddress, UserAddress billingAddress) {
     List<Receipt> receipts = new ArrayList<>();
+    String phoneNumber = "";
     User u = new User(0, firstName, lastName, email, password, receipts, shippingAddress,
         billingAddress, phoneNumber);
 

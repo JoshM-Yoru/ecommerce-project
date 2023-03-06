@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.models.Item;
+import com.example.models.ItemType;
 import com.example.repositories.ItemRepository;
 import lombok.AllArgsConstructor;
 
@@ -13,9 +14,13 @@ public class ItemService {
 
   ItemRepository itemRepo;
 
-  public Item createItem(String name, Double price, Integer amount, String description,
-      String imageUrl) {
-    Item newItem = new Item(0, name, price, amount, description, imageUrl);
+  public Item createItem(String name, Double price, String description, String imageUrl,
+      String gender, String itemType) {
+
+    ItemType type = ItemType.valueOf(itemType.toUpperCase());
+    Integer amount = 1;
+
+    Item newItem = new Item(0, name, price, amount, description, imageUrl, gender, type);
     return itemRepo.save(newItem);
   }
 

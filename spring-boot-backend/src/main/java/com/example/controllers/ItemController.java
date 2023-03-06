@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.models.Item;
+import com.example.models.NewItemObject;
 import com.example.services.ItemService;
 import lombok.AllArgsConstructor;
 
@@ -24,14 +25,10 @@ public class ItemController {
   private ItemService iServ;
 
   @PostMapping("/create")
-  public Item create(@RequestBody LinkedHashMap<String, Object> body) {
-    String name = (String) body.get("name");
-    Double price = (Double) body.get("price");
-    Integer amount = 1;
-    String description = (String) body.get("description");
-    String imageUrl = (String) body.get("imageUrl");
+  public Item create(@RequestBody NewItemObject body) {
 
-    return iServ.createItem(name, price, amount, description, imageUrl);
+    return iServ.createItem(body.name, body.price, body.description, body.imageUrl, body.gender,
+        body.itemType);
   }
 
   @GetMapping("/read")

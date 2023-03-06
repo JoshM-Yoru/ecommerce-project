@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.models.NewUserObject;
 import com.example.models.User;
-import com.example.models.UserAddress;
 import com.example.services.UserService;
 import lombok.AllArgsConstructor;
 
@@ -25,17 +25,9 @@ public class UserController {
   private UserService uServ;
 
   @PostMapping("/register")
-  public User register(@RequestBody LinkedHashMap<String, String> body) {
-    String firstName = body.get("firstName");
-    String lastName = body.get("lastName");
-    String email = body.get("email");
-    String password = body.get("password");
-    UserAddress shippingAddress = new UserAddress();
-    UserAddress billingAddress = new UserAddress();
-    String phoneNumber = "";
-
-    return uServ.registerUser(firstName, lastName, email, password, shippingAddress, billingAddress,
-        phoneNumber);
+  public User register(@RequestBody NewUserObject body) {
+    return uServ.registerUser(body.firstName, body.lastName, body.email, body.password,
+        body.shippingAddress, body.billingAddress);
   }
 
   @GetMapping("/user")
