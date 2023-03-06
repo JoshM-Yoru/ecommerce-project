@@ -33,4 +33,9 @@ public class Item {
   private String description;
 
   private String imageUrl;
+
+  private String gender;
+
+  @Column(name = "type_of_item")
+  private ItemType itemType;
 }
