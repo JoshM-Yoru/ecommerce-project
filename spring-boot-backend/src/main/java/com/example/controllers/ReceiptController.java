@@ -26,10 +26,10 @@ public class ReceiptController {
   private ReceiptService rServ;
 
   @PostMapping("/create")
-  public Receipt create(@RequestBody ReceiptRegisterObject rro) {
-    Integer userId = rro.userId;
-    List<Item> items = rro.items;
-    Integer amountOfItems = rro.amountOfItems;
+  public Receipt create(@RequestBody NewRegisterObject body) {
+    Integer userId = body.userId;
+    List<Item> items = body.items;
+    Integer amountOfItems = body.amountOfItems;
     return rServ.createReceipt(userId, items, amountOfItems);
   }
 
@@ -57,7 +57,7 @@ public class ReceiptController {
 }
 
 
-class ReceiptRegisterObject {
+class NewRegisterObject {
   public Integer userId;
   public List<Item> items;
   public Integer amountOfItems;

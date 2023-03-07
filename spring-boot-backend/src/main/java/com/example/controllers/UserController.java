@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.models.NewUserObject;
 import com.example.models.User;
+import com.example.models.UserAddress;
 import com.example.services.UserService;
 import lombok.AllArgsConstructor;
 
@@ -53,4 +53,14 @@ public class UserController {
     return uServ.loginUser(email, password);
   }
 
+}
+
+
+class NewUserObject {
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+  public UserAddress shippingAddress = new UserAddress();
+  public UserAddress billingAddress = new UserAddress();
 }

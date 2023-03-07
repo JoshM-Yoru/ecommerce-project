@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.models.Item;
-import com.example.models.NewItemObject;
 import com.example.services.ItemService;
 import lombok.AllArgsConstructor;
 
@@ -55,3 +54,11 @@ public class ItemController {
 }
 
 
+class NewItemObject {
+  public String name;
+  public Double price;
+  public String description;
+  public String imageUrl;
+  public String gender;
+  public String itemType;
+}

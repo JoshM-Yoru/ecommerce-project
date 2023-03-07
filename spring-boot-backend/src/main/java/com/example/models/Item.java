@@ -38,4 +38,7 @@ public class Item {
 
   @Column(name = "type_of_item")
   private ItemType itemType;
+
+  @Column(name = "size_of_item")
+  private String itemSize;
 }
