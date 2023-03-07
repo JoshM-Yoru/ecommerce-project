@@ -6,7 +6,6 @@
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/models/Receipt.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/services/ItemService.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/controllers/ItemController.java
-/home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/models/NewItemObject.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/models/ItemType.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/models/UserAddress.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/repositories/UserRepository.java
@@ -15,6 +14,5 @@
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/services/UserService.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/EcommerceSpringBootApplication.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/services/ReceiptService.java
-/home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/models/NewUserObject.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/repositories/ReceiptRepository.java
 /home/Yoru/Programming/FullStackProjects/ecommerce-project/spring-boot-backend/src/main/java/com/example/controllers/UserController.java
