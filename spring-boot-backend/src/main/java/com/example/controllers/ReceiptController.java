@@ -29,8 +29,7 @@ public class ReceiptController {
   public Receipt create(@RequestBody NewRegisterObject body) {
     Integer userId = body.userId;
     List<Item> items = body.items;
-    Integer amountOfItems = body.amountOfItems;
-    return rServ.createReceipt(userId, items, amountOfItems);
+    return rServ.createReceipt(userId, items);
   }
 
   @GetMapping("/read")
@@ -60,5 +59,4 @@ public class ReceiptController {
 class NewRegisterObject {
   public Integer userId;
   public List<Item> items;
-  public Integer amountOfItems;
 }

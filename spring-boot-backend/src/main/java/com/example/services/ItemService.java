@@ -41,6 +41,8 @@ public class ItemService {
     updateItem.setPrice(i.getPrice());
     updateItem.setDescription(i.getDescription());
     updateItem.setImageUrl(i.getImageUrl());
+    updateItem.setGender(i.getGender());
+    updateItem.setItemType(i.getItemType());
 
 
     return itemRepo.save(updateItem);

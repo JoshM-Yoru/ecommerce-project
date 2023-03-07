@@ -35,8 +35,8 @@ public class ReceiptService {
   }
 
   // used if userId is passed(Just an extra precaution)
-  public Receipt createReceipt(Integer id, List<Item> items, Integer amountOfItems) {
-    User u = uRepo.findById(id).get();
+  public Receipt createReceipt(Integer userId, List<Item> items) {
+    User u = uRepo.findById(userId).get();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     String now = LocalDateTime.now().format(format);
     List<Item> receiptItems = new ArrayList<>();
@@ -45,6 +45,7 @@ public class ReceiptService {
     for (Item i : items) {
       Item addItem = iRepo.findById(i.getItemId()).get();
       addItem.setAmount(i.getAmount());
+      addItem.setItemSize(i.getItemSize());
       total += addItem.getPrice() * i.getAmount();
       receiptItems.add(addItem);
     }
