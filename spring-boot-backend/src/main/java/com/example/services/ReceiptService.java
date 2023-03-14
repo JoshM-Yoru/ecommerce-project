@@ -29,8 +29,7 @@ public class ReceiptService {
     User u = uRepo.getByEmail(email).get();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     String now = LocalDateTime.now().format(format);
-    Integer amountOfItems = items.size();
-    Receipt rec = new Receipt(u, items, total, now, amountOfItems);
+    Receipt rec = new Receipt(u, items, total, now);
     return rRepo.save(rec);
   }
 
@@ -61,8 +60,7 @@ public class ReceiptService {
 
 
 
-    Integer amountOfItemsOnReceipt = receiptItems.size();
-    Receipt rec = new Receipt(u, receiptItems, total, now, amountOfItemsOnReceipt);
+    Receipt rec = new Receipt(u, receiptItems, total, now);
     return rRepo.save(rec);
   }
 
@@ -73,7 +71,6 @@ public class ReceiptService {
   public Receipt updateReceipt(Receipt r) {
     Receipt updateReceipt = rRepo.findById(r.getReceiptNumber()).get();
 
-    updateReceipt.setAmountOfItems(r.getAmountOfItems());
     updateReceipt.setDateTime(r.getDateTime());
     updateReceipt.setItems(r.getItems());
     updateReceipt.setTotal(r.getTotal());

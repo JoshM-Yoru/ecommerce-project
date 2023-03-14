@@ -46,15 +46,12 @@ public class Receipt {
   @Column(name = "created_Date/Time")
   private String dateTime;
 
-  private Integer amountOfItems;
 
-  public Receipt(User user, List<Item> items, Double total, String dateTime,
-      Integer amountOfItems) {
+  public Receipt(User user, List<Item> items, Double total, String dateTime) {
     this.user = user;
     this.items = items;
     this.total = total;
     this.dateTime = dateTime;
-    this.amountOfItems = amountOfItems;
   }
 }
 

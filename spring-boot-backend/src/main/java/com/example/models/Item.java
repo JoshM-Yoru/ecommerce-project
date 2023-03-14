@@ -28,7 +28,7 @@ public class Item {
 
   private Double price;
 
-  private Integer amount;
+  private Integer quanitity;
 
   private String description;
 
