@@ -1,8 +1,8 @@
-spring-boot-backend/HELP.md
-spring-boot-backend/target/
+HELP.md
+target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/spring-boot-backend/src/main/**/target/
-!**/spring-boot-backend/src/test/**/target/
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -26,9 +26,8 @@ spring-boot-backend/target/
 /nbdist/
 /.nb-gradle/
 build/
-!**/spring-boot-backend/src/main/**/build/
-!**/spring-boot-backend/src/test/**/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-
