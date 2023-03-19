@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='h-12 w-full z-10 absolute'>
+        <div className='h-12 w-full z-10 border-t-2'>
             <div className='h-full py-3 px-6 flex justify-between items-center'>
                 <div className='flex-1 flex ml-4 items-center animate-slideInFromLeft'>
                     ©NAJ Clothing
@@ -21,4 +21,3 @@ const Footer = () => {
 }
 
 export default Footer
-                        // <LocalPhoneIcon style={{ color: "gray" }} />

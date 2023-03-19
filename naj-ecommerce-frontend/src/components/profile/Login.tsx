@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import NewTabs from './Tabs/NewTabs'
+import NewTabs from './NewTabs'
 
 const fadeIn = keyframes`
     0% {opacity: 0%},

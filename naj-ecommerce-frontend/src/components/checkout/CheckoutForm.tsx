@@ -2,10 +2,9 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
-import { Context as ProductContext } from '../../Context/ProductContext'
-import { ProductContextState } from '../../Types/Product'
-import { Context as UserContext } from "../../Context/UserContext";
-import { User, UserContextState } from '../../Types/User'
+import { ProductContext } from '../../context/ProductProvider'
+import { UserContext } from '../../context/UserProvider'
+import { User, UserContextState } from '../../types/User'
 
 const fadeIn = keyframes`
     0% {opacity: 0%},

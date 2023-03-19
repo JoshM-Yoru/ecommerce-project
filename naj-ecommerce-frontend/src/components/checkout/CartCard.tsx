@@ -1,10 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Context } from '../../Context/ProductContext'
-import { Product, ProductContextState } from '../../Types/Product'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { ProductContext } from '../../context/ProductProvider'
+import { Product, ProductContextState } from '../../types/Product'
 
 const Container = styled.div`
     width: 100%;
@@ -73,7 +70,7 @@ const Plus = styled.button`
 
 const CartCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount }) => {
 
-    const { itemsInCart, updateAmount, removeProductFromCart } = useContext(Context) as ProductContextState;
+    const { itemsInCart, updateAmount, removeProductFromCart } = useContext(ProductContext) as ProductContextState;
 
     const decrementItem = () => {
         itemsInCart(-1);

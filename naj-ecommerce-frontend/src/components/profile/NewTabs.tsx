@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { LoginForm } from '../Forms/LoginForm';
-import { RegisterForm } from '../Forms/RegisterForm';
 
 const Container = styled.div`
     display: flex;

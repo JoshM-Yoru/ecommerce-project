@@ -1,15 +1,13 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { Context as ProductContext } from '../../Context/ProductContext'
-import { user } from '../../sampleUser'
-import { ProductContextState } from '../../Types/Product'
-import CartBalanceCard from '../CartBalanceCard/CartBalanceCard'
-import CheckoutForm from '../CheckoutForm/CheckoutForm'
-import EmptyCart from '../EmptyCart/EmptyCart'
-import { Context as UserContext } from '../../Context/UserContext';
-import { UserContextState } from '../../Types/User'
-import NewTabs from '../LoginRegister/Tabs/NewTabs'
-import { textAlign } from '@mui/system'
+import { ProductContext } from '../../context/ProductProvider'
+import { UserContext } from '../../context/UserProvider'
+import { ProductContextState } from '../../types/Product'
+import { UserContextState } from '../../types/User'
+import NewTabs from '../profile/NewTabs'
+import CartBalanceCard from './CartBalanceCard'
+import CheckoutForm from './CheckoutForm'
+import EmptyCart from './EmptyCart'
 
 const Container = styled.div`
     display: flex;

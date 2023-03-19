@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { ShoppingCartOutlined } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 
 const fadeIn = keyframes`

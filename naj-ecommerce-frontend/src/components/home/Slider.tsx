@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
 const slideInAnimation = keyframes`
@@ -20,8 +21,8 @@ const Arrow = styled.div<{ direction: string }>`
     top: 0;
     bottom: 0;
     border-radius: 50%;
-    /* left: ${props => props.direction === "left" && "10px"}; */
-    /* right: ${props => props.direction === "right" && "10px"}; */
+    left: ${props => props.direction === "left" && "10px"};
+    right: ${props => props.direction === "right" && "10px"};
     margin: auto;
     cursor: pointer;
     opacity: 0.7;
@@ -32,13 +33,13 @@ const Wrapper = styled.div<{ slideIndex: number }>`
     height: 100%;
     display: flex;
     transition: all 1.3s ease;
-    /* transform:translateX(${props => props.slideIndex * -100}vw); */
+    transform:translateX(${props => props.slideIndex * -100}vw);
 `
 const Slide = styled.div < { bg: string }> `
     display: flex;
     width: 100vw;
     height: 100vh;
-    /* background-color: #${props => props.bg}; */
+    background-color: #${props => props.bg};
 `
 const ImgContainer = styled.div`
     flex: 2;
@@ -76,7 +77,7 @@ const Button = styled.button`
     border: none;
     /* background-color: ${(props) => props.theme.body}; */
     /* color: ${(props) => props.theme.text}; */
-    /* box-shadow: 0 0 10px 2px rgba(0,0,0,0.2); */
+    background-color: white;
     &:hover {
         box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
         cursor: pointer;
@@ -118,21 +119,21 @@ const Slider: React.FC = () => {
         // resetScrollTimer();
     }
 
-    // const navigate = useNavigate();
-    // const navigateToShop = () => {
-    //     navigate('/shop');
-    //     window.scrollTo(0, 0);
-    // }
+    const navigate = useNavigate();
+    const navigateToShop = () => {
+        navigate('/shop');
+        window.scrollTo(0, 0);
+    }
 
     window.scrollTo(0, 0);
 
     return (
-        <div className='w-full flex relative overflow-hidden'>
-            <div className='opacity-60' direction="left" onClick={() => handleClick("left")}>
+        <div className='w-full flex relative overflow-hidden text-black'>
+            <Arrow className='' direction="left" onClick={() => handleClick("left")}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-            </div>
+            </Arrow>
             <Wrapper slideIndex={slideIndex}>
                 {sliderProducts.map((item: any) => (
                     <Slide bg={item.bg} key={item.title}>

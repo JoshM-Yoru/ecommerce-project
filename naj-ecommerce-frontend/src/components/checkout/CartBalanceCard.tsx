@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Context } from '../../Context/ProductContext'
-import { ProductContextState } from '../../Types/Product'
-import CartCard from '../CartCard/CartCard'
+import { ProductContext } from '../../context/ProductProvider'
+import { ProductContextState } from '../../types/Product'
+import CartCard from './CartCard'
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -59,7 +59,7 @@ const Total = styled.div`
 
 const CartBalanceCard: React.FC = () => {
 
-    const { products, cartTotal } = useContext(Context) as ProductContextState;
+    const { products, cartTotal } = useContext(ProductContext) as ProductContextState;
 
     let subtotal = cartTotal(products);
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Context } from '../../Context/ProductContext'
-import { Product, ProductContextState } from '../../Types/Product'
+import { ProductContext } from '../../context/ProductProvider'
+import { Product, ProductContextState } from '../../types/Product'
 
 const slideInAnimation = keyframes`
     0% {transform: translateX(100%)},
@@ -79,7 +79,7 @@ const Cart = styled.button`
 
 const ProductCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount }) => {
 
-    const { addProductToCart, itemsInCart } = useContext(Context) as ProductContextState;
+    const { addProductToCart, itemsInCart } = useContext(ProductContext) as ProductContextState;
 
     const addToCart = () => {
         addProductToCart({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount });

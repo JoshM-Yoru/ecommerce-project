@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { products } from '../../data'
-import ProductCard from '../ProductCard/ProductCard'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Context } from '../../Context/ProductContext'
-import { Product, ProductContextState } from '../../Types/Product';
 import axios from 'axios';
+import { ProductContext } from '../../context/ProductProvider';
+import ProductCard from './ProductCard';
 
 const Container = styled.div`
     background-color: ${(props) => props.theme.background};
@@ -67,7 +64,7 @@ const ProductLayout: React.FC = () => {
         }
     }
 
-    const { search } = useContext(Context) as ProductContextState;
+    const { search } = useContext(ProductContext) as ProductContextState;
 
     window.addEventListener('scroll', toggleVisible, false)
 
