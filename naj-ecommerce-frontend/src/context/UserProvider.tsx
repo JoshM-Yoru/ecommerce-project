@@ -6,7 +6,7 @@ interface ProviderProps {
     children: React.ReactNode;
 }
 
-export const Context = React.createContext<UserContextState | null>(null);
+export const UserContext = React.createContext<UserContextState | null>(null);
 
 export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
 
@@ -85,8 +85,8 @@ export const UserProvider: React.FC<ProviderProps> = ({ children }) => {
     }
 
     return (
-        <Context.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab, logged, loginUser, logoutUser, currentUser, updateCurrentUser, displayModal, modal }}>
+        <UserContext.Provider value={{ users, addUser, updateUser, removeUser, currentTab, updateAccountTab, logged, loginUser, logoutUser, currentUser, updateCurrentUser, displayModal, modal }}>
             {children}
-        </Context.Provider>
+        </UserContext.Provider>
     );
 };

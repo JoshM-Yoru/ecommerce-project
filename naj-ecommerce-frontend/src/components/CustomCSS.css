@@ -1,0 +1,15 @@
+.logo{
+    cursor: pointer;
+    letter-spacing: 6px;
+    font-size: 2.2em;
+}
+.logo-mirror {
+    position: absolute;
+    cursor: pointer;
+    letter-spacing: 6px;
+    transform: scale(1, -1) translateY(-67%);
+    font-size: 2.2em;
+    background: linear-gradient(#111, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

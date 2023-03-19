@@ -5,7 +5,7 @@ interface ProviderProps {
     children: React.ReactNode;
 }
 
-export const Context = React.createContext<ProductContextState | null>(null);
+export const ProductContext = React.createContext<ProductContextState | null>(null);
 
 const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
 
@@ -77,9 +77,9 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
 
 
     return (
-        <Context.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal, cartNumber, updateAmount, itemSearch, search, removeAllProductsFromCart }}>
+        <ProductContext.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal, cartNumber, updateAmount, itemSearch, search, removeAllProductsFromCart }}>
             {children}
-        </Context.Provider>
+        </ProductContext.Provider>
     )
 }
 
