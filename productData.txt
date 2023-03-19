@@ -1,0 +1,209 @@
+ {
+        "name": "Jeans",
+        "price": 24.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "gender": "M",
+        "itemType": "pants"
+    },
+    {
+        "name": "Socks",
+        "name": "Skinny Jeans",
+        "price": 24.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1475178626620-a4d074967452?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1972&q=80",
+        "gender": "F",
+        "itemType": "pants"
+    },
+    {
+        "name": "Rose Socks",
+        "price": 8.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1598151639582-8ea0d33cd8ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+        "gender": "M",
+        "itemType": "socks"
+    },
+    {
+        "name": "Rainbow Socks",
+        "price": 8.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1580973757787-e22cdecb9cd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "gender": "F",
+        "itemType": "socks"
+    },
+    {
+        "name": "Retro Socks",
+        "price": 8.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1619575633397-fb4b20cc2465?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+        "gender": "U",
+        "itemType": "socks"
+    },
+    {
+        "name": "Green Running Shoes",
+        "price": 39.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
+        "gender": "M",
+        "itemType": "shoes"
+    },
+    {
+        "name": "Olive Running Shoes",
+        "price": 39.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+        "gender": "M",
+        "itemType": "shoes"
+    },
+    {
+        "name": "Pink Trainers",
+        "price": 39.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80",
+        "gender": "F",
+        "itemType": "shoes"
+    },
+    {
+        "name": "Teal Running Shoes",
+        "price": 39.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1610720991840-457ad2c7a658?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
+        "gender": "F",
+        "itemType": "shoes"
+    },
+    {
+        "name": "Pastel Shoes",
+        "price": 48.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "gender": "U",
+        "itemType": "shoes"
+    },
+    {
+        "name": "Black High Heels",
+        "price": 39.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1596702874230-b5706dfb5bc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+        "gender": "F",
+        "itemType": "shoes"
+    },
+    {
+        "name": "Bronze Light Jacket",
+        "price": 21.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80",
+        "gender": "M",
+        "itemType": "outerwear"
+    },
+    {
+        "name": "Jean Jacket",
+        "price": 52.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=669&q=80",
+        "gender": "M",
+        "itemType": "outerwear"
+    },
+    {
+        "name": "One Piece Grey Skirt",
+        "price": 31.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=780&q=80",
+        "gender": "F",
+        "itemType": "skirt"
+    },
+    {
+        "name": "Ivory Shawl",
+        "price": 25.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=705&q=80",
+        "gender": "F",
+        "itemType": "accessories"
+    },
+    {
+        "name": "Purse",
+        "price": 49.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=738&q=80",
+        "gender": "F",
+        "itemType": "accessories"
+    },
+    {
+        "name": "Rolex Watch",
+        "price": 89.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "gender": "M",
+        "itemType": "accessories"
+    },
+    {
+        "name": "Tie",
+        "price": 14.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1589756823695-278bc923f962?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "gender": "M",
+        "itemType": "accessories"
+    },
+    {
+        "name": "Winter Hat",
+        "price": 8.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80",
+        "gender": "U",
+        "itemType": "accessories"
+    },
+    {
+        "name": "Blouse",
+        "price": 28.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1584030373081-f37b7bb4fa8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80",
+        "gender": "F",
+        "itemType": "shirt"
+    },
+    {
+        "name": "Button Up Shirt",
+        "price": 18.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+        "gender": "M",
+        "itemType": "shirt"
+    },
+    {
+        "name": "T Shirt",
+        "price": 12.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+        "gender": "M",
+        "itemType": "shirt"
+    },
+    {
+        "name": "705 Black T Shirt",
+        "price": 19.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80",
+        "gender": "U",
+        "itemType": "shirt"
+    },
+    {
+        "name": "Gold Dress",
+        "price": 79.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/photo-1623609163859-ca93c959b98a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
+        "gender": "F",
+        "itemType": "dress"
+    },
+    {
+        "name": "Green Dress",
+        "price": 64.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://images.unsplash.com/flagged/photo-1585052201332-b8c0ce30972f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+        "gender": "F",
+        "itemType": "dress"
+    },
+    {
+        "name": "Sun Dress",
+        "price": 34.99,
+        "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        "imageUrl": "https://www.ortery.com/wp-content/uploads/2019/01/dress-on-blue-bkg.png",
+        "gender": "F",
+        "itemType": "dress"
+    }

@@ -23,9 +23,11 @@ public class UserCarts {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Integer cartItemNumber;
 
+  private String cartUUID;
+
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "receipt_number", referencedColumnName = "receipt_number")
-  private Receipt receiptNumber;
+  @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+  private User userId;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "item_id", referencedColumnName = "item_id")

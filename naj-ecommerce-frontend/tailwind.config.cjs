@@ -14,7 +14,11 @@ module.exports = {
                 slideInFromLeft: {
                     '0%': { transform: 'translateX(-20%)', opacity: '0%' },
                     '100%': { transform: 'translateX(0px)', opacity: '100%' }
-                }
+                },
+                slideFromTop: {
+                    '0%': { transform: 'translateY(-100%)', opacity: '0%' },
+                    '100%': { transform: 'translateY(0px)', opacity: '100%' }
+                },
             },
             animation: {
                 slideInFromLeft: 'slideInFromLeft 1s',

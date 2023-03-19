@@ -9,12 +9,6 @@ const slideLeftAnimation = keyframes`
     0% {transform: translateX(100%); opacity: 0%},
     100% {transform: translateX(0px); opacity: 100%}
 `
-const Container = styled.div`
-    width: 100%;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-`
 const Arrow = styled.div<{ direction: string }>`
     width: 40px;
     height: 40px;
@@ -92,11 +86,11 @@ const Button = styled.button`
 const Slider: React.FC = () => {
 
     const [slideIndex, setSlideIndex] = useState(0)
-    // const [timerState, setTimerState] = useState(3500)
+    const [timerState, setTimerState] = useState(3500)
 
-    // const scrollSlider = () => {
-    //     setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
-    // }
+    const scrollSlider = () => {
+        setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
+    }
 
     // const scrollTimer = (b: boolean) => {
     //     if (b) {
@@ -104,10 +98,10 @@ const Slider: React.FC = () => {
     //     }
     // }
 
-    // // let timer = scrollTimer();
-    // // useEffect(() => {
-    // //     scrollTimer(true);
-    // // }, [])
+    // let timer = scrollTimer();
+    // useEffect(() => {
+    //     scrollTimer(true);
+    // }, [])
 
     // scrollTimer(true);
     // const resetScrollTimer = () => {
@@ -133,12 +127,12 @@ const Slider: React.FC = () => {
     window.scrollTo(0, 0);
 
     return (
-        <Container>
-            <Arrow direction="left" onClick={() => handleClick("left")}>
+        <div className='w-full flex relative overflow-hidden'>
+            <div className='opacity-60' direction="left" onClick={() => handleClick("left")}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
-            </Arrow>
+            </div>
             <Wrapper slideIndex={slideIndex}>
                 {sliderProducts.map((item: any) => (
                     <Slide bg={item.bg} key={item.title}>
@@ -158,7 +152,7 @@ const Slider: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
             </Arrow>
-        </Container >
+        </div>
     )
 }
 
