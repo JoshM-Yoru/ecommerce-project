@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { ProductContext } from '../../context/ProductProvider'
 import { UserContext } from '../../context/UserProvider'
+import { ProductContextState } from '../../types/Product'
 import { User, UserContextState } from '../../types/User'
 
 const fadeIn = keyframes`
@@ -108,9 +109,9 @@ const CheckoutForm: React.FC<User> = ({
 
     async function createReceipt() {
 
-        let amountOfItems = 0;
+        let quantityOfItems = 0;
         for (let i = 0; i < products.length; i++) {
-            amountOfItems += products[i].amount
+            quantityOfItems += products[i].quantity
         }
 
 
@@ -121,7 +122,7 @@ const CheckoutForm: React.FC<User> = ({
                 {
                     userId: userId,
                     items: products,
-                    amountOfItems: amountOfItems
+                    quantityOfItems: quantityOfItems
                 }
             )
             return data;

@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import "./Modal.css";
-import NewTabs from '../Tabs/NewTabs';
+import NewTabs from "./NewTabs";
 
 
 interface ModalType {

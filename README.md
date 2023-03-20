@@ -2,6 +2,18 @@
 
 This Repository is currently being reworked for optimization
 
+## Things Left To Do
+    * Front End:
+        - Finish converting from styled components to tailwind
+        - Reformat API Calls
+        - Implement React Hook Forms
+        - Implement Tanstack Query(nice to have)
+        - Fix Item naming to match back end
+        - Switch keyframes to transitions
+    * Back End:
+        - Fix Purchased Items creation
+        - Implement Spring Security
+
 
 ## About The Site
   NAJ Clothing is an e-commerce site built with ReactJS for the front end and Java Spring Boot for the back.
@@ -11,7 +23,6 @@ This Repository is currently being reworked for optimization
     - TypeScript
     - Context API
     - Axios
-    - Tanstack Query(React Query)
     - Tailwind CSS
   * Back End:
     - Java

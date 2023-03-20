@@ -77,12 +77,12 @@ const Cart = styled.button`
         }
 `
 
-const ProductCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount }) => {
+const ProductCard: React.FC<Product> = ({ itemId: productId, imageUrl: img, name: title, description: desc, price, quantity }) => {
 
     const { addProductToCart, itemsInCart } = useContext(ProductContext) as ProductContextState;
 
     const addToCart = () => {
-        addProductToCart({ itemId: productId, imageUrl: img, name: title, description: desc, price, amount });
+        addProductToCart({ itemId: productId, imageUrl: img, name: title, description: desc, price, quantity });
         itemsInCart(1);
     }
 

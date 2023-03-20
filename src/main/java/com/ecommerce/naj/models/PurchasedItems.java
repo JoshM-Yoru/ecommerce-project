@@ -1,5 +1,6 @@
 package com.ecommerce.naj.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,26 +14,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user_carts")
+@Table(name = "purchased_items")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCarts {
+public class PurchasedItems {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private Integer cartItemNumber;
-
-  private String cartUUID;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-  private User userId;
+  @Column(name = "item_number")
+  private Integer itemNumber;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "item_id", referencedColumnName = "item_id")
-  private Item itemId;
+  private Item item;
 
-  private Integer amount;
+  @Column(name = "size_of_item")
+  private String itemSize;
+
+  private Integer quantity;
+
+  private Double price;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "receipt_number", referencedColumnName = "receipt_number")
+  private Receipt receiptNumber;
 
 }

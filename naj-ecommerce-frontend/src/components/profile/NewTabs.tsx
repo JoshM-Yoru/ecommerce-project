@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { LoginForm } from './LoginForm';
+import { RegisterForm } from './RegisterForm';
 
 const Container = styled.div`
     display: flex;
@@ -90,7 +92,7 @@ const NewTabs: React.FC = () => {
                         )}
                     </Tabs>
                     <Content>
-                        <LoginForm></LoginForm>
+                        <LoginForm />
                     </Content>
                 </Wrapper>
             </Container>

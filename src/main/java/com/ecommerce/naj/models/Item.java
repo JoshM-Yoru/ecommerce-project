@@ -28,7 +28,7 @@ public class Item {
 
   private Double price;
 
-  private Integer quanitity;
+  private Integer quantity;
 
   private String description;
 
@@ -39,6 +39,4 @@ public class Item {
   @Column(name = "type_of_item")
   private ItemType itemType;
 
-  @Column(name = "size_of_item")
-  private String itemSize;
 }

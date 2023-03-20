@@ -1,12 +1,11 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { receipts } from '../../testReceipt'
-import { Receipt } from '../../Types/Receipt'
-import { User, UserContextState } from '../../Types/User'
-import ReceiptCard from '../ReceiptCard/ReceiptCard'
-import { Context } from '../../Context/UserContext';
-import NoPastOrder from '../NoPastOrder/NoPastOrder'
+import { UserContext } from '../../context/UserProvider'
+import { Receipt } from '../../types/Receipt'
+import { UserContextState } from '../../types/User'
+import NoPastOrder from './NoPastOrder'
+import ReceiptCard from './ReceiptCard'
 
 const Container = styled.div`
     width: 600px;
@@ -14,7 +13,7 @@ const Container = styled.div`
 
 const PastOrders: React.FC = () => {
 
-    const { currentUser, updateCurrentUser } = useContext(Context) as UserContextState;
+    const { currentUser, updateCurrentUser } = useContext(UserContext) as UserContextState;
 
     const [receiptData, setReceiptData] = useState<Receipt[]>([])
 

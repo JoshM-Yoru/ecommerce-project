@@ -33,10 +33,10 @@ const Navbar = () => {
     }
 
 
-    const updateCartAmount = (): number => {
+    const updateCartQuantity = (): number => {
         let itemsInCart = 0;
         for (let i: number = 0; i < products.length; i++) {
-            itemsInCart += products[i].amount;
+            itemsInCart += products[i].quantity;
         }
         return itemsInCart;
     }
@@ -88,8 +88,8 @@ const Navbar = () => {
                     </div>
                     <div className='cursor-pointer relative p-0 ml-6' onClick={navigateToCart}>
                         {
-                            updateCartAmount() > 0 &&
-                            <span className="absolute -right-2 -top-1 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white text-xs  leading-tight text-center">{updateCartAmount()}
+                            updateCartQuantity() > 0 &&
+                            <span className="absolute -right-2 -top-1 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white text-xs  leading-tight text-center">{updateCartQuantity()}
                             </span>
                         }
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 opacity-60">

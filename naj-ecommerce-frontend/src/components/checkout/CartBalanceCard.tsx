@@ -65,7 +65,7 @@ const CartBalanceCard: React.FC = () => {
 
     let shipping: number;
 
-    let taxed: number = subtotal * 1.59
+    let taxed: number = subtotal * 1.07
 
     if (taxed > 952.38) {
         shipping = 0;
@@ -79,7 +79,7 @@ const CartBalanceCard: React.FC = () => {
             {
                 products.map((product, index) => {
                     return (
-                        <CartCard key={index} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} amount={product.amount} itemOrder={index + 1} />
+                        <CartCard key={index} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} quantity={product.quantity} itemOrder={index + 1} />
                     );
                 })
             }
@@ -94,7 +94,7 @@ const CartBalanceCard: React.FC = () => {
                 </BottomWrapper>
                 <BottomWrapper>
                     <Title>Tax </Title>
-                    <DollarAmount>59%</DollarAmount>
+                    <DollarAmount>7%</DollarAmount>
                 </BottomWrapper>
                 <FinalWrapper>
                     <Total>Total </Total>

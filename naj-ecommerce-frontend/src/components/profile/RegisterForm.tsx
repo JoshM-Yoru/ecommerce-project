@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
-import { User, UserContextState } from '../../../Types/User';
-import { Context } from "../../../Context/UserContext";
+import { UserContext } from '../../context/UserProvider';
+import { UserContextState } from '../../types/User';
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -64,7 +64,7 @@ export const RegisterForm: React.FC = () => {
     const [error, setError] = useState<boolean>(false);
 
 
-    const { logged, loginUser } = useContext(Context) as UserContextState;
+    const { logged, loginUser } = useContext(UserContext) as UserContextState;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.name === "email") {

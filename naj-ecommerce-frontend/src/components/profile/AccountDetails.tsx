@@ -1,9 +1,8 @@
+import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { User, UserContextState } from '../../Types/User'
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import axios from 'axios';
-import { Context } from '../../Context/UserContext';
+import { UserContext } from '../../context/UserProvider'
+import { User, UserContextState } from '../../types/User'
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -76,7 +75,7 @@ const SaveChanges = styled.button`
 
 const AccountDetails: React.FC = () => {
 
-    const { currentUser, updateCurrentUser, displayModal } = useContext(Context) as UserContextState;
+    const { currentUser, updateCurrentUser, displayModal } = useContext(UserContext) as UserContextState;
 
     const [inputEmail, setInputEmail] = useState<string>(currentUser.email)
     const [inputAddress, setInputAddress] = useState<string>(currentUser.address)
@@ -166,7 +165,9 @@ const AccountDetails: React.FC = () => {
     return (
         <Container>
             <Title>
-                <Person2OutlinedIcon style={{ fontSize: '2rem' }} /> <br />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
                 MY ACCOUNT DETAILS
             </Title>
             <Information>

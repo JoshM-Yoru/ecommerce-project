@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Items, Receipt } from '../../Types/Receipt'
+import { Receipt } from '../../types/Receipt'
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -50,7 +50,7 @@ const ReceiptCard: React.FC<Receipt> = ({ items, userId, receiptNumer, dateTime,
                         {
                             items.map((item) => {
                                 return (
-                                    <li key={item.name} >{item.amount} x {item.name}</li>
+                                    <li key={item.name} >{item.quantity} x {item.name}</li>
                                 )
                             })
                         }

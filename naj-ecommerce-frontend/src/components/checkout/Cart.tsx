@@ -8,6 +8,7 @@ import NewTabs from '../profile/NewTabs'
 import CartBalanceCard from './CartBalanceCard'
 import CheckoutForm from './CheckoutForm'
 import EmptyCart from './EmptyCart'
+import { user } from '../../assets/sampleUser.js'
 
 const Container = styled.div`
     display: flex;
@@ -35,7 +36,7 @@ const Cart: React.FC = () => {
 
     for (let i: number = 0; i < products.length; i++) {
         total += products[i].price;
-        if (products[i].amount < 1) {
+        if (products[i].quantity < 1) {
             removeProductFromCart(products[i].itemId);
         }
     }

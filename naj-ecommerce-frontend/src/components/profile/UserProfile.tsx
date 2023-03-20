@@ -2,12 +2,12 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { Context } from "../../Context/UserContext";
-import { UserContextState, User } from "../../Types/User";
-import AccountDetails from "../AccountDetails/AccountDetails";
-import PastOrders from "../PastOrders/PastOrders";
-import ProfileNavigation from "../ProfileNavigation/ProfileNavigation";
-import UpdateModal from "../UpdateModal/UpdateModal";
+import { UserContext } from "../../context/UserProvider";
+import { User, UserContextState } from "../../types/User";
+import AccountDetails from "./AccountDetails";
+import PastOrders from "./PastOrders";
+import ProfileNavigation from "./ProfileNavigation";
+import UpdateModal from "./UpdateModal";
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -35,7 +35,7 @@ const ReceiptWrapper = styled.div`
 `
 
 export const UserProfile: React.FC = () => {
-    const { currentTab, updateCurrentUser, currentUser, modal } = useContext(Context) as UserContextState;
+    const { currentTab, updateCurrentUser, currentUser, modal } = useContext(UserContext) as UserContextState;
 
     useEffect(() => {
         updateCurrentUser(currentUser)

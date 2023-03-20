@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import axios from 'axios';
 import { ProductContext } from '../../context/ProductProvider';
 import ProductCard from './ProductCard';
+import { Product, ProductContextState } from '../../types/Product';
 
 const Container = styled.div`
     background-color: ${(props) => props.theme.background};
@@ -115,18 +116,20 @@ const ProductLayout: React.FC = () => {
                     (search === '') ?
                         productData.map((product, index) => {
                             return (
-                                <ProductCard key={index} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} amount={1} />
+                                <ProductCard key={index} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} quantity={1} />
                             );
                         })
                         :
                         productData.filter((product) => product.name.toLowerCase().includes(search.toLowerCase())).map(product => {
                             return (
-                                <ProductCard key={product.itemId} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} amount={1} />
+                                <ProductCard key={product.itemId} itemId={product.itemId} imageUrl={product.imageUrl} name={product.name} description={product.description} price={product.price} quantity={1} />
                             )
                         })
                 }
                 <UpArrowWrapper onClick={handleScrollToTop}>
-                    <KeyboardArrowUpIcon style={{ zIndex: '2', fontSize: '2.5em', backgroundColor: '#ccc', borderRadius: '50%', color: 'gray', display: (visible) ? 'inline' : 'none' }} />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 cursor-pointer text-gray-500 ">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                    </svg>
                 </UpArrowWrapper>
             </Wrapper>
         </Container >

@@ -143,7 +143,7 @@ const Slider: React.FC = () => {
                         <InfoContainer>
                             <Title>{item.title}</Title>
                             <Desc>{item.desc}</Desc>
-                            <Button >SHOP NOW</Button>
+                            <Button onClick={navigateToShop}>SHOP NOW</Button>
                         </InfoContainer>
                     </Slide>
                 ))}

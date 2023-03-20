@@ -1,7 +1,7 @@
-import { Context } from '../../Context/UserContext'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { UserContextState } from '../../Types/User'
+import { UserContext } from '../../context/UserProvider'
+import { UserContextState } from '../../types/User'
 
 const Container = styled.div`
     position: absolute;
@@ -45,7 +45,7 @@ const CloseButton = styled.button`
 
 const UpdateModal: React.FC = () => {
 
-    const { displayModal } = useContext(Context) as UserContextState;
+    const { displayModal } = useContext(UserContext) as UserContextState;
 
     const handleModal = () => {
         displayModal(false);

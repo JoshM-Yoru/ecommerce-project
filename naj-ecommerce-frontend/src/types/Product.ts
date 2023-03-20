@@ -5,7 +5,7 @@ export type Product = {
     name: string;
     description: string;
     price: number;
-    amount: number;
+    quantity: number;
     itemOrder?: number;
 }
 
@@ -18,6 +18,6 @@ export interface ProductContextState {
     removeAllProductsFromCart: () => void;
     itemsInCart: (n: number) => number;
     cartTotal: (products: Product[]) => number;
-    updateAmount: (productId: number, n: number) => void;
+    updateQuantity: (productId: number, n: number) => void;
     itemSearch: (e: string) => void;
 }

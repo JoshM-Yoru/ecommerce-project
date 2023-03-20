@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
-import { User, UserContextState } from '../../../Types/User';
-import { Context } from "../../../Context/UserContext";
+import { User, UserContextState } from '../../types/User';
+import { UserContext } from '../../context/UserProvider';
 
 const fadeIn = keyframes`
     0% {opacity: 0%},
@@ -65,7 +65,7 @@ export const LoginForm: React.FC = () => {
 
     //let navigate = useNavigate();
 
-    const { logged, loginUser } = useContext(Context) as UserContextState;
+    const { logged, loginUser } = useContext(UserContext) as UserContextState;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.name === "email") {

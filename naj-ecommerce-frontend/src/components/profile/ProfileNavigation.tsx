@@ -1,14 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
-import { User, UserContextState } from '../../Types/User'
-import { Context as UserContext } from "../../Context/UserContext";
-import { Context as ProductContext } from "../../Context/ProductContext";
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { useNavigate } from 'react-router-dom';
-import { ProductContextState } from '../../Types/Product';
-import axios from 'axios';
+import { ProductContext } from '../../context/ProductProvider'
+import { UserContext } from '../../context/UserProvider'
+import { ProductContextState } from '../../types/Product'
+import { UserContextState } from '../../types/User'
 
 const textAppear = keyframes`
     0% {opacity: 0%},
@@ -105,19 +101,25 @@ const ProfileNavigation: React.FC = () => {
                 </GreetingName>
             </Greeting>
             <Tabs id='1' disabled={currentTab === '1'} onClick={handleTabClick} >
-                <Person2OutlinedIcon style={{ fontSize: '2em' }} />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
                 <TabText>
                     Account Details
                 </TabText>
             </Tabs>
             <Tabs id='2' disabled={currentTab === '2'} onClick={handleTabClick} >
-                <FormatListBulletedOutlinedIcon style={{ fontSize: '2em' }} />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
                 <TabText>
                     Past Orders
                 </TabText>
             </Tabs>
             <Tabs>
-                <LogoutOutlinedIcon style={{ fontSize: '2em' }} />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
                 <TabText onClick={handleSignOut}>
                     Sign Out
                 </TabText>

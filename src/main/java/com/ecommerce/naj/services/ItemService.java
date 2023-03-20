@@ -19,10 +19,8 @@ public class ItemService {
 
     ItemType type = ItemType.valueOf(itemType.toUpperCase());
     Integer quantity = 100;
-    String itemSize = "";
 
-    Item newItem =
-        new Item(0, name, price, quantity, description, imageUrl, gender, type, itemSize);
+    Item newItem = new Item(0, name, price, quantity, description, imageUrl, gender, type);
     return itemRepo.save(newItem);
   }
 

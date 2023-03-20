@@ -8,6 +8,6 @@ export type Receipt = {
 
 export type Items = {
     name: string;
-    amount: number;
+    quantity: number;
     price: number;
 }
