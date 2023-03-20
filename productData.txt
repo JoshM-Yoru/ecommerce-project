@@ -7,7 +7,6 @@
         "itemType": "pants"
     },
     {
-        "name": "Socks",
         "name": "Skinny Jeans",
         "price": 24.99,
         "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",

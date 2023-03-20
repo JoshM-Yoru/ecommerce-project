@@ -53,7 +53,7 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
         return cartNumber;
     }
 
-    const updatequantity = (productId: number, n: number) => {
+    const updateQuantity = (productId: number, n: number) => {
         for (let i: number = 0; i < products.length; i++) {
             if (productId === products[i].itemId)
                 products[i].quantity = products[i].quantity + n;
@@ -77,7 +77,7 @@ const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
 
 
     return (
-        <ProductContext.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal, cartNumber, updatequantity, itemSearch, search, removeAllProductsFromCart }}>
+        <ProductContext.Provider value={{ products, addProductToCart, removeProductFromCart, itemsInCart, cartTotal, cartNumber, updateQuantity, itemSearch, search, removeAllProductsFromCart }}>
             {children}
         </ProductContext.Provider>
     )

@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ecommerce.naj.models.Item;
 import com.ecommerce.naj.models.PurchasedItems;
 import com.ecommerce.naj.models.Receipt;
 import com.ecommerce.naj.models.User;
 import com.ecommerce.naj.repositories.PurchasedItemsRepository;
 import com.ecommerce.naj.repositories.ReceiptRepository;
 import com.ecommerce.naj.repositories.UserRepository;
+import com.ecommerce.naj.repositories.ItemRepository;
 import lombok.AllArgsConstructor;
 
 
@@ -23,6 +25,7 @@ public class ReceiptService {
 
   private ReceiptRepository rRepo;
   private UserRepository uRepo;
+  private ItemRepository iRepo;
   private PurchasedItemsRepository piRepo;
 
   private Integer createReceiptNumber(Integer userId) {
@@ -35,19 +38,23 @@ public class ReceiptService {
   public Receipt createReceipt(Integer userId, List<PurchasedItems> items) {
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     String now = LocalDateTime.now().format(format);
-    List<PurchasedItems> purchasedItems = new ArrayList<>();
     Double total = 00.00;
     User user = uRepo.findById(userId).get();
 
     Integer receiptNumber = createReceiptNumber(userId);
+    Receipt rec = new Receipt(receiptNumber, user, total, now);
+    rRepo.save(rec);
 
     for (PurchasedItems i : items) {
       PurchasedItems addItem = new PurchasedItems();
-      addItem.setItem(i.getItem());
+      Item item = iRepo.findById(i.getItemId().getItemId()).get();
+      addItem.setItemId(item);
       addItem.setItemSize(i.getItemSize());
       addItem.setQuantity(i.getQuantity());
-      total += i.getPrice() * i.getQuantity();
-      purchasedItems.add(addItem);
+      addItem.setItemSize(i.getItemSize());
+      addItem.setReceiptNumber(rec);
+      total += item.getPrice() * i.getQuantity();
+      addItem.setPrice(total);
       piRepo.save(addItem);
     }
 
@@ -56,9 +63,11 @@ public class ReceiptService {
     DecimalFormat df = new DecimalFormat("0.00");
     total = Double.parseDouble(df.format(total));
 
-    Receipt rec = new Receipt(receiptNumber, user, total, now);
+    Receipt finalReceipt = rRepo.findById(receiptNumber).get();
 
-    return rRepo.save(rec);
+    finalReceipt.setTotal(total);
+
+    return rRepo.save(finalReceipt);
   }
 
   public Receipt readReceipt(Integer id) {

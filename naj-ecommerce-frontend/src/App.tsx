@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Slider from './components/home/Slider'
 import Navbar from './components/Navbar'
 import Login from './components/profile/Login'
+import { UserProfile } from './components/profile/UserProfile'
 import ProductLayout from './components/shop/ProductLayout'
 import ProductProvider from './context/ProductProvider'
 import { UserProvider } from './context/UserProvider'
@@ -25,6 +26,7 @@ function App() {
                             <Route path='/cart' element={<Cart />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/success' element={<CheckoutCompleted />} />
+                            <Route path='/profile' element={<UserProfile />} />
                         </Routes>
                         <Footer />
                     </div>

@@ -27,7 +27,7 @@ public class PurchasedItems {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "item_id", referencedColumnName = "item_id")
-  private Item item;
+  private Item itemId;
 
   @Column(name = "size_of_item")
   private String itemSize;

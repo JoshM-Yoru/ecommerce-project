@@ -20,10 +20,11 @@ public class UserService {
 
   private UserRepository userRepo;
 
-  public User registerUser(String firstName, String lastName, String email, String password,
-      UserAddress shippingAddress, UserAddress billingAddress) {
+  public User registerUser(String firstName, String lastName, String email, String password) {
     List<Receipt> receipts = new ArrayList<>();
     String phoneNumber = "";
+    UserAddress shippingAddress = new UserAddress();
+    UserAddress billingAddress = new UserAddress();
     User u = new User(0, firstName, lastName, email, password, receipts, shippingAddress,
         billingAddress, phoneNumber);
 

@@ -10,6 +10,7 @@ This Repository is currently being reworked for optimization
         - Implement Tanstack Query(nice to have)
         - Fix Item naming to match back end
         - Switch keyframes to transitions
+        - 
     * Back End:
         - Fix Purchased Items creation
         - Implement Spring Security
